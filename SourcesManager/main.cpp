@@ -2,36 +2,47 @@
 #include <iostream>
 #include <string>
 
-#include "entities/Coordinates.h"
-#include "entities/LineString.h"
-#include "entities/Point.h"
+//#include "entities/MultiLineString.h"
 
-using namespace std;
-using namespace figureTypes;
-
-float rounded(float _num) { return floorf(_num * 100) / 100; }
+// using namespace std;
+// using namespace figureTypes;
 
 int main() {
-  cout << "tgtgtgttg";
+  /* MultiLineString mlBefore;
+   MultiLineString mlAfter;
+   LineString line1;
+   LineString line2;
+   LineString line3;
+   LineString line4;
+   LineString line5;
+   LineString line6;
 
-  LineString lsBefore;
-  LineString lsAfter;
+   line1.addCoordinate(Coordinates(3, 1));
+   line1.addCoordinate(Coordinates(2, 3));
+   line1.addCoordinate(Coordinates(4, 4));
+   line2.addCoordinate(Coordinates(6, 2));
+   line2.addCoordinate(Coordinates(6, 0));
+   line2.addCoordinate(Coordinates(4, 3));
+   line3.addCoordinate(Coordinates(3, 2));
 
-  lsBefore.addCoordinate(Coordinates(3, 1));
-  lsBefore.addCoordinate(Coordinates(2, 3));
-  lsBefore.addCoordinate(Coordinates(4, 4));
-  lsBefore.addCoordinate(Coordinates(6, 2));
-  lsBefore.addCoordinate(Coordinates(6, 0));
-  lsBefore.addCoordinate(Coordinates(4, 3));
-  lsBefore.addCoordinate(Coordinates(3, 2));
+   line4.addCoordinate(Coordinates(2.59, 0.53));
+   line4.addCoordinate(Coordinates(1.18, 3.35));
+   line4.addCoordinate(Coordinates(4, 4.76));
+   line5.addCoordinate(Coordinates(6.82, 1.94));
+   line5.addCoordinate(Coordinates(6.82, -0.88));
+   line5.addCoordinate(Coordinates(4, 3.35));
+   line6.addCoordinate(Coordinates(2.59, 1.94));
 
-  lsAfter.addCoordinate(Coordinates(2.59, 0.53));
-  lsAfter.addCoordinate(Coordinates(1.18, 3.35));
-  lsAfter.addCoordinate(Coordinates(4, 4.76));
-  lsAfter.addCoordinate(Coordinates(6.82, 1.94));
-  lsAfter.addCoordinate(Coordinates(6.82, -0.87));
-  lsAfter.addCoordinate(Coordinates(4, 3.35));
-  lsAfter.addCoordinate(Coordinates(2.59, 1.94));
+   mlBefore.addLine(line1);
+   mlBefore.addLine(line2);
+   mlBefore.addLine(line3);
+   mlAfter.addLine(line4);
+   mlAfter.addLine(line5);
+   mlAfter.addLine(line6);
 
-  lsBefore.scalingByArea(2);
+   mlBefore.scalingByArea(2, true);
+   if (mlBefore == mlAfter) {
+     cout << endl << "TRUE" << endl;
+   } else
+     cout << "FALSE";*/
 }

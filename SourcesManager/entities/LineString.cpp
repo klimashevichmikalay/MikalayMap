@@ -7,21 +7,21 @@ using namespace std;
 
 void LineString::addCoordinate(Coordinates _crd) { points.push_back(_crd); }
 
-void LineString::scalingByArea(float _areaX) {
+void LineString::scalingByArea(float _areaX, bool _isShift) {
   float factor = sqrt(_areaX);
-  scalingByFactor(factor);
+  scalingByFactor(factor, _isShift);
 }
 
-void LineString::scalingByFactor(float _scale) {
-  scale *= _scale;
+void LineString::scalingByFactor(float _scale, bool _isShift) {
   Coordinates avrOld = getAvrXY();
   multCoordinates(points, _scale);
   Coordinates avrCur = getAvrXY();
   Coordinates delta;
   delta.setX(avrCur.getX() - avrOld.getX());
   delta.setY(avrCur.getY() - avrOld.getY());
-  minusCoordinates(points, delta);
-  setScale(_scale);
+
+  if (_isShift) minusCoordinates(points, delta);
+  this->scale *= _scale;
 }
 
 Coordinates LineString::getAvrXY() {

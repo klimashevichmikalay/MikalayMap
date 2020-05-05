@@ -40,18 +40,18 @@ struct LineFixture : public testing::Test {
 };
 
 TEST_F(LineFixture, TestScalingWhenAreaWill2x) {
-  lsBefore.scalingByArea(2);
+  lsBefore.scalingByArea(2, true);
 
   EXPECT_EQ(lsBefore == lsAfter, true);
 }
 
 TEST_F(LineFixture, TestScalingWhithFactor) {
-  lsAfter.scalingByFactor(0.707);
+  lsAfter.scalingByFactor(0.707, true);
   EXPECT_EQ(lsBefore == lsAfter, true);
 }
 
 TEST_F(LineFixture, TestScalingWhenAreaWillMinus2x) {
-  lsAfter.scalingByArea(0.5);
+  lsAfter.scalingByArea(0.5, true);
   EXPECT_EQ(lsBefore == lsAfter, true);
 }
 

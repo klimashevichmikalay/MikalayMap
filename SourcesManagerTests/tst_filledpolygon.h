@@ -13,6 +13,7 @@ using namespace std;
 struct PolygonFixture : public testing::Test {
   FilledPolygon pBefore;
   FilledPolygon pAfter;
+  FilledPolygon pDouble;
 
   void SetUp() override {
     pBefore.addCoordinate(Coordinates(3, 1));
@@ -30,28 +31,51 @@ struct PolygonFixture : public testing::Test {
     pAfter.addCoordinate(Coordinates(6.82, -0.88));
     pAfter.addCoordinate(Coordinates(4, 3.35));
     pAfter.addCoordinate(Coordinates(2.59, 1.94));
+
+    pDouble.addCoordinate(Coordinates(6, 2));
+    pDouble.addCoordinate(Coordinates(4, 6));
+    pDouble.addCoordinate(Coordinates(8, 8));
+    pDouble.addCoordinate(Coordinates(12, 4));
+    pDouble.addCoordinate(Coordinates(12, 0));
+    pDouble.addCoordinate(Coordinates(8, 6));
+    pDouble.addCoordinate(Coordinates(6, 4));
   }
 
   void TearDown() override {
     pAfter.clear();
     pBefore.clear();
+    pDouble.clear();
   }
 };
 
 TEST_F(PolygonFixture, TestScalingWhenAreaWill2x) {
-  pBefore.scalingByArea(2);
+  pBefore.scalingByArea(2, true);
 
   EXPECT_EQ(pBefore == pAfter, true);
 }
 
 TEST_F(PolygonFixture, TestScalingWhithFactor) {
-  pAfter.scalingByFactor(0.707);
+  pAfter.scalingByFactor(0.707, true);
   EXPECT_EQ(pBefore == pAfter, true);
+  EXPECT_EQ(fabs(pAfter.getScale() - 0.707) <= 0.01, true);
 }
 
 TEST_F(PolygonFixture, TestScalingWhenAreaWillMinus2x) {
-  pAfter.scalingByArea(0.5);
+  pAfter.scalingByArea(0.5, true);
   EXPECT_EQ(pBefore == pAfter, true);
+  EXPECT_EQ(fabs(pAfter.getScale() - 0.707) <= 0.01, true);
+}
+
+TEST_F(PolygonFixture, TestDoubleScalingWithoutShift) {
+  pBefore.scalingByFactor(2, false);
+  EXPECT_EQ(pBefore == pDouble, true);
+  EXPECT_EQ(pBefore.getScale(), 2);
+}
+
+TEST_F(PolygonFixture, TestDoubleScalingWithoutShiftWith4xArea) {
+  pBefore.scalingByArea(4, false);
+  EXPECT_EQ(pBefore == pDouble, true);
+  EXPECT_EQ(pBefore.getScale(), 2);
 }
 
 TEST(FilledPolygonTests, TestTypeNameProp) {

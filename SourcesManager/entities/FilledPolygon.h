@@ -12,6 +12,13 @@ class FilledPolygon : public LineString {
   FilledPolygon();
   FilledPolygon(const std::string &_name);
   FilledPolygon(const char *_name);
+
+  void scalingByArea(float _areaX, bool _isShift) {
+    LineString::scalingByArea(_areaX, _isShift);
+  }
+  void scalingByFactor(float _scale, bool _isShift) {
+    LineString::scalingByFactor(_scale, _isShift);
+  }
 };
 
 #endif  // FILLEDPOLYGON_H

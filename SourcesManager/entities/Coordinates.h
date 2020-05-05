@@ -14,6 +14,26 @@ class Coordinates {
   void setX(float _x);
   void setY(float _y);
 
+  void operator+=(const Coordinates &obj) {
+    X += obj.X;
+    Y += obj.Y;
+  }
+
+  void operator-=(const Coordinates &obj) {
+    X -= obj.X;
+    Y -= obj.Y;
+  }
+
+  void operator/=(float _f) {
+    X /= _f;
+    Y /= _f;
+  }
+
+  void operator*=(float _f) {
+    X *= _f;
+    Y *= _f;
+  }
+
  private:
   float round(float _num);
   float X;

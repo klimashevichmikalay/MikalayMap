@@ -9,6 +9,27 @@
 using namespace testing;
 using namespace figureTypes;
 
+TEST(PointTests, TestScale) {
+  Point p(Coordinates(2, 4));
+  Point p1(Coordinates(1, 2));
+
+  p.scalingByFactor(2, false);
+  p1.scalingByFactor(2, true);
+
+  EXPECT_EQ(p.getX(), 4);
+  EXPECT_EQ(p.getY(), 8);
+  EXPECT_EQ(p1.getX(), 1);
+  EXPECT_EQ(p1.getY(), 2);
+}
+
+TEST(PointTests, TestShift) {
+  Point p(Coordinates(2, 4));
+  p.minusDelta(Coordinates(1, 1));
+
+  EXPECT_EQ(p.getX(), 1);
+  EXPECT_EQ(p.getY(), 3);
+}
+
 TEST(PointTests, PointDefaultConstr) {
   Point p;
 

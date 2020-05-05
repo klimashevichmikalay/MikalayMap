@@ -4,8 +4,9 @@
 
 #include "FiguresTypes.h"
 #include "Point.h"
+#include "Scale.h"
 
-class MultiPoint : public BaseFigure {
+class MultiPoint : public BaseFigure, public Scale {
  public:
   std::vector<Point> getPoints();
   bool isContains(Point _point);
@@ -15,10 +16,12 @@ class MultiPoint : public BaseFigure {
   MultiPoint();
   MultiPoint(const char *_name);
   MultiPoint(const std::string &_name);
-  MultiPoint(const char *_name, const figureTypes::FigureType &_type);
-  MultiPoint(const std::string &_name, const figureTypes::FigureType &_type);
-
   bool operator==(MultiPoint obj);
+  Coordinates getAvrXY();
+  void multCoordinates(float _factor);
+  void minusCoordinates(Coordinates _delta);
+  void scalingByArea(float _area, bool _isShift);
+  void scalingByFactor(float _scale, bool _isShift);
 
  private:
   std::vector<Point> points;

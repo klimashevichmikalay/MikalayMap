@@ -4,6 +4,8 @@
 #include "tst_coordinates.h"
 #include "tst_filledpolygon.h"
 #include "tst_linestring.h"
+#include "tst_multilinestring.h"
+#include "tst_multipoint.h"
 #include "tst_point.h"
 
 int main(int argc, char *argv[]) {
