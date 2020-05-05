@@ -5,6 +5,4 @@
 
 const std::string NAME_PROP = "name";
 
-#endif // CONSTANTS_H
-
-
+#endif  // CONSTANTS_H

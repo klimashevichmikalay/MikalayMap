@@ -1,176 +1,141 @@
 #ifndef TST_BASEFIGURE_H
 #define TST_BASEFIGURE_H
 
-#include "BaseFigure.h"
 #include <gmock/gmock-matchers.h>
 #include <gtest/gtest.h>
+
+#include "BaseFigure.h"
 
 using namespace testing;
 using namespace figureTypes;
 using namespace std;
 
-TEST(BaseFigureTests, BaseFigureTypeInvalidParameter)
-{
-    BaseFigure bf("somename", POINT);
+TEST(BaseFigureTests, BaseFigureName) {
+  BaseFigure bf("somename", POINT);
 
-    EXPECT_THROW(bf.setType(static_cast<FigureType>(22)),
-                 invalid_argument);
+  bf.setName("somename2");
+
+  EXPECT_EQ(bf.getName(), "somename2");
+  EXPECT_NE(bf.getName(), "new name");
 }
 
-TEST(BaseFigureTests, BaseFigureType)
-{
+TEST(BaseFigureTests, BaseFigureDelNameByPropertry) {
+  BaseFigure bf;
 
-    BaseFigure bf("somename", POINT);
-    bf.setType(LINE_STR);
+  bf.setName("somename");
+  bf.delProperty("name");
 
-    EXPECT_EQ(bf.getType(), LINE_STR);
-    EXPECT_NE(bf.getType(), POINT);
+  EXPECT_EQ(bf.getName(), "");
+  EXPECT_NE(bf.getName(), "new name");
 }
 
-TEST(BaseFigureTests, BaseFigureName)
-{
+TEST(BaseFigureTests, BaseFigureSetNameByPropertry) {
+  BaseFigure bf;
 
-    BaseFigure bf("somename", POINT);
+  bf.addProperty("NAmE", "somename");
 
-    bf.setName("somename2");
-
-    EXPECT_EQ(bf.getName(), "somename2");
-    EXPECT_NE(bf.getName(), "new name");
+  EXPECT_EQ(bf.getName(), "somename");
 }
 
-TEST(BaseFigureTests, BaseFigureDelNameByPropertry)
-{
+TEST(BaseFigureTests, BaseFigureAddPropertries) {
+  BaseFigure bf;
 
-    BaseFigure bf;
+  bf.addProperty("noTE1", "soMENote1");
+  bf.addProperty("NOTE2", "SOmenote2");
 
-    bf.setName("somename");
-    bf.delProperty("name");
-
-    EXPECT_EQ(bf.getName(), "");
-    EXPECT_NE(bf.getName(), "new name");
+  EXPECT_EQ(bf.getProperty("noTE1"), "somenote1");
+  EXPECT_EQ(bf.getProperty("NOTE2"), "somenote2");
+  EXPECT_EQ(bf.getProperty("note3"), "");
 }
 
-TEST(BaseFigureTests, BaseFigureSetNameByPropertry)
-{
+TEST(BaseFigureTests, BaseFigureAddEmptyPropertries) {
+  BaseFigure bf;
 
-    BaseFigure bf;
+  bf.addProperty("", "");
+  bf.addProperty("", "");
 
-    bf.addProperty("NAmE", "somename");
-
-    EXPECT_EQ(bf.getName(), "somename");
+  EXPECT_EQ(bf.getProperty(""), "");
+  EXPECT_NE(bf.getProperty(""), "somenote2");
 }
 
-TEST(BaseFigureTests, BaseFigureAddPropertries)
-{
+TEST(BaseFigureTests, BaseFigureDelPropertries) {
+  BaseFigure bf;
 
-    BaseFigure bf;
+  bf.addProperty("note1", "somenote1");
+  bf.addProperty("note2", "somenote2");
+  bf.addProperty("note3", "somenote3");
+  bf.addProperty("note4", "somenote4");
+  bf.addProperty("note5", "somenote5");
 
-    bf.addProperty("noTE1", "soMENote1");
-    bf.addProperty("NOTE2", "SOmenote2");
+  bf.delProperty("note2");
+  bf.delProperty("note5");
+  bf.delProperty("note3");
 
-    EXPECT_EQ(bf.getProperty("noTE1"), "somenote1");
-    EXPECT_EQ(bf.getProperty("NOTE2"), "somenote2");
-    EXPECT_EQ(bf.getProperty("note3"), "");
+  EXPECT_EQ(bf.getProperty("note1"), "somenote1");
+  EXPECT_EQ(bf.getProperty("note4"), "somenote4");
+  EXPECT_EQ(bf.getProperty("note2"), "");
 }
 
-TEST(BaseFigureTests, BaseFigureAddEmptyPropertries)
-{
+TEST(BaseFigureTests, BaseFigureGetPropertryByEmptyObj) {
+  BaseFigure bf;
 
-    BaseFigure bf;
-
-    bf.addProperty("", "");
-    bf.addProperty("", "");
-
-    EXPECT_EQ(bf.getProperty(""), "");
-    EXPECT_NE(bf.getProperty(""), "somenote2");
+  EXPECT_EQ(bf.getProperty("prop"), "");
 }
 
-TEST(BaseFigureTests, BaseFigureDelPropertries)
-{
+TEST(BaseFigureTests, BaseFigureDefaultConstructor) {
+  BaseFigure bf;
 
-    BaseFigure bf;
-
-    bf.addProperty("note1", "somenote1");
-    bf.addProperty("note2", "somenote2");
-    bf.addProperty("note3", "somenote3");
-    bf.addProperty("note4", "somenote4");
-    bf.addProperty("note5", "somenote5");
-
-    bf.delProperty("note2");
-    bf.delProperty("note5");
-    bf.delProperty("note3");
-
-    EXPECT_EQ(bf.getProperty("note1"), "somenote1");
-    EXPECT_EQ(bf.getProperty("note4"), "somenote4");
-    EXPECT_EQ(bf.getProperty("note2"), "");
+  EXPECT_EQ(bf.getName(), "");
+  EXPECT_EQ(bf.getType(), UNKNOWN);
 }
 
-TEST(BaseFigureTests, BaseFigureGetPropertryByEmptyObj)
-{
+TEST(BaseFigureTests, BaseFigureInitWithType) {
+  FigureType ft = LINE_STR;
+  BaseFigure bf(ft);
+  ft = POINT;
 
-    BaseFigure bf;
-
-    EXPECT_EQ(bf.getProperty("prop"), "");
+  EXPECT_EQ(bf.getType(), LINE_STR);
 }
 
+TEST(BaseFigureTests, BaseFigureInitWithStr) {
+  string name = "new name";
 
-TEST(BaseFigureTests, BaseFigureDefaultConstructor)
-{
+  BaseFigure bf(name);
 
-    BaseFigure bf;
-
-    EXPECT_EQ(bf.getName(), "");
-    EXPECT_EQ(bf.getType(), UNKNOWN);
+  EXPECT_EQ(bf.getName(), "new name");
+  EXPECT_EQ(bf.getType(), UNKNOWN);
 }
 
-TEST(BaseFigureTests, BaseFigureInitWithStr)
-{
+TEST(BaseFigureTests, BaseFigureInitWhitChars) {
+  char *name = new char[10];
+  strcpy(name, "new name");
 
-    string name = "new name";
+  BaseFigure bf(name);
+  delete[] name;
 
-    BaseFigure bf(name);
-
-    EXPECT_EQ(bf.getName(), "new name");
-    EXPECT_EQ(bf.getType(), UNKNOWN);
+  EXPECT_EQ(bf.getName(), "new name");
+  EXPECT_EQ(bf.getType(), UNKNOWN);
 }
 
-TEST(BaseFigureTests, BaseFigureInitWhitChars)
-{
+TEST(BaseFigureTests, BaseFigureInitWithStrAndFigureType) {
+  string name = "new name";
 
-    char *name = new char[10];
-    strcpy(name, "new name");
+  BaseFigure bf(name, LINE_STR);
 
-    BaseFigure bf(name);
-    delete[] name;
-
-    EXPECT_EQ(bf.getName(), "new name");
-    EXPECT_EQ(bf.getType(), UNKNOWN);
+  EXPECT_EQ(bf.getName(), name);
+  EXPECT_EQ(bf.getType(), LINE_STR);
 }
 
-TEST(BaseFigureTests, BaseFigureInitWithStrAndFigureType)
-{
+TEST(BaseFigureTests, BaseFigureInitWhitCharsAndFigureType) {
+  char *name = new char[10];
+  strcpy(name, "new name");
 
-    string name = "new name";
+  BaseFigure bf(name, POINT);
+  delete[] name;
 
-    BaseFigure bf(name, LINE_STR);
-
-    EXPECT_EQ(bf.getName(), name);
-    EXPECT_EQ(bf.getType(), LINE_STR);
+  EXPECT_EQ(bf.getName(), "new name");
+  EXPECT_NE(bf.getName(), " ");
+  EXPECT_EQ(bf.getType(), POINT);
 }
 
-TEST(BaseFigureTests, BaseFigureInitWhitCharsAndFigureType)
-{
-
-    char *name = new char[10];
-    strcpy(name, "new name");
-
-    BaseFigure bf(name, POINT);
-    delete[] name;
-
-    EXPECT_EQ(bf.getName(), "new name");
-    EXPECT_NE(bf.getName(), " ");
-    EXPECT_EQ(bf.getType(), POINT);
-}
-
-
-#endif // TST_BASEFIGURE_H
+#endif  // TST_BASEFIGURE_H

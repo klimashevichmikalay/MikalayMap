@@ -5,15 +5,27 @@ CONFIG -= qt
 
 HEADERS += \
     entities/BaseFigure.h \
+    entities/Coordinates.h \
+    entities/FilledPolygon.h \
+    entities/MultiPoint.h \
+    entities/Scale.h \
     entities/EntitiesConstants.h \
-    entities/FiguresTypes.h
+    entities/FiguresTypes.h \
+    entities/LineString.h \
+    entities/Point.h
+
 
 
 SOURCES += \
-    entities/BaseFigure.cpp \    
-    main.cpp \
+    entities/BaseFigure.cpp \
+    entities/Coordinates.cpp \
+    entities/FilledPolygon.cpp \
+    entities/MultiPoint.cpp \
+    entities/Scale.cpp \
+    entities/LineString.cpp \
+    entities/Point.cpp \
+    main.cpp
 
-DISTFILES +=
 
 
 
