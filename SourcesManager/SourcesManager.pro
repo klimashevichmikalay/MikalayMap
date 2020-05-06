@@ -4,6 +4,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 HEADERS += \
+    entities/Algorithms.h \
     entities/BaseFigure.h \
     entities/Coordinates.h \
     entities/FilledPolygon.h \
@@ -15,7 +16,8 @@ HEADERS += \
     entities/FiguresTypes.h \
     entities/LineString.h \
     entities/Point.h \
-    entities/Triangle.h
+    entities/Triangle.h \
+    parsers/ICommand.h
 
 
 
@@ -29,7 +31,8 @@ SOURCES += \
     entities/Scale.cpp \
     entities/LineString.cpp \
     entities/Point.cpp \
-    main.cpp
+    main.cpp \
+    parsers/ferrefre.cpp
 
 
 
