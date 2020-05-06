@@ -7,6 +7,7 @@
 #include "tst_multilinestring.h"
 #include "tst_multipoint.h"
 #include "tst_point.h"
+#include "tst_triangle.h"
 
 int main(int argc, char *argv[]) {
   ::testing::InitGoogleTest(&argc, argv);

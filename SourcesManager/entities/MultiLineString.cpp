@@ -21,22 +21,32 @@ void MultiLineString::scalingByArea(float _area, bool _isShift) {
 }
 
 void MultiLineString::multCoordinates(float _factor) {
+  Coordinates point;
   for (size_t i = 0; i < lines.size(); i++) {
+    vector<Coordinates> newPoints;
     for (size_t j = 0; j < lines.at(i).getPoints().size(); j++) {
-      lines.at(i).getPoints()[j].setX(lines.at(i).getPoints()[j].getX() *
-                                      _factor);
+      {
+        point = lines.at(i).getPoints()[j];
+        point *= _factor;
+        newPoints.push_back(point);
+      }
     }
+    lines.at(i).setPoints(newPoints);
   }
 }
 
 void MultiLineString::minusCoordinates(Coordinates _delta) {
+  Coordinates point;
   for (size_t i = 0; i < lines.size(); i++) {
+    vector<Coordinates> newPoints;
     for (size_t j = 0; j < lines.at(i).getPoints().size(); j++) {
-      lines.at(i).getPoints()[j].setX(lines.at(i).getPoints()[j].getX() -
-                                      _delta.getX());
-      lines.at(i).getPoints()[j].setY(lines.at(i).getPoints()[j].getY() -
-                                      _delta.getY());
+      {
+        point = lines.at(i).getPoints()[j];
+        point -= _delta;
+        newPoints.push_back(point);
+      }
     }
+    lines.at(i).setPoints(newPoints);
   }
 }
 
@@ -44,10 +54,8 @@ void MultiLineString::scalingByFactor(float _scale, bool _isShift) {
   Coordinates avrOld = getAvrXY();
   multCoordinates(_scale);
   Coordinates avrCur = getAvrXY();
-  Coordinates delta;
   avrCur -= avrOld;
-
-  if (_isShift) minusCoordinates(delta);
+  if (_isShift) minusCoordinates(avrCur);
   this->scale *= _scale;
 }
 

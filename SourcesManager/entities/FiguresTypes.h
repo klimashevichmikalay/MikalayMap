@@ -12,6 +12,7 @@ enum FigureType {
   MULTI_POINT,
   MULTI_LINE_STR,
   MULTI_FILLED_POLYGON,
+  TRIANGLE,
   TYPES_SZ
 };
 

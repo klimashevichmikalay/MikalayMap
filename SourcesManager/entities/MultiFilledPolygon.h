@@ -1,7 +1,9 @@
 #ifndef MULTIFILLEDPOLYGON_H
 #define MULTIFILLEDPOLYGON_H
 
+#include "BaseFigure.h"
 #include "FilledPolygon.h"
+#include "Scale.h"
 
 class MultiFilledPolygon : public BaseFigure, public Scale {
  public:
@@ -15,11 +17,13 @@ class MultiFilledPolygon : public BaseFigure, public Scale {
   MultiFilledPolygon(const std::string &_name);
   bool operator==(MultiFilledPolygon obj);
 
-  Coordinates getAvrXY() { return Coordinates(0, 0); };
+  Coordinates getAvrXY();
+  void multCoordinates(float _factor);
+  void minusCoordinates(Coordinates _delta);
   void scalingByArea(float _area, bool _isShift);
   void scalingByFactor(float _scale, bool _isShift);
 
- private:
+ protected:
   std::vector<FilledPolygon> polygons;
 };
 

@@ -1,20 +1,20 @@
 #include "MultiFilledPolygon.h"
 
+#include <algorithm>
+#include <vector>
+
 using namespace figureTypes;
+using namespace std;
 
 std::vector<FilledPolygon> MultiFilledPolygon::getPolygons() {
   return polygons;
 }
 
-bool MultiFilledPolygon::isContains(FilledPolygon _point) {
+bool MultiFilledPolygon::isContains(FilledPolygon _line) {
   for (size_t i = 0; i < polygons.size(); i++)
-    if (polygons.at(i) == _point) return true;
+    if (polygons.at(i) == _line) return true;
 
   return false;
-}
-
-void MultiFilledPolygon::addPolygon(FilledPolygon _polygon) {
-  polygons.push_back(_polygon);
 }
 
 void MultiFilledPolygon::scalingByArea(float _area, bool _isShift) {
@@ -22,10 +22,65 @@ void MultiFilledPolygon::scalingByArea(float _area, bool _isShift) {
   scalingByFactor(factor, _isShift);
 }
 
+void MultiFilledPolygon::multCoordinates(float _factor) {
+  Coordinates point;
+  for (size_t i = 0; i < polygons.size(); i++) {
+    vector<Coordinates> newPoints;
+    for (size_t j = 0; j < polygons.at(i).getPoints().size(); j++) {
+      {
+        point = polygons.at(i).getPoints()[j];
+        point *= _factor;
+        newPoints.push_back(point);
+      }
+    }
+    polygons.at(i).setPoints(newPoints);
+  }
+}
+
+void MultiFilledPolygon::minusCoordinates(Coordinates _delta) {
+  Coordinates point;
+  for (size_t i = 0; i < polygons.size(); i++) {
+    vector<Coordinates> newPoints;
+    for (size_t j = 0; j < polygons.at(i).getPoints().size(); j++) {
+      {
+        point = polygons.at(i).getPoints()[j];
+        point -= _delta;
+        newPoints.push_back(point);
+      }
+    }
+    polygons.at(i).setPoints(newPoints);
+  }
+}
+
 void MultiFilledPolygon::scalingByFactor(float _scale, bool _isShift) {
-  for (size_t i = 0; i < polygons.size(); i++)
-    polygons.at(i).scalingByFactor(_scale, _isShift);
-  setScale(scale * _scale);
+  Coordinates avrOld = getAvrXY();
+  multCoordinates(_scale);
+  Coordinates avrCur = getAvrXY();
+  avrCur -= avrOld;
+  if (_isShift) minusCoordinates(avrCur);
+  this->scale *= _scale;
+}
+
+Coordinates MultiFilledPolygon::getAvrXY() {
+  Coordinates avr;
+  int counter = 0;
+  vector<Coordinates> coordinates;
+
+  for (size_t i = 0; i < polygons.size(); i++) {
+    counter += polygons.at(i).size();
+    coordinates = polygons.at(i).getPoints();
+    for (size_t j = 0; j < coordinates.size(); j++) {
+      avr += coordinates.at(j);
+    }
+  }
+
+  avr /= counter;
+
+  return avr;
+}
+
+void MultiFilledPolygon::addPolygon(FilledPolygon _polygon) {
+  polygons.push_back(_polygon);
 }
 
 void MultiFilledPolygon::clear() { polygons.clear(); }

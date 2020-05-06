@@ -17,6 +17,7 @@ HEADERS += \
         tst_coordinates.h \
         tst_filledpolygon.h \
         tst_linestring.h \
+        tst_multifilledpolygon.h \
         tst_multilinestring.h \
         tst_multipoint.h \
         tst_point.h \
@@ -27,7 +28,10 @@ HEADERS += \
         $$ENTITIES/MultiPoint.h \
         $$ENTITIES/Scale.h \
         $$ENTITIES/MultiLineString.h \
-        $$ENTITIES/FilledPolygon.h
+        $$ENTITIES/MultiFilledPolygon.h \
+        $$ENTITIES/Triangle.h \
+        $$ENTITIES/FilledPolygon.h \
+        tst_triangle.h
 
 SOURCES += \
         main.cpp \
@@ -38,6 +42,7 @@ SOURCES += \
         $$ENTITIES/Scale.cpp \
         $$ENTITIES/MultiPoint.cpp \
         $$ENTITIES/MultiLineString.cpp \
+        $$ENTITIES/MultiFilledPolygon.cpp \
         $$ENTITIES/FilledPolygon.cpp
 
 

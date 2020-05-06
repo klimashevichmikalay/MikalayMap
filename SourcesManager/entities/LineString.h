@@ -18,18 +18,20 @@ class LineString : public BaseFigure, public Scale {
   virtual ~LineString();
 
   void clear();
-  void addCoordinate(Coordinates _crd);
+  virtual void addCoordinate(Coordinates _crd);
   void scalingByArea(float _areaX, bool _isShift);
   void scalingByFactor(float _scale, bool _isShift);
   void move(Coordinates _delta);
   size_t size() { return points.size(); }
   bool operator==(LineString obj);
   std::vector<Coordinates> getPoints() { return points; }
+  void setPoints(std::vector<Coordinates> _points) {
+    std::swap(points, _points);
+    ;
+  }
 
  protected:
   std::vector<Coordinates> points;
-
- private:
   Coordinates getAvrXY();
 };
 
