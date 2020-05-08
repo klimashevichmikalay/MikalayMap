@@ -1,7 +1,11 @@
 TEMPLATE = app
-CONFIG += console c++11
+#CONFIG += console c++11
+CONFIG += c++11
 CONFIG -= app_bundle
 CONFIG -= qt
+#CONFIG += c++11
+
+RAPID_JSON =  ../RapidJson/
 
 HEADERS += \
     entities/Algorithms.h \
@@ -17,9 +21,18 @@ HEADERS += \
     entities/LineString.h \
     entities/Point.h \
     entities/Triangle.h \
-    parsers/ICommand.h
-
-
+    parsers/BaseFigureParser.h \
+    parsers/Converters.h \
+    parsers/CoordinatesParser.h \
+    parsers/FilledPolygonParser.h \
+    parsers/ICommand.h \
+    parsers/LineStringParser.h \
+    parsers/MultiFilledPolygonParser.h \
+    parsers/MultiLineParser.h \
+    parsers/MultiPointParser.h \
+    parsers/ParsersConstants.h \
+    parsers/PointsParser.h \
+    $$RAPID_JSON/rapidjson.h
 
 SOURCES += \
     entities/BaseFigure.cpp \
@@ -31,9 +44,6 @@ SOURCES += \
     entities/Scale.cpp \
     entities/LineString.cpp \
     entities/Point.cpp \
-    main.cpp \
-    parsers/ferrefre.cpp
-
-
+    main.cpp
 
 

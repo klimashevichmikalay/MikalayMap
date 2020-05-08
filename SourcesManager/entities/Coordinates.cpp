@@ -21,5 +21,5 @@ bool Coordinates::operator==(const Coordinates &obj) {
   float diffX = fabs(X - obj.X);
   float diffY = fabs(Y - obj.Y);
 
-  return (diffX <= 0.01f && diffY <= 0.01f);
+  return (diffX <= 0.0001f && diffY <= 0.0001f);
 }

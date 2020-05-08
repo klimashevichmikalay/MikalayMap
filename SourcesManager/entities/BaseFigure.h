@@ -26,6 +26,8 @@ class BaseFigure {
   BaseFigure(const char *_name, const figureTypes::FigureType &_type);
   BaseFigure(const std::string &_name, const figureTypes::FigureType &_type);
 
+  std::map<std::string, std::string> getProperties() { return properties; }
+
  protected:
   figureTypes::FigureType type;
   std::map<std::string, std::string> properties;

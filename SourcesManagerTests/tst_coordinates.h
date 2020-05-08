@@ -9,8 +9,8 @@
 using namespace testing;
 
 TEST(CoordinatesTests, TestCompare) {
-  Coordinates c(31.4999, -0.12955);
-  Coordinates c1(31.49977, -0.12);
+  Coordinates c(31.49999, -0.129559);
+  Coordinates c1(31.4999, -0.12955);
 
   EXPECT_EQ(c == c1, true);
 }

@@ -23,13 +23,13 @@ struct MultiPointFixture : public testing::Test {
     mpBefore.addPoint(Coordinates(4, 3));
     mpBefore.addPoint(Coordinates(3, 2));
 
-    mpAfter.addPoint(Coordinates(2.59, 0.53));
-    mpAfter.addPoint(Coordinates(1.18, 3.35));
-    mpAfter.addPoint(Coordinates(4, 4.76));
-    mpAfter.addPoint(Coordinates(6.82, 1.94));
-    mpAfter.addPoint(Coordinates(6.82, -0.88));
-    mpAfter.addPoint(Coordinates(4, 3.35));
-    mpAfter.addPoint(Coordinates(2.59, 1.94));
+    mpAfter.addPoint(Coordinates(2.58579, 0.526613));
+    mpAfter.addPoint(Coordinates(1.17157, 3.35504));
+    mpAfter.addPoint(Coordinates(4, 4.76925));
+    mpAfter.addPoint(Coordinates(6.82843, 1.94083));
+    mpAfter.addPoint(Coordinates(6.82843, -0.887601));
+    mpAfter.addPoint(Coordinates(4, 3.355039));
+    mpAfter.addPoint(Coordinates(2.58579, 1.94083));
   }
 
   void TearDown() override {
@@ -46,10 +46,10 @@ TEST_F(MultiPointFixture, TestScalingWhenAreaWill2x) {
 }
 
 TEST_F(MultiPointFixture, TestScalingWhithFactor) {
-  mpAfter.scalingByFactor(0.707, true);
+  mpAfter.scalingByFactor(0.707106, true);
 
   EXPECT_EQ(mpBefore == mpAfter, true);
-  EXPECT_EQ((mpAfter.getScale() - 0.707) <= 0.01, true);
+  EXPECT_EQ((mpAfter.getScale() - 0.707106) <= 0.01, true);
 }
 
 TEST(MultiPointTests, TestConstructors) {

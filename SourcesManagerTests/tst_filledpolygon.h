@@ -24,13 +24,13 @@ struct PolygonFixture : public testing::Test {
     pBefore.addCoordinate(Coordinates(4, 3));
     pBefore.addCoordinate(Coordinates(3, 2));
 
-    pAfter.addCoordinate(Coordinates(2.59, 0.53));
-    pAfter.addCoordinate(Coordinates(1.18, 3.35));
-    pAfter.addCoordinate(Coordinates(4, 4.76));
-    pAfter.addCoordinate(Coordinates(6.82, 1.94));
-    pAfter.addCoordinate(Coordinates(6.82, -0.88));
-    pAfter.addCoordinate(Coordinates(4, 3.35));
-    pAfter.addCoordinate(Coordinates(2.59, 1.94));
+    pAfter.addCoordinate(Coordinates(2.58579, 0.526613));
+    pAfter.addCoordinate(Coordinates(1.17157, 3.35504));
+    pAfter.addCoordinate(Coordinates(4, 4.76925));
+    pAfter.addCoordinate(Coordinates(6.82843, 1.94083));
+    pAfter.addCoordinate(Coordinates(6.82843, -0.887601));
+    pAfter.addCoordinate(Coordinates(4, 3.355039));
+    pAfter.addCoordinate(Coordinates(2.58579, 1.94083));
 
     pDouble.addCoordinate(Coordinates(6, 2));
     pDouble.addCoordinate(Coordinates(4, 6));
@@ -55,15 +55,15 @@ TEST_F(PolygonFixture, TestScalingWhenAreaWill2x) {
 }
 
 TEST_F(PolygonFixture, TestScalingWhithFactor) {
-  pAfter.scalingByFactor(0.707, true);
+  pAfter.scalingByFactor(0.707106, true);
   EXPECT_EQ(pBefore == pAfter, true);
-  EXPECT_EQ(fabs(pAfter.getScale() - 0.707) <= 0.01, true);
+  EXPECT_EQ(fabs(pAfter.getScale() - 0.707106) <= 0.01, true);
 }
 
 TEST_F(PolygonFixture, TestScalingWhenAreaWillMinus2x) {
   pAfter.scalingByArea(0.5, true);
   EXPECT_EQ(pBefore == pAfter, true);
-  EXPECT_EQ(fabs(pAfter.getScale() - 0.707) <= 0.01, true);
+  EXPECT_EQ(fabs(pAfter.getScale() - 0.707106) <= 0.01, true);
 }
 
 TEST_F(PolygonFixture, TestDoubleScalingWithoutShift) {
@@ -129,5 +129,17 @@ TEST(FilledPolygonTests, TestEquals) {
   EXPECT_EQ(fp1 == fp3, false);
   EXPECT_EQ(fp1 == fp4, false);
 }
+
+/*
+  LineString ls("new name");
+  ls.addProperty("prop1", "val1");
+  ls.addProperty("prop2", "val2");
+  ls.addProperty("prop3", "val3");
+
+BaseFigure bs("new name1");
+bs.addProperty("prop4", "val4");
+
+
+*/
 
 #endif  // TST_FILLEDPOLYGON_H

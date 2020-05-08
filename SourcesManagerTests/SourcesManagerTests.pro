@@ -1,7 +1,8 @@
 include(gtest_dependency.pri)
 
 TEMPLATE = app
-CONFIG += console c++11
+#CONFIG += console c++11
+CONFIG += c++11
 CONFIG -= app_bundle
 CONFIG += thread
 CONFIG -= qt
@@ -15,6 +16,7 @@ HEADERS += \
         tst_basefigure.h \
         $$ENTITIES/BaseFigure.h \
         tst_coordinates.h \
+        tst_entitiesalgorithms.h \
         tst_filledpolygon.h \
         tst_linestring.h \
         tst_multifilledpolygon.h \
@@ -31,6 +33,7 @@ HEADERS += \
         $$ENTITIES/MultiFilledPolygon.h \
         $$ENTITIES/Triangle.h \
         $$ENTITIES/FilledPolygon.h \
+        $$ENTITIES/Algorithms.h \
         tst_triangle.h
 
 SOURCES += \

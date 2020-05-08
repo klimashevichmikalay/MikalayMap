@@ -23,6 +23,13 @@ class Point : public BaseFigure, public Scale {
   Point(const std::string &_name, Coordinates _location);
   Point(const char *_name, Coordinates _location);
 
+  void operator=(BaseFigure obj) { BaseFigure(*this) = obj; }
+  void operator=(Point obj) {
+    BaseFigure(*this) = obj;
+    location = obj.location;
+    scale = obj.scale;
+  }
+
   Coordinates getAvrXY() { return location; };
   void scalingByArea(float _area, bool _isShift) {
     float factor = sqrt(_area);

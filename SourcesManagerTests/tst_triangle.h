@@ -39,4 +39,24 @@ TEST(TriagnleTests, TestIsInsidePointExeption) {
   EXPECT_THROW(t.isInside(Coordinates(5, 8));, std::logic_error);
 }
 
+TEST(TriagnleTests, TestConstructorSettersGetters) {
+  Triangle t;
+  Triangle t1("NAME1");
+
+  char *name = new char[20];
+  strcpy(name, "name1");
+  Triangle t2(name);
+  delete[] name;
+
+  t.addProperty("prop1", "val1");
+
+  EXPECT_EQ(t2.getName(), "name1");
+  EXPECT_EQ(t1.getProperty("name"), "name1");
+  EXPECT_EQ(t.getProperty("name"), "");
+  EXPECT_EQ(t.getProperty("prop1"), "val1");
+  EXPECT_EQ(t.getType(), TRIANGLE);
+  EXPECT_EQ(t1.getType(), TRIANGLE);
+  EXPECT_EQ(t2.getType(), TRIANGLE);
+}
+
 #endif  // TST_TRIANGLE_

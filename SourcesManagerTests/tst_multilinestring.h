@@ -29,13 +29,13 @@ struct MultiLineFixture : public testing::Test {
     line2.addCoordinate(Coordinates(4, 3));
     line3.addCoordinate(Coordinates(3, 2));
 
-    line4.addCoordinate(Coordinates(2.59, 0.53));
-    line4.addCoordinate(Coordinates(1.18, 3.35));
-    line4.addCoordinate(Coordinates(4, 4.76));
-    line5.addCoordinate(Coordinates(6.82, 1.94));
-    line5.addCoordinate(Coordinates(6.82, -0.88));
-    line5.addCoordinate(Coordinates(4, 3.35));
-    line6.addCoordinate(Coordinates(2.59, 1.94));
+    line4.addCoordinate(Coordinates(2.58579, 0.526613));
+    line4.addCoordinate(Coordinates(1.17157, 3.35504));
+    line4.addCoordinate(Coordinates(4, 4.76925));
+    line5.addCoordinate(Coordinates(6.82843, 1.94083));
+    line5.addCoordinate(Coordinates(6.82843, -0.887601));
+    line5.addCoordinate(Coordinates(4, 3.355039));
+    line6.addCoordinate(Coordinates(2.58579, 1.94083));
 
     mlBefore.addLine(line1);
     mlBefore.addLine(line2);
@@ -64,7 +64,7 @@ TEST_F(MultiLineFixture, TestScalingWhenAreaWill2x) {
 }
 
 TEST_F(MultiLineFixture, TestScalingWhithFactor) {
-  mlAfter.scalingByFactor(0.707, true);
+  mlAfter.scalingByFactor(0.707106, true);
   EXPECT_EQ(mlBefore == mlAfter, true);
 }
 

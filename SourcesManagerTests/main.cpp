@@ -2,6 +2,7 @@
 
 #include "tst_basefigure.h"
 #include "tst_coordinates.h"
+#include "tst_entitiesalgorithms.h"
 #include "tst_filledpolygon.h"
 #include "tst_linestring.h"
 #include "tst_multilinestring.h"

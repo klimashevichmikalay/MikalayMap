@@ -24,13 +24,13 @@ struct LineFixture : public testing::Test {
     lsBefore.addCoordinate(Coordinates(4, 3));
     lsBefore.addCoordinate(Coordinates(3, 2));
 
-    lsAfter.addCoordinate(Coordinates(2.59, 0.53));
-    lsAfter.addCoordinate(Coordinates(1.18, 3.35));
-    lsAfter.addCoordinate(Coordinates(4, 4.76));
-    lsAfter.addCoordinate(Coordinates(6.82, 1.94));
-    lsAfter.addCoordinate(Coordinates(6.82, -0.88));
-    lsAfter.addCoordinate(Coordinates(4, 3.35));
-    lsAfter.addCoordinate(Coordinates(2.59, 1.94));
+    lsAfter.addCoordinate(Coordinates(2.58579, 0.526613));
+    lsAfter.addCoordinate(Coordinates(1.17157, 3.35504));
+    lsAfter.addCoordinate(Coordinates(4, 4.76925));
+    lsAfter.addCoordinate(Coordinates(6.82843, 1.94083));
+    lsAfter.addCoordinate(Coordinates(6.82843, -0.887601));
+    lsAfter.addCoordinate(Coordinates(4, 3.355039));
+    lsAfter.addCoordinate(Coordinates(2.58579, 1.94083));
   }
 
   void TearDown() override {
@@ -46,7 +46,7 @@ TEST_F(LineFixture, TestScalingWhenAreaWill2x) {
 }
 
 TEST_F(LineFixture, TestScalingWhithFactor) {
-  lsAfter.scalingByFactor(0.707, true);
+  lsAfter.scalingByFactor(0.707106, true);
   EXPECT_EQ(lsBefore == lsAfter, true);
 }
 
