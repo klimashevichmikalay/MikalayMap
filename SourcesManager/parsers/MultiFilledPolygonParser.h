@@ -32,4 +32,32 @@ void mfpToJSON(MultiFilledPolygon _mfp, PrettyWriter<StringBuffer> &writer) {
   writer.EndObject();
 }
 
+MultiFilledPolygon jsonToMFP(string _json) {
+  BaseFigure temp = jsonToBF(_json);
+  MultiFilledPolygon result;
+  result.setProperties(temp.getProperties());
+
+  Document document;
+  document.Parse(_json.c_str());
+
+  float scale = document["scale"].GetFloat();
+  result.setScale(scale);
+
+  const Value &attributes = document["polygons"];
+  assert(attributes.IsArray());
+  for (rapidjson::Value::ConstValueIterator itr = attributes.Begin();
+       itr != attributes.End(); ++itr) {
+    const rapidjson::Value &attribute = *itr;
+
+    StringBuffer sb;
+    Writer<StringBuffer> writer(sb);
+    attribute.Accept(writer);
+    std::string s = sb.GetString();
+
+    FilledPolygon fp = jsonToFP(s);
+    result.addPolygon(fp);
+  }
+  return result;
+}
+
 #endif  // MULTIFILLEDPOLYGON_H

@@ -30,9 +30,10 @@ HEADERS += \
     parsers/MultiFilledPolygonParser.h \
     parsers/MultiLineParser.h \
     parsers/MultiPointParser.h \
+    parsers/ParsersAll.h \
     parsers/ParsersConstants.h \
-    parsers/PointsParser.h \
-    $$RAPID_JSON/rapidjson.h
+    $$RAPID_JSON/rapidjson.h \
+    parsers/PointParser.h
 
 SOURCES += \
     entities/BaseFigure.cpp \

@@ -27,11 +27,14 @@ class BaseFigure {
   BaseFigure(const std::string &_name, const figureTypes::FigureType &_type);
 
   std::map<std::string, std::string> getProperties() { return properties; }
+  void setType(const figureTypes::FigureType &_type);
+  void setProperties(std::map<std::string, std::string> _props) {
+    properties = _props;
+  }
 
  protected:
   figureTypes::FigureType type;
   std::map<std::string, std::string> properties;
-  void setType(const figureTypes::FigureType &_type);
 
  private:
   std::map<std::string, std::string>::iterator propIterator;

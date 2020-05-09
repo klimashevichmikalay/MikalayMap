@@ -8,9 +8,13 @@ CONFIG += thread
 CONFIG -= qt
 
 ENTITIES =  ../SourcesManager/entities/
+#PARSERS =  ../SourcesManager/parsers/
+#RAPIDJSON =  ../RapidJson/
 
 INCLUDEPATH += \
-        $$ENTITIES
+        $$ENTITIES \
+       # $$PARSERS \
+       #  $$RAPIDJSON
 
 HEADERS += \
         tst_basefigure.h \
@@ -34,7 +38,11 @@ HEADERS += \
         $$ENTITIES/Triangle.h \
         $$ENTITIES/FilledPolygon.h \
         $$ENTITIES/Algorithms.h \
-        tst_triangle.h
+     #   $$PARSERS/ParsersAll.h \
+        tst_triangle.h \
+      #  $$RAPIDJSON/rapidjson/document.h" \
+       # $$RAPIDJSON/rapidjson/prettywriter.h" \
+       # $$RAPIDJSON/rapidjson/reader.h"
 
 SOURCES += \
         main.cpp \

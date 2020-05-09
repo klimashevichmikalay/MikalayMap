@@ -7,13 +7,7 @@
 #include "entities/MultiFilledPolygon.h"
 #include "entities/MultiLineString.h"
 #include "entities/MultiPoint.h"
-#include "parsers/BaseFigureParser.h"
-#include "parsers/CoordinatesParser.h"
-#include "parsers/FilledPolygonParser.h"
-#include "parsers/LineStringParser.h"
-#include "parsers/MultiFilledPolygonParser.h"
-#include "parsers/MultiLineParser.h"
-#include "parsers/ParsersConstants.h"
+#include "parsers/ParsersAll.h"
 
 using namespace std;
 using namespace figureTypes;
@@ -29,9 +23,9 @@ string readFile(string _path) {
 }
 
 int main() {
-  MultiFilledPolygon mlBefore("name");
-
-  FilledPolygon line1("linename");
+  MultiFilledPolygon mlBefore("ergtrgh");
+  MultiFilledPolygon mlAfter;
+  FilledPolygon line1;
   FilledPolygon line2;
   FilledPolygon line3;
 
@@ -50,8 +44,14 @@ int main() {
   StringBuffer sb;
   PrettyWriter<StringBuffer> writer(sb);
   mfpToJSON(mlBefore, writer);
-
   puts(sb.GetString());
+
+  mlAfter = jsonToMFP(sb.GetString());
+
+  if (mlBefore == mlAfter) {
+    cout << "SUCCES";
+  } else
+    cout << "ERROR";
 
   return 0;
 }

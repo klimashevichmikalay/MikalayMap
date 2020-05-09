@@ -4,6 +4,9 @@
 #include <gmock/gmock-matchers.h>
 #include <gtest/gtest.h>
 
+#include <string>
+
+//#include "ParsersAll.h"
 #include "Point.h"
 
 using namespace testing;
@@ -131,6 +134,20 @@ TEST(PointTests, TestCompare) {
   EXPECT_EQ(p == p2, true);
   EXPECT_EQ(p == p3, false);
   EXPECT_EQ(p == p4, false);
+}
+
+TEST(PointTests, TestSerializeAndDesirealize) {
+  Point p("point", Coordinates(1, 2));
+  p.addProperty("prop0", "val0");
+  p.addProperty("prop1", "val");
+  p.addProperty("prop2", "val2");
+  p.setScale(0.88);
+
+  /* std::string strP = pointToJson();
+
+     EXPECT_EQ(p == p2, true);
+ EXPECT_EQ(p == p3, false);
+ EXPECT_EQ(p == p4, false);*/
 }
 
 #endif  // TST_POINT_H
