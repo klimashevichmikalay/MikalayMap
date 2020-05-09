@@ -3,9 +3,9 @@
 
 #include "../entities/Point.h"
 #include "BaseFigureParser.h"
-#include "CoordinatesParser.h"
 
-void pointToJSON(Point _p, PrettyWriter<StringBuffer> &writer) {
+void pointToJSON(Point _p,
+                 rapidjson::PrettyWriter<rapidjson::StringBuffer> &writer) {
   writer.StartObject();
   bfToJSON(_p, writer);
 
@@ -27,13 +27,13 @@ Point jsonToPoint(string _json) {
   Point result;
   result.setProperties(temp.getProperties());
 
-  Document document;
+  rapidjson::Document document;
   document.Parse(_json.c_str());
 
   float scale = document["scale"].GetFloat();
   result.setScale(scale);
 
-  const Value &attributes = document["location"];
+  const rapidjson::Value &attributes = document["location"];
   assert(attributes.IsArray());
   for (rapidjson::Value::ConstValueIterator itr = attributes.Begin();
        itr != attributes.End(); ++itr) {

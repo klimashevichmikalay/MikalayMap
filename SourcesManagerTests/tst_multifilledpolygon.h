@@ -5,6 +5,7 @@
 #include <gtest/gtest.h>
 
 #include "MultiFilledPolygon.h"
+#include "ParsersAll.h"
 
 using namespace testing;
 using namespace figureTypes;
@@ -113,6 +114,26 @@ TEST(MultiLineStringTest, TestEquals) {
   ml2.addPolygon(line4);
 
   EXPECT_EQ(ml1 == ml2, true);
+}
+
+//#include "ParsersAll.h"
+TEST_F(MultiFilledPolygonFixture, TestSerializeAndDesirealize) {
+  rapidjson::StringBuffer sb;
+  rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
+  mfpToJSON(mlBefore, writer);
+  MultiFilledPolygon multLine = jsonToMFP(sb.GetString());
+
+  EXPECT_EQ(mlBefore == multLine, true);
+}
+
+TEST_F(MultiFilledPolygonFixture, TestSerializeAndDesirealize2) {
+  mlBefore.scalingByArea(2, true);
+  rapidjson::StringBuffer sb;
+  rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
+  mfpToJSON(mlBefore, writer);
+  MultiFilledPolygon multLine = jsonToMFP(sb.GetString());
+
+  EXPECT_EQ(mlBefore == mlAfter, true);
 }
 
 #endif  // TST_MULTIFILLEDPOLYGON_H

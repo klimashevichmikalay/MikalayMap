@@ -5,6 +5,7 @@
 #include <gtest/gtest.h>
 
 #include "MultiLineString.h"
+#include "ParsersAll.h"
 
 using namespace testing;
 using namespace figureTypes;
@@ -113,6 +114,31 @@ TEST(MultiLineStringTest, TestEquals) {
   ml2.addLine(line4);
 
   EXPECT_EQ(ml1 == ml2, true);
+}
+
+//#include "ParsersAll.h"
+TEST_F(MultiLineFixture, TestSerializeAndDesirealize) {
+  // mlBefore.scalingByArea(2, true);
+
+  // EXPECT_EQ(mpBefore == mpAfter, true);*/
+
+  rapidjson::StringBuffer sb;
+  rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
+  mlToJSON(mlBefore, writer);
+  MultiLineString multLine = jsonToML(sb.GetString());
+
+  EXPECT_EQ(mlBefore == multLine, true);
+}
+
+TEST_F(MultiLineFixture, TestSerializeAndDesirealize2) {
+  mlBefore.scalingByArea(2, true);
+
+  rapidjson::StringBuffer sb;
+  rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
+  mlToJSON(mlBefore, writer);
+  MultiLineString multLine = jsonToML(sb.GetString());
+
+  EXPECT_EQ(mlBefore == mlAfter, true);
 }
 
 #endif  // TST_MULTILINESTRING_H

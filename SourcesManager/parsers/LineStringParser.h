@@ -3,16 +3,14 @@
 
 #include <string>
 
-#include "../RapidJson/rapidjson/prettywriter.h"
-#include "../entities/FiguresTypes.h"
 #include "../entities/LineString.h"
 #include "BaseFigureParser.h"
 #include "CoordinatesParser.h"
 
-using namespace rapidjson;
 using namespace std;
 
-void lineToJSON(LineString _ls, PrettyWriter<StringBuffer> &writer) {
+void lineToJSON(LineString _ls,
+                rapidjson::PrettyWriter<rapidjson::StringBuffer> &writer) {
   writer.StartObject();
 
   bfToJSON(_ls, writer);
@@ -41,13 +39,13 @@ LineString jsonToLine(string _json) {
   LineString result;
   result.setProperties(temp.getProperties());
 
-  Document document;
+  rapidjson::Document document;
   document.Parse(_json.c_str());
 
   float scale = document["scale"].GetFloat();
   result.setScale(scale);
 
-  const Value &attributes = document["points"];
+  const rapidjson::Value &attributes = document["points"];
   assert(attributes.IsArray());
   for (rapidjson::Value::ConstValueIterator itr = attributes.Begin();
        itr != attributes.End(); ++itr) {

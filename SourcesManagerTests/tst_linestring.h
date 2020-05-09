@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "LineString.h"
+#include "ParsersAll.h"
 
 using namespace testing;
 using namespace figureTypes;
@@ -62,6 +63,26 @@ TEST(LineTests, TestLineSetGet) {
   EXPECT_EQ(ls.getProperty("prop"), "val");
   EXPECT_EQ(ls.getProperty("name"), "hello");
   EXPECT_EQ(ls.getType(), LINE_STR);
+}
+
+//#include "ParsersAll.h"
+TEST_F(LineFixture, TestSerializeAndDesirealize) {
+  rapidjson::StringBuffer sb;
+  rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
+  lineToJSON(lsBefore, writer);
+  LineString line = jsonToLine(sb.GetString());
+
+  EXPECT_EQ(lsBefore == line, true);
+}
+
+TEST_F(LineFixture, TestSerializeAndDesirealize2) {
+  lsBefore.scalingByArea(2, true);
+  rapidjson::StringBuffer sb;
+  rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
+  lineToJSON(lsBefore, writer);
+  LineString line = jsonToLine(sb.GetString());
+
+  EXPECT_EQ(line == lsAfter, true);
 }
 
 #endif  // TST_LINESTRING_H

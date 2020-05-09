@@ -3,16 +3,14 @@
 
 #include <string>
 
-#include "../RapidJson/rapidjson/prettywriter.h"
-#include "../entities/FiguresTypes.h"
 #include "../entities/MultiPoint.h"
 #include "BaseFigureParser.h"
 #include "PointParser.h"
 
-using namespace rapidjson;
 using namespace std;
 
-void mpToJSON(MultiPoint _mp, PrettyWriter<StringBuffer> &writer) {
+void mpToJSON(MultiPoint _mp,
+              rapidjson::PrettyWriter<rapidjson::StringBuffer> &writer) {
   writer.StartObject();
 
   bfToJSON(_mp, writer);
@@ -37,20 +35,20 @@ MultiPoint jsonToMP(string _json) {
   MultiPoint result;
   result.setProperties(temp.getProperties());
 
-  Document document;
+  rapidjson::Document document;
   document.Parse(_json.c_str());
 
   float scale = document["scale"].GetFloat();
   result.setScale(scale);
 
-  const Value &attributes = document["points"];
+  const rapidjson::Value &attributes = document["points"];
   assert(attributes.IsArray());
   for (rapidjson::Value::ConstValueIterator itr = attributes.Begin();
        itr != attributes.End(); ++itr) {
     const rapidjson::Value &attribute = *itr;
 
-    StringBuffer sb;
-    Writer<StringBuffer> writer(sb);
+    rapidjson::StringBuffer sb;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(sb);
     attribute.Accept(writer);
     std::string s = sb.GetString();
 

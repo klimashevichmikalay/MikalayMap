@@ -6,7 +6,7 @@
 
 #include <string>
 
-//#include "ParsersAll.h"
+#include "ParsersAll.h"
 #include "Point.h"
 
 using namespace testing;
@@ -136,6 +136,7 @@ TEST(PointTests, TestCompare) {
   EXPECT_EQ(p == p4, false);
 }
 
+//#include "ParsersAll.h"
 TEST(PointTests, TestSerializeAndDesirealize) {
   Point p("point", Coordinates(1, 2));
   p.addProperty("prop0", "val0");
@@ -143,11 +144,12 @@ TEST(PointTests, TestSerializeAndDesirealize) {
   p.addProperty("prop2", "val2");
   p.setScale(0.88);
 
-  /* std::string strP = pointToJson();
+  rapidjson::StringBuffer sb;
+  rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
+  pointToJSON(p, writer);
+  Point pAfter = jsonToPoint(sb.GetString());
 
-     EXPECT_EQ(p == p2, true);
- EXPECT_EQ(p == p3, false);
- EXPECT_EQ(p == p4, false);*/
+  EXPECT_EQ(p == pAfter, true);
 }
 
 #endif  // TST_POINT_H

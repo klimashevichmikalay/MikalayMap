@@ -5,6 +5,7 @@
 #include <gtest/gtest.h>
 
 #include "FilledPolygon.h"
+#include "ParsersAll.h"
 
 using namespace testing;
 using namespace figureTypes;
@@ -130,16 +131,23 @@ TEST(FilledPolygonTests, TestEquals) {
   EXPECT_EQ(fp1 == fp4, false);
 }
 
-/*
-  LineString ls("new name");
-  ls.addProperty("prop1", "val1");
-  ls.addProperty("prop2", "val2");
-  ls.addProperty("prop3", "val3");
+TEST_F(PolygonFixture, TestSerializeAndDesirealize) {
+  rapidjson::StringBuffer sb;
+  rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
+  fpToJSON(pBefore, writer);
+  FilledPolygon polig = jsonToFP(sb.GetString());
 
-BaseFigure bs("new name1");
-bs.addProperty("prop4", "val4");
+  EXPECT_EQ(pBefore == polig, true);
+}
 
+TEST_F(PolygonFixture, TestSerializeAndDesirealize2) {
+  pBefore.scalingByArea(2, true);
+  rapidjson::StringBuffer sb;
+  rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
+  fpToJSON(pBefore, writer);
+  FilledPolygon fpolig = jsonToFP(sb.GetString());
 
-*/
+  EXPECT_EQ(fpolig == pAfter, true);
+}
 
 #endif  // TST_FILLEDPOLYGON_H

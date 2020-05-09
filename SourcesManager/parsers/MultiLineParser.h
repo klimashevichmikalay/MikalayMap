@@ -3,15 +3,13 @@
 
 #include <string>
 
-#include "../RapidJson/rapidjson/prettywriter.h"
-#include "../entities/FiguresTypes.h"
 #include "../entities/MultiLineString.h"
 #include "LineStringParser.h"
 
-using namespace rapidjson;
 using namespace std;
 
-void mlToJSON(MultiLineString _ls, PrettyWriter<StringBuffer> &writer) {
+void mlToJSON(MultiLineString _ls,
+              rapidjson::PrettyWriter<rapidjson::StringBuffer> &writer) {
   writer.StartObject();
 
   bfToJSON(_ls, writer);
@@ -36,20 +34,20 @@ MultiLineString jsonToML(string _json) {
   MultiLineString result;
   result.setProperties(temp.getProperties());
 
-  Document document;
+  rapidjson::Document document;
   document.Parse(_json.c_str());
 
   float scale = document["scale"].GetFloat();
   result.setScale(scale);
 
-  const Value &attributes = document["lines"];
+  const rapidjson::Value &attributes = document["lines"];
   assert(attributes.IsArray());
   for (rapidjson::Value::ConstValueIterator itr = attributes.Begin();
        itr != attributes.End(); ++itr) {
     const rapidjson::Value &attribute = *itr;
 
-    StringBuffer sb;
-    Writer<StringBuffer> writer(sb);
+    rapidjson::StringBuffer sb;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(sb);
     attribute.Accept(writer);
     std::string s = sb.GetString();
 

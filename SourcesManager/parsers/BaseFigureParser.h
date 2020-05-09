@@ -5,16 +5,14 @@
 #include <vector>
 
 #include "../RapidJson/rapidjson/document.h"
-#include "../RapidJson/rapidjson/prettywriter.h"
-#include "../RapidJson/rapidjson/reader.h"
 #include "../entities/BaseFigure.h"
-#include "../entities/FiguresTypes.h"
 #include "Converters.h"
 #include "CoordinatesParser.h"
-using namespace rapidjson;
+
 using namespace std;
 
-void bfToJSON(BaseFigure _bf, PrettyWriter<StringBuffer> &writer) {
+void bfToJSON(BaseFigure _bf,
+              rapidjson::PrettyWriter<rapidjson::StringBuffer> &writer) {
   // writer.StartObject();
   writer.Key("type");
   writer.String(enumToString(_bf.getType()).c_str());
@@ -35,13 +33,13 @@ void bfToJSON(BaseFigure _bf, PrettyWriter<StringBuffer> &writer) {
 
 BaseFigure jsonToBF(string _json) {
   BaseFigure result;
-  Document document;
+  rapidjson::Document document;
   document.Parse(_json.c_str());
 
   string type = document["type"].GetString();
   result.setType(strToEnum(type));
 
-  const Value &attributes = document["properties"];
+  const rapidjson::Value &attributes = document["properties"];
   assert(attributes.IsArray());
   for (rapidjson::Value::ConstValueIterator itr = attributes.Begin();
        itr != attributes.End(); ++itr) {

@@ -41,8 +41,8 @@ int main() {
   mlBefore.addPolygon(line2);
   mlBefore.addPolygon(line3);
 
-  StringBuffer sb;
-  PrettyWriter<StringBuffer> writer(sb);
+  rapidjson::StringBuffer sb;
+  rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
   mfpToJSON(mlBefore, writer);
   puts(sb.GetString());
 

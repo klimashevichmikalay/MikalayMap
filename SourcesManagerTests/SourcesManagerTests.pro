@@ -1,20 +1,19 @@
 include(gtest_dependency.pri)
 
 TEMPLATE = app
-#CONFIG += console c++11
 CONFIG += c++11
 CONFIG -= app_bundle
 CONFIG += thread
 CONFIG -= qt
 
 ENTITIES =  ../SourcesManager/entities/
-#PARSERS =  ../SourcesManager/parsers/
+PARSERS =  ../SourcesManager/parsers/
 #RAPIDJSON =  ../RapidJson/
 
 INCLUDEPATH += \
         $$ENTITIES \
-       # $$PARSERS \
-       #  $$RAPIDJSON
+        $$PARSERS
+       # $$RAPIDJSON
 
 HEADERS += \
         tst_basefigure.h \
@@ -38,11 +37,9 @@ HEADERS += \
         $$ENTITIES/Triangle.h \
         $$ENTITIES/FilledPolygon.h \
         $$ENTITIES/Algorithms.h \
-     #   $$PARSERS/ParsersAll.h \
-        tst_triangle.h \
-      #  $$RAPIDJSON/rapidjson/document.h" \
-       # $$RAPIDJSON/rapidjson/prettywriter.h" \
-       # $$RAPIDJSON/rapidjson/reader.h"
+        $$PARSERS/ParsersAll.h \
+        tst_triangle.h
+
 
 SOURCES += \
         main.cpp \

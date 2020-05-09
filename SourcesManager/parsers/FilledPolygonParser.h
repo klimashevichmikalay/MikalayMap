@@ -3,16 +3,15 @@
 
 #include <string>
 
-#include "../RapidJson/rapidjson/prettywriter.h"
 #include "../entities/FiguresTypes.h"
 #include "../entities/FilledPolygon.h"
 #include "CoordinatesParser.h"
 #include "LineStringParser.h"
 
-using namespace rapidjson;
 using namespace std;
 
-void fpToJSON(FilledPolygon _ls, PrettyWriter<StringBuffer> &writer) {
+void fpToJSON(FilledPolygon _ls,
+              rapidjson::PrettyWriter<rapidjson::StringBuffer> &writer) {
   lineToJSON(_ls, writer);
 }
 
@@ -21,13 +20,13 @@ FilledPolygon jsonToFP(string _json) {
   FilledPolygon result;
   result.setProperties(temp.getProperties());
 
-  Document document;
+  rapidjson::Document document;
   document.Parse(_json.c_str());
 
   float scale = document["scale"].GetFloat();
   result.setScale(scale);
 
-  const Value &attributes = document["points"];
+  const rapidjson::Value &attributes = document["points"];
   assert(attributes.IsArray());
   for (rapidjson::Value::ConstValueIterator itr = attributes.Begin();
        itr != attributes.End(); ++itr) {

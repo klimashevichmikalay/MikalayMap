@@ -6,10 +6,10 @@
 #include "../RapidJson/rapidjson/prettywriter.h"
 #include "../entities/Coordinates.h"
 #include "../entities/FiguresTypes.h"
-using namespace rapidjson;
 using namespace std;
 
-void crdToJSON(Coordinates _c, PrettyWriter<StringBuffer> &writer) {
+void crdToJSON(Coordinates _c,
+               rapidjson::PrettyWriter<rapidjson::StringBuffer> &writer) {
   // writer.StartArray();
   writer.StartObject();
   writer.Key("X");

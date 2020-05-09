@@ -5,6 +5,7 @@
 #include <gtest/gtest.h>
 
 #include "MultiPoint.h"
+#include "ParsersAll.h"
 
 using namespace testing;
 using namespace figureTypes;
@@ -109,6 +110,30 @@ TEST(MultiPointTests, TestEquals) {
 
   mp4.clear();
   EXPECT_EQ(mp4.getPoints().size(), 0);
+}
+
+//#include "ParsersAll.h"
+TEST_F(MultiPointFixture, TestSerializeAndDesirealize) {
+  /*mpBefore.scalingByArea(2, true);
+
+    EXPECT_EQ(mpBefore == mpAfter, true);*/
+
+  rapidjson::StringBuffer sb;
+  rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
+  mpToJSON(mpBefore, writer);
+  MultiPoint mPointAfter = jsonToMP(sb.GetString());
+
+  EXPECT_EQ(mpBefore == mPointAfter, true);
+}
+
+TEST_F(MultiPointFixture, TestSerializeAndDesirealize2) {
+  mpBefore.scalingByArea(2, true);
+
+  rapidjson::StringBuffer sb;
+  rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
+  mpToJSON(mpBefore, writer);
+  MultiPoint mp2 = jsonToMP(sb.GetString());
+  EXPECT_EQ(mp2 == mpAfter, true);
 }
 
 #endif  // TST_MULTIPOINT_H
