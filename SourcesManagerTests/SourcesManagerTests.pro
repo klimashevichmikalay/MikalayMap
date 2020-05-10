@@ -25,6 +25,7 @@ HEADERS += \
         tst_multifilledpolygon.h \
         tst_multilinestring.h \
         tst_multipoint.h \
+        tst_parsers.h \
         tst_point.h \
         $$ENTITIES/Point.h \
         tst_linestring.h \
@@ -38,6 +39,7 @@ HEADERS += \
         $$ENTITIES/FilledPolygon.h \
         $$ENTITIES/Algorithms.h \
         $$PARSERS/ParsersAll.h \
+        $$PARSERS/ParsersCommand.h \
         tst_triangle.h
 
 

@@ -1,0 +1,130 @@
+{
+    "MultiFilledPolygons": [
+        {
+            "type": "MULTI_FILLED_POLYGON",
+            "properties": [],
+            "scale": 1.0,
+            "polygons": [
+                {
+                    "type": "FILLED_POLYGON",
+                    "properties": [],
+                    "scale": 1.0,
+                    "points": [
+                        {
+                            "X": 3.0,
+                            "Y": 1.0
+                        },
+                        {
+                            "X": 2.0,
+                            "Y": 3.0
+                        },
+                        {
+                            "X": 4.0,
+                            "Y": 4.0
+                        }
+                    ]
+                },
+                {
+                    "type": "FILLED_POLYGON",
+                    "properties": [],
+                    "scale": 1.0,
+                    "points": [
+                        {
+                            "X": 6.0,
+                            "Y": 2.0
+                        },
+                        {
+                            "X": 6.0,
+                            "Y": 0.0
+                        }
+                    ]
+                },
+                {
+                    "type": "FILLED_POLYGON",
+                    "properties": [],
+                    "scale": 1.0,
+                    "points": [
+                        {
+                            "X": 4.0,
+                            "Y": 3.0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "MULTI_FILLED_POLYGON",
+            "properties": [],
+            "scale": 1.0,
+            "polygons": [
+                {
+                    "type": "FILLED_POLYGON",
+                    "properties": [],
+                    "scale": 1.0,
+                    "points": [
+                        {
+                            "X": 3.0,
+                            "Y": 2.0
+                        }
+                    ]
+                },
+                {
+                    "type": "FILLED_POLYGON",
+                    "properties": [],
+                    "scale": 1.0,
+                    "points": [
+                        {
+                            "X": 2.585789918899536,
+                            "Y": 0.5266129970550537
+                        },
+                        {
+                            "X": 1.1715699434280396,
+                            "Y": 3.3550400733947756
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "MULTI_FILLED_POLYGON",
+            "properties": [],
+            "scale": 1.0,
+            "polygons": [
+                {
+                    "type": "FILLED_POLYGON",
+                    "properties": [],
+                    "scale": 1.0,
+                    "points": [
+                        {
+                            "X": 4.0,
+                            "Y": 4.76924991607666
+                        },
+                        {
+                            "X": 6.82843017578125,
+                            "Y": 1.9408299922943116
+                        }
+                    ]
+                },
+                {
+                    "type": "FILLED_POLYGON",
+                    "properties": [],
+                    "scale": 1.0,
+                    "points": [
+                        {
+                            "X": 6.82843017578125,
+                            "Y": -0.8876010179519653
+                        },
+                        {
+                            "X": 4.0,
+                            "Y": 3.35503888130188
+                        },
+                        {
+                            "X": 2.585789918899536,
+                            "Y": 1.9408299922943116
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

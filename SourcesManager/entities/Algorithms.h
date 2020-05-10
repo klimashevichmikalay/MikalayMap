@@ -1,7 +1,7 @@
 #ifndef ALGORITHMS_H
 #define ALGORITHMS_H
-
 #include "Coordinates.h"
+#include "vector"
 
 Coordinates intersPointLineByOX(Coordinates point, Coordinates lineStart,
                                 Coordinates lineEnd) {
@@ -20,6 +20,12 @@ Coordinates intersPointLineByOX(Coordinates point, Coordinates lineStart,
   point.setX(point.getX() - _deltaX);
 
   return point;
+}
+
+template <typename T>
+bool isEqual(std::vector<T> &v1, std::vector<T> &v2) {
+  return (v1.size() == v2.size() &&
+          std::equal(v1.begin(), v1.end(), v2.begin()));
 }
 
 #endif  // ALGORITHMS_H

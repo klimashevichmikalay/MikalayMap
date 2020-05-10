@@ -74,7 +74,7 @@ TEST_F(MultiFilledPolygonFixture, TestScalingWhenAreaWillMinus2x) {
   EXPECT_EQ(mlBefore == mlAfter, true);
 }
 
-TEST(MultiLineStringTest, TestConstructorsAndTypes) {
+TEST(MultiFilledPolygonStringTest, TestConstructorsAndTypes) {
   MultiFilledPolygon ml1;
   MultiFilledPolygon ml2("name");
   char *name = new char[10];
@@ -90,7 +90,7 @@ TEST(MultiLineStringTest, TestConstructorsAndTypes) {
   EXPECT_EQ(ml3.getType(), MULTI_FILLED_POLYGON);
 }
 
-TEST(MultiLineStringTest, TestEquals) {
+TEST(MultiFilledPolygonTest, TestEquals) {
   MultiFilledPolygon ml1;
   MultiFilledPolygon ml2;
   FilledPolygon line1;

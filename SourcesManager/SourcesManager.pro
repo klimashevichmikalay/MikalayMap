@@ -11,6 +11,7 @@ HEADERS += \
     entities/Algorithms.h \
     entities/BaseFigure.h \
     entities/Coordinates.h \
+    entities/EntitiesAll.h \
     entities/FilledPolygon.h \
     entities/MultiFilledPolygon.h \
     entities/MultiLineString.h \
@@ -26,11 +27,13 @@ HEADERS += \
     parsers/CoordinatesParser.h \
     parsers/FilledPolygonParser.h \
     parsers/ICommand.h \
+    parsers/JsonCommand.h \
     parsers/LineStringParser.h \
     parsers/MultiFilledPolygonParser.h \
     parsers/MultiLineParser.h \
     parsers/MultiPointParser.h \
     parsers/ParsersAll.h \
+    parsers/ParsersCommand.h \
     parsers/ParsersConstants.h \
     $$RAPID_JSON/rapidjson.h \
     parsers/PointParser.h

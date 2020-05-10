@@ -4,6 +4,8 @@
 #include "BaseFigureParser.h"
 #include "CoordinatesParser.h"
 #include "FilledPolygonParser.h"
+#include "ICommand.h"
+#include "JsonCommand.h"
 #include "LineStringParser.h"
 #include "MultiFilledPolygonParser.h"
 #include "MultiLineParser.h"

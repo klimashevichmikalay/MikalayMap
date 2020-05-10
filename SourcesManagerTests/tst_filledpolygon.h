@@ -119,7 +119,8 @@ TEST(FilledPolygonTests, TestEquals) {
   FilledPolygon fp3("fp4");
   FilledPolygon fp4("fp4");
   FilledPolygon fp5("fp4");
-
+  FilledPolygon fp6("fp6");
+  FilledPolygon fp7("fp7");
   fp4.addCoordinate(Coordinates(1, 4));
   fp4.addCoordinate(Coordinates(2, 8));
   fp5.addCoordinate(Coordinates(1, 4));
@@ -129,6 +130,7 @@ TEST(FilledPolygonTests, TestEquals) {
   EXPECT_EQ(fp4 == fp5, true);
   EXPECT_EQ(fp1 == fp3, false);
   EXPECT_EQ(fp1 == fp4, false);
+  EXPECT_EQ(fp7 == fp6, false);
 }
 
 TEST_F(PolygonFixture, TestSerializeAndDesirealize) {
