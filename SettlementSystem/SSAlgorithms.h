@@ -51,12 +51,8 @@ void setVisibilityPoints(float distance2Points, size_t startX, size_t startY,
                         Coordinates(distance, flightAltitude + pointHeight),
                         Coordinates(0, -10000.0));
 
-    Point curP = DEM[startY][startX];
-    if (curAngle >= minAngle && curAngle <= maxAngle) {
-      curP.addProperty("visible", "true");
-    }
-
-    DEM[startY][startX] = curP;
+    if (curAngle >= minAngle && curAngle <= maxAngle)
+      DEM[startY][startX].addProperty("visible", "true");
 
     float newMinAngl =
         findAgle(Coordinates(0, antennaZ), Coordinates(distance, pointHeight),
