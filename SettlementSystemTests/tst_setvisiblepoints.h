@@ -184,12 +184,20 @@ TEST_F(DEMFixture, TestFindVisiblePoint) {
   EXPECT_EQ(DEM[6][2].getProperty("visible").compare("true") == 0, true);  //+
 }
 
+TEST_F(DEMFixture, TestAllCoverage) {
+  Point radarPos;
+  radarPos.addProperty("height", "80");
+  findCoveragePoints(radarPos, 20, 120, 80, 10, DEM, Coordinates(3, 7), 20,
+                     10000, 100);
+}
+
 /*
-void setVisibilityPoints(float distance2Points, size_t startX, size_t startY,
-                         const float radarHeight, const float antennaHeight,
-                         const float maxAngle, float minAngle, const int shiftX,
-                         const int shiftY, vector<vector<Point>> &DEM,
-                         const float flightAltitude,
-                         const float potentialRange)
-*/
+void findCoveragePoints(Point radarPos, float antennaHeight, float maxAngle,
+                        float minAngle, float shifAngle,
+                        vector<vector<Point>> &DEM, Coordinates startInMatrix,
+                        const float flightAltitude, const float potentialRange,
+                        float distance2Points)
+
+    */
+
 #endif  // TST_SETVISIBLEPOINTS_H

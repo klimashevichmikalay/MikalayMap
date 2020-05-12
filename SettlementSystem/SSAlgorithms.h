@@ -10,6 +10,8 @@
 
 using namespace std;
 
+float getFloat(string str) { return ::atof(str.c_str()); }
+
 float findDistance(Coordinates p1, Coordinates p2) {
   return sqrt(pow((p1.getX() - p2.getX()), 2.0) +
               pow((p1.getY() - p2.getY()), 2.0));
@@ -23,6 +25,55 @@ float findAgle(Coordinates p1, Coordinates p2, Coordinates p3) {
   return acos((P12 * P12 + P13 * P13 - P23 * P23) / (2 * P12 * P13)) *
          HALF_CIRCLE_DEGREE / PI;
 };
+
+bool isVectorHasProportion(vector<Coordinates> v, float proportion) {
+  for (size_t i = 0; i < v.size(); i++) {
+    if (v[i].getProportionXY() == proportion) return true;
+  }
+  return false;
+}
+
+vector<Coordinates> genShifts(size_t num) {
+  num /= 4;
+  vector<Coordinates> fourPath;
+  fourPath.push_back(Coordinates(1, 1));
+
+  Coordinates temp;
+  size_t sz = 0;
+
+  while (fourPath.size() <= num) {
+    sz = fourPath.size();
+    for (size_t i = 0; i < sz && fourPath.size() <= num; i++) {
+      temp = fourPath[i];
+      temp.setX(temp.getX() + 1);
+      if (!isVectorHasProportion(fourPath, temp.getProportionXY()))
+        fourPath.push_back(temp);
+    }
+
+    sz = fourPath.size();
+    for (size_t i = 0; i < sz && fourPath.size() <= num; i++) {
+      temp = fourPath[i];
+      temp.setY(temp.getY() + 1);
+      if (!isVectorHasProportion(fourPath, temp.getProportionXY()))
+        fourPath.push_back(temp);
+    }
+  }
+
+  vector<Coordinates> result;
+  for (size_t i = 0; i < fourPath.size(); i++) {
+    result.push_back(fourPath[i]);
+    result.push_back(Coordinates(fourPath[i].getX(), -fourPath[i].getY()));
+    result.push_back(Coordinates(-fourPath[i].getX(), fourPath[i].getY()));
+    result.push_back(Coordinates(-fourPath[i].getX(), -fourPath[i].getY()));
+  }
+
+  result.push_back(Coordinates(0, -1));
+  result.push_back(Coordinates(0, 1));
+  result.push_back(Coordinates(1, 0));
+  result.push_back(Coordinates(-1, 0));
+
+  return result;
+}
 
 void setVisibilityPoints(float distance2Points, size_t startX, size_t startY,
                          const float radarHeight, const float antennaHeight,
@@ -63,6 +114,23 @@ void setVisibilityPoints(float distance2Points, size_t startX, size_t startY,
     startX += shiftX;
     startY += shiftY;
     distance += xDistance;
+  }
+}
+
+void findCoveragePoints(Point radarPos, float antennaHeight, float maxAngle,
+                        float minAngle, float shifAngle,
+                        vector<vector<Point>> &DEM, Coordinates startInMatrix,
+                        const float flightAltitude, const float potentialRange,
+                        float distance2Points) {
+  size_t rayNum = CIRCLE_DEGREE / shifAngle;
+  vector<Coordinates> shifts = genShifts(rayNum);
+
+  for (size_t i = 0; i < shifts.size(); i++) {
+    setVisibilityPoints(distance2Points, startInMatrix.getX(),
+                        startInMatrix.getY(),
+                        getFloat(radarPos.getProperty("height")), antennaHeight,
+                        maxAngle, minAngle, shifts[i].getX(), shifts[i].getY(),
+                        DEM, flightAltitude, potentialRange);
   }
 }
 
