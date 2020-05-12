@@ -5,5 +5,7 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
     RapidJson \
+    SettlementSystem \
+    SettlementSystemTests \
     SourcesManager \
     SourcesManagerTests

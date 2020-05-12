@@ -1,34 +1,24 @@
 include(gtest_dependency.pri)
 
 TEMPLATE = app
-CONFIG += c++11
+CONFIG += console c++11
 CONFIG -= app_bundle
 CONFIG += thread
 CONFIG -= qt
 
+SSYSTEM =  ../SettlementSystem/
 ENTITIES =  ../SourcesManager/entities/
 PARSERS =  ../SourcesManager/parsers/
 
-
 INCLUDEPATH += \
+        $$SSYSTEM \
         $$ENTITIES \
         $$PARSERS
 
 
 HEADERS += \
-        tst_basefigure.h \
         $$ENTITIES/BaseFigure.h \
-        tst_coordinates.h \
-        tst_entitiesalgorithms.h \
-        tst_filledpolygon.h \
-        tst_linestring.h \
-        tst_multifilledpolygon.h \
-        tst_multilinestring.h \
-        tst_multipoint.h \
-        tst_parsers.h \
-        tst_point.h \
         $$ENTITIES/Point.h \
-        tst_linestring.h \
         $$ENTITIES/LineString.h \
         $$ENTITIES/Coordinates.h \
         $$ENTITIES/MultiPoint.h \
@@ -40,7 +30,8 @@ HEADERS += \
         $$ENTITIES/Algorithms.h \
         $$PARSERS/ParsersAll.h \
         $$PARSERS/ParsersCommand.h \
-        tst_triangle.h
+        tst_algorithms.h \
+        tst_setvisiblepoints.h
 
 
 SOURCES += \
