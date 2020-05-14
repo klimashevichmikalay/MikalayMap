@@ -29,10 +29,10 @@ class LineString : public BaseFigure, public Scale {
     std::swap(points, _points);
     ;
   }
+  Coordinates getAvrXY();
 
  protected:
   std::vector<Coordinates> points;
-  Coordinates getAvrXY();
 };
 
 #endif  // LINESTRING_H

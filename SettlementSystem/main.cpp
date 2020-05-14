@@ -16,18 +16,13 @@ int main() {
   pBefore.addCoordinate(Coordinates(4, 4));
   pBefore.addCoordinate(Coordinates(6, 2));
   pBefore.addCoordinate(Coordinates(6, 0));
-  pBefore.addCoordinate(Coordinates(4, 3));
-  pBefore.addCoordinate(Coordinates(3, 2));
+  //  pBefore.addCoordinate(Coordinates(4, 3));
+  //  pBefore.addCoordinate(Coordinates(3, 2));
 
-  Coordinates c5(4, 1.5);
+  FilledPolygon fp = pBefore.getAviationWeapons(2);
 
-  if (!pBefore.isInPolygon(c5)) {
-    cout << "\nSUCCES";
-  } else {
-    cout << "\nERROR";
-  }
+  cout << endl;
 }
-
 /*
 
 Point getP(int _heigh) {

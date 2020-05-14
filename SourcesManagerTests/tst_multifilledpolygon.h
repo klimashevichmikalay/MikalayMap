@@ -136,4 +136,58 @@ TEST_F(MultiFilledPolygonFixture, TestSerializeAndDesirealize2) {
   EXPECT_EQ(mlBefore == mlAfter, true);
 }
 
+TEST_F(MultiFilledPolygonFixture, TestGetFirstByProp) {
+  line1.addProperty("prop1", "val1");
+  line1.addProperty("prop2", "val2");
+  line1.addProperty("prop3", "val3");
+
+  line2.addProperty("prop4", "val4");
+  line2.addProperty("prop5", "val5");
+  line2.addProperty("prop6", "val6");
+
+  line3.addProperty("prop2", "val2");  // line1
+
+  line4.addProperty("prop7", "val7");
+  line4.addProperty("prop6", "val6");  // line2
+  line4.addProperty("prop8", "val8");
+
+  line5.addProperty("prop1", "val1");  // line1
+  line5.addProperty("prop8", "val8");  // line1
+  line5.addProperty("prop9", "val9");
+
+  line6.addProperty("prop10", "val10");
+
+  mlBefore.clear();
+
+  mlBefore.addPolygon(line1);
+  mlBefore.addPolygon(line2);
+  mlBefore.addPolygon(line3);
+  mlBefore.addPolygon(line4);
+  mlBefore.addPolygon(line5);
+  mlBefore.addPolygon(line6);
+
+  EXPECT_EQ(*mlBefore.getFirstByPropetry("prop1", "val1") == line1, true);
+  EXPECT_EQ(*mlBefore.getFirstByPropetry("prop2", "val2") == line1, true);
+  EXPECT_EQ(*mlBefore.getFirstByPropetry("prop3", "val3") == line1, true);
+
+  EXPECT_EQ(*mlBefore.getFirstByPropetry("prop6", "val6") == line2, true);
+  EXPECT_EQ(*mlBefore.getFirstByPropetry("prop4", "val4") == line2, true);
+  EXPECT_EQ(*mlBefore.getFirstByPropetry("prop5", "val5") == line2, true);
+
+  EXPECT_EQ(*mlBefore.getFirstByPropetry("prop7", "val7") == line4, true);
+  EXPECT_EQ(*mlBefore.getFirstByPropetry("prop8", "val8") == line4, true);
+
+  EXPECT_EQ(*mlBefore.getFirstByPropetry("prop9", "val9") == line5, true);
+
+  EXPECT_EQ(*mlBefore.getFirstByPropetry("prop10", "val10") == line6, true);
+
+  EXPECT_EQ(
+      mlBefore.getFirstByPropetry("propergtrg10", "val1rgrtgr0") == nullptr,
+      true);
+}
+
+/*
+
+*/
+
 #endif  // TST_MULTIFILLEDPOLYGON_H

@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "Coordinates.h"
+#include "FilledPolygon.h"
 #include "Point.h"
 #include "SSConstants.h"
 

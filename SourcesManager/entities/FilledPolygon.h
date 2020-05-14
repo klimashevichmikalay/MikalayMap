@@ -69,7 +69,27 @@ class FilledPolygon : public LineString {
     return (counter % 2);
   }
 
-  FilledPolygon getAviationWeapons() {}
+  float getDistance(Coordinates a, Coordinates b) {
+    float deltaX = fabs(a.getX() - b.getX());
+    float deltaY = fabs(a.getY() - b.getY());
+
+    return sqrt(deltaX * deltaX + deltaY * deltaY);
+  }
+
+  FilledPolygon getAviationWeapons(size_t _distance) {
+    std::vector<Coordinates> oldPoints = points;
+
+    while (getDistance(oldPoints[3], points[3]) <= _distance)
+      scalingByFactor(1.05, true);
+
+    FilledPolygon result;
+    result.setPoints(points);
+    this->setPoints(oldPoints);
+
+    result.addProperty("VIEW", "AW");
+
+    return result;
+  }
 };
 
 #endif  // FILLEDPOLYGON_H
