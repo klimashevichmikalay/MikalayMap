@@ -152,4 +152,21 @@ TEST_F(PolygonFixture, TestSerializeAndDesirealize2) {
   EXPECT_EQ(fpolig == pAfter, true);
 }
 
+TEST_F(PolygonFixture, TestIsInPolygon) {
+  Coordinates c1(2.75, 2);  // t
+  Coordinates c2(4, 3.5);   // t
+  Coordinates c3(5, 2.5);   // t
+  Coordinates c4(6, 3.5);   // f
+  Coordinates c5(5, 0.5);   // f
+  Coordinates c6(1, 2);     // f
+  Coordinates c7(4, 1.5);   // f
+
+  EXPECT_EQ(pBefore.isInPolygon(c1), true);
+  EXPECT_EQ(pBefore.isInPolygon(c2), true);
+  EXPECT_EQ(pBefore.isInPolygon(c3), true);
+  EXPECT_EQ(pBefore.isInPolygon(c4), false);
+  EXPECT_EQ(pBefore.isInPolygon(c5), false);
+  EXPECT_EQ(pBefore.isInPolygon(c6), false);
+  EXPECT_EQ(pBefore.isInPolygon(c7), false);
+}
 #endif  // TST_FILLEDPOLYGON_H

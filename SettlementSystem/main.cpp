@@ -1,3 +1,4 @@
+
 #include <assert.h>
 
 #include <iostream>
@@ -6,22 +7,31 @@
 #include "SSAlgorithms.h"
 
 using namespace std;
-/*
+
 int main() {
-  vector<Coordinates> v = genShifts(36);
+  FilledPolygon pBefore;
 
-  for (size_t i = 0; i < v.size(); i++) {
-    for (size_t j = i + 1; j < v.size(); j++) {
-      assert(fabs(v[i].getProportionXY() - v[j].getProportionXY()));
-    }
+  pBefore.addCoordinate(Coordinates(3, 1));
+  pBefore.addCoordinate(Coordinates(2, 3));
+  pBefore.addCoordinate(Coordinates(4, 4));
+  pBefore.addCoordinate(Coordinates(6, 2));
+  pBefore.addCoordinate(Coordinates(6, 0));
+  pBefore.addCoordinate(Coordinates(4, 3));
+  pBefore.addCoordinate(Coordinates(3, 2));
+
+  Coordinates c5(4, 1.5);
+
+  if (!pBefore.isInPolygon(c5)) {
+    cout << "\nSUCCES";
+  } else {
+    cout << "\nERROR";
   }
-
-  cout << endl;
 }
-*/
+
+/*
 
 Point getP(int _heigh) {
-  std::string height = std::to_string(_heigh);
+  std::string height = std::to_str``ing(_heigh);
   Point p;
   p.addProperty("height", height);
   p.addProperty("visible", "false");
@@ -75,7 +85,7 @@ int main() {
     }
   }
 
-  /*for (size_t i = 0; i < DEM.size(); i++) {
+  for (size_t i = 0; i < DEM.size(); i++) {
     for (size_t j = 0; j < DEM[i].size(); j++) {
       string prop = DEM[i][j].getProperty("height");
 
@@ -89,12 +99,12 @@ int main() {
         cout << "  " << prop;
     }
     cout << endl;
-  }*/
+  }
 
   Point radarPos;
   radarPos.addProperty("height", "80");
-  findCoveragePoints(radarPos, 20, 120, 80, 2.5, DEM, Coordinates(20, 29), 50,
-                     1000, 100);
+  findCoveragePoints(radarPos, 20, 120, 80, 2.5, DEM, Coordinates(35, 1), 50,
+                     10000, 50);
 
   for (size_t i = 0; i < DEM.size(); i++) {
     for (size_t j = 0; j < DEM[i].size(); j++) {
@@ -105,11 +115,12 @@ int main() {
     cout << endl;
   }
 
-  /*void findCoveragePoints(Point radarPos, float antennaHeight, float maxAngle,
+  void findCoveragePoints(Point radarPos, float antennaHeight, float maxAngle,
                       float minAngle, float shifAngle,
                       vector<vector<Point>> &DEM, Coordinates startInMatrix,
                       const float flightAltitude, const float potentialRange,
-                      float distance2Points)*/
+                      float distance2Points)
 
   return 0;
 }
+*/
