@@ -9,20 +9,34 @@
 using namespace std;
 
 int main() {
-  FilledPolygon pBefore;
+  FilledPolygon fp;
+  fp.addCoordinate(Coordinates(8.5, 7.5));
+  fp.addCoordinate(Coordinates(7, 8.5));
+  fp.addCoordinate(Coordinates(6, 7.5));
+  fp.addCoordinate(Coordinates(7.5, 6));
 
-  pBefore.addCoordinate(Coordinates(3, 1));
-  pBefore.addCoordinate(Coordinates(2, 3));
-  pBefore.addCoordinate(Coordinates(4, 4));
-  pBefore.addCoordinate(Coordinates(6, 2));
-  pBefore.addCoordinate(Coordinates(6, 0));
-  //  pBefore.addCoordinate(Coordinates(4, 3));
-  //  pBefore.addCoordinate(Coordinates(3, 2));
+  FilledPolygon fz = getFrontZone(fp, 5, 179, 20, 12);
+  vector<Coordinates> points = fz.getPoints();
 
-  FilledPolygon fp = pBefore.getAviationWeapons(2);
-
+  float angl1 = findAgle(points[0], points[1], points[2]);
+  float angl2 = findAgle(points[1], points[0], points[3]);
   cout << endl;
 }
+
+/* FilledPolygon pBefore;
+
+ pBefore.addCoordinate(Coordinates(3, 1));
+ pBefore.addCoordinate(Coordinates(2, 3));
+ pBefore.addCoordinate(Coordinates(4, 4));
+ pBefore.addCoordinate(Coordinates(6, 2));
+ pBefore.addCoordinate(Coordinates(6, 0));
+ //  pBefore.addCoordinate(Coordinates(4, 3));
+ //  pBefore.addCoordinate(Coordinates(3, 2));
+
+ FilledPolygon fp = pBefore.getAviationWeapons(2);
+
+ cout << endl;
+}*/
 /*
 
 Point getP(int _heigh) {

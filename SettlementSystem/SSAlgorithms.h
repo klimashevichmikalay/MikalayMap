@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "Coordinates.h"
-#include "FilledPolygon.h"
+#include "MultiFilledPolygon.h"
 #include "Point.h"
 #include "SSConstants.h"
 
@@ -135,4 +135,121 @@ void findCoveragePoints(Point radarPos, float antennaHeight, float maxAngle,
   }
 }
 
+FilledPolygon getFrontZone(FilledPolygon AWZone, size_t frontWidth,
+                           float impactAngle, float lengthField,
+                           float widthField) {
+  Coordinates center = AWZone.getAvrXY();
+
+  Coordinates leftLineStart(center.getX() - frontWidth / 2, center.getY());
+  Coordinates rightLineStart(center.getX() + frontWidth / 2, center.getY());
+  Coordinates secondPoint;
+
+  FilledPolygon result;
+  result.addCoordinate(rightLineStart);
+  result.addCoordinate(leftLineStart);
+
+  if (impactAngle >= 0 && impactAngle < 90) {
+    secondPoint.setY(0);
+
+    for (float i = leftLineStart.getX(); i <= lengthField; i += 0.1) {
+      secondPoint.setX(i);
+
+      if (fabs((findAgle(leftLineStart, center, secondPoint) - impactAngle)) <
+          3) {
+        result.addCoordinate(secondPoint);
+        break;
+      }
+    }
+
+    secondPoint.setX(lengthField - 1);
+    for (float i = 0; i < widthField; i += 0.1) {
+      secondPoint.setY(i);
+
+      if (fabs(findAgle(leftLineStart, center, secondPoint) - impactAngle) <
+          3) {
+        result.addCoordinate(secondPoint);
+        break;
+      }
+    }
+
+    secondPoint.setY(0);
+    for (float i = rightLineStart.getX(); i < lengthField; i += 0.1) {
+      secondPoint.setX(i);
+
+      if (fabs((180 - findAgle(rightLineStart, center, secondPoint) -
+                impactAngle)) < 3) {
+        result.addCoordinate(secondPoint);
+        break;
+      }
+    }
+
+    secondPoint.setX(lengthField - 1);
+    for (float i = 0; i < widthField; i += 0.1) {
+      secondPoint.setY(i);
+
+      if (fabs(180 - findAgle(rightLineStart, center, secondPoint) -
+               impactAngle) < 3) {
+        result.addCoordinate(secondPoint);
+        break;
+      }
+    }
+  }
+  /////////////
+  /// ////////////
+  /// ///////////
+  /// //////////
+  /////////
+
+  if (impactAngle >= 90 && impactAngle < 180) {
+    secondPoint.setY(0);
+
+    for (float i = leftLineStart.getX(); i > 0; i -= 0.1) {
+      secondPoint.setX(i);
+
+      if (fabs(findAgle(leftLineStart, center, secondPoint) - impactAngle) <
+          2) {
+        result.addCoordinate(secondPoint);
+        break;
+      }
+    }
+
+    secondPoint.setX(0);
+    secondPoint.setY(0);
+    for (float i = 0; i < widthField; i += 0.1) {
+      secondPoint.setY(i);
+
+      if (fabs(findAgle(leftLineStart, center, secondPoint) - impactAngle) <
+          2) {
+        result.addCoordinate(secondPoint);
+        break;
+      }
+    }
+
+    secondPoint.setY(0);
+
+    for (float i = rightLineStart.getX(); i > 0; i -= 0.1) {
+      secondPoint.setX(i);
+
+      if (fabs(180 - findAgle(rightLineStart, center, secondPoint) -
+               impactAngle) < 2) {
+        result.addCoordinate(secondPoint);
+        break;
+      }
+    }
+
+    secondPoint.setX(0);
+    secondPoint.setY(0);
+    for (float i = 0; i < widthField; i += 0.1) {
+      secondPoint.setY(i);
+
+      if (fabs(180 - findAgle(rightLineStart, center, secondPoint) -
+               impactAngle) < 2) {
+        result.addCoordinate(secondPoint);
+        break;
+      }
+    }
+  }
+
+  return result;
+}
 #endif  // SSALGORITHMS_H
