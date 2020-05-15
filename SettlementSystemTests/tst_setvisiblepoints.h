@@ -11,15 +11,6 @@
 using namespace testing;
 using namespace std;
 
-Point getP(int _heigh) {
-  std::string height = std::to_string(_heigh);
-  Point p;
-  p.addProperty("height", height);
-  p.addProperty("visible", "false");
-
-  return p;
-}
-
 struct DEMFixture : public testing::Test {
   size_t maxY = 8;
   vector<vector<Point>> DEM;

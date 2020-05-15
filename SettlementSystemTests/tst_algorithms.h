@@ -161,4 +161,51 @@ TEST(SSAlgorithmsTests, TestGetFrontZone6) {
                            float impactAngle, float lengthField,
                            float widthField)*/
 
+TEST(SSAlgorithmsTests, TestGetRadarZone) {
+  FilledPolygon fp;
+  fp.addCoordinate(Coordinates(6, 3));
+  fp.addCoordinate(Coordinates(4, 1));
+  fp.addCoordinate(Coordinates(1, 4));
+  fp.addCoordinate(Coordinates(3, 6));
+
+  FilledPolygon rz = getRadarZone(fp, 1.414213);
+  vector<Coordinates> points = rz.getPoints();
+  FilledPolygon tz = getTargetZone(fp, rz);
+  vector<Coordinates> points2 = tz.getPoints();
+
+  EXPECT_EQ(points[0] == Coordinates(6, 3), true);
+  EXPECT_EQ(points[1] == Coordinates(4, 1), true);
+  EXPECT_EQ(points[2] == Coordinates(3, 2), true);
+  EXPECT_EQ(points[3] == Coordinates(5, 4), true);
+
+  EXPECT_EQ(points2[0] == Coordinates(5, 4), true);
+  EXPECT_EQ(points2[1] == Coordinates(3, 2), true);
+  EXPECT_EQ(points2[2] == Coordinates(1, 4), true);
+  EXPECT_EQ(points2[3] == Coordinates(3, 6), true);
+}
+
+TEST(SSAlgorithmsTests, TestGetRadarZone2) {
+  FilledPolygon fp;
+  fp.addCoordinate(Coordinates(10, 1));
+  fp.addCoordinate(Coordinates(8, 1));
+  fp.addCoordinate(Coordinates(12, 5));
+  fp.addCoordinate(Coordinates(14, 5));
+
+  FilledPolygon rz = getRadarZone(fp, 2.828427);
+  vector<Coordinates> points = rz.getPoints();
+
+  EXPECT_EQ(points[0] == Coordinates(10, 1), true);
+  EXPECT_EQ(points[1] == Coordinates(8, 1), true);
+  EXPECT_EQ(points[2] == Coordinates(10, 3), true);
+  EXPECT_EQ(points[3] == Coordinates(12, 3), true);
+}
+
+/* FilledPolygon fp;
+  fp.addCoordinate(Coordinates(8.5, 7.5));
+  fp.addCoordinate(Coordinates(7, 8.5));
+  fp.addCoordinate(Coordinates(6, 7.5));
+  fp.addCoordinate(Coordinates(7.5, 6));
+
+FilledPolygon fz =  getRadarZone(FilledPolygon frontZone, float length);*/
+
 #endif  // TST_TESTFINDDISTANCE_H

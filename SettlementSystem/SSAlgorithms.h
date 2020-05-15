@@ -11,6 +11,15 @@
 
 using namespace std;
 
+Point getP(int _heigh) {
+  std::string height = std::to_string(_heigh);
+  Point p;
+  p.addProperty("height", height);
+  p.addProperty("visible", "false");
+
+  return p;
+}
+
 float getFloat(string str) { return ::atof(str.c_str()); }
 
 float findDistance(Coordinates p1, Coordinates p2) {
@@ -252,4 +261,50 @@ FilledPolygon getFrontZone(FilledPolygon AWZone, size_t frontWidth,
 
   return result;
 }
+
+Coordinates getSegment(Coordinates A, Coordinates B, float proportion) {
+  Coordinates result;
+  result.setX((A.getX() + proportion * B.getX()) / (1 + proportion));
+  result.setY((A.getY() + proportion * B.getY()) / (1 + proportion));
+
+  return result;
+}
+
+FilledPolygon getRadarZone(FilledPolygon frontZone, float length) {
+  vector<Coordinates> points = frontZone.getPoints();
+  float distance1 = findDistance(points[1], points[2]);
+  float distance2 = findDistance(points[0], points[3]);
+
+  float proportion1 = length / distance1;
+  float proportion2 = length / distance2;
+
+  proportion1 = proportion1 / (1 - proportion1);
+  proportion2 = proportion2 / (1 - proportion2);
+
+  Coordinates radarBorder1 = getSegment(points[1], points[2], proportion1);
+  Coordinates radarBorder2 = getSegment(points[0], points[3], proportion2);
+
+  FilledPolygon result;
+  result.addCoordinate(points[0]);
+  result.addCoordinate(points[1]);
+  result.addCoordinate(radarBorder1);
+  result.addCoordinate(radarBorder2);
+
+  return result;
+}
+
+FilledPolygon getTargetZone(FilledPolygon frontZone, FilledPolygon radarZone) {
+  vector<Coordinates> frontPoints = frontZone.getPoints();
+  vector<Coordinates> radarPoints = radarZone.getPoints();
+
+  FilledPolygon result;
+
+  result.addCoordinate(radarPoints[3]);
+  result.addCoordinate(radarPoints[2]);
+  result.addCoordinate(frontPoints[2]);
+  result.addCoordinate(frontPoints[3]);
+
+  return result;
+}
+
 #endif  // SSALGORITHMS_H

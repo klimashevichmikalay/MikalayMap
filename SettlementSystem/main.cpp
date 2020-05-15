@@ -10,16 +10,14 @@ using namespace std;
 
 int main() {
   FilledPolygon fp;
-  fp.addCoordinate(Coordinates(8.5, 7.5));
-  fp.addCoordinate(Coordinates(7, 8.5));
-  fp.addCoordinate(Coordinates(6, 7.5));
-  fp.addCoordinate(Coordinates(7.5, 6));
+  fp.addCoordinate(Coordinates(6, 3));
+  fp.addCoordinate(Coordinates(4, 1));
+  fp.addCoordinate(Coordinates(1, 4));
+  fp.addCoordinate(Coordinates(3, 6));
 
-  FilledPolygon fz = getFrontZone(fp, 5, 179, 20, 12);
-  vector<Coordinates> points = fz.getPoints();
+  FilledPolygon rz = getRadarZone(fp, 1.414213);
+  vector<Coordinates> points = rz.getPoints();
 
-  float angl1 = findAgle(points[0], points[1], points[2]);
-  float angl2 = findAgle(points[1], points[0], points[3]);
   cout << endl;
 }
 
