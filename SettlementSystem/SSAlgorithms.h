@@ -2,14 +2,31 @@
 #define SSALGORITHMS_H
 
 #include <cmath>
+#include <sstream>
 #include <vector>
 
 #include "Coordinates.h"
 #include "MultiFilledPolygon.h"
+#include "MultiPoint.h"
 #include "Point.h"
 #include "SSConstants.h"
+#include "Triangle.h"
 
 using namespace std;
+
+string float2Str(float _f) {
+  std::ostringstream ss;
+  ss << _f;
+  std::string s(ss.str());
+  return s;
+}
+
+string size_t2Str(size_t sz) {
+  std::ostringstream ss;
+  ss << sz;
+  std::string s(ss.str());
+  return s;
+}
 
 Point getP(int _heigh) {
   std::string height = std::to_string(_heigh);
@@ -21,6 +38,8 @@ Point getP(int _heigh) {
 }
 
 float getFloat(string str) { return ::atof(str.c_str()); }
+
+size_t getSize_t(string str) { return ::atoi(str.c_str()); }
 
 float findDistance(Coordinates p1, Coordinates p2) {
   return sqrt(pow((p1.getX() - p2.getX()), 2.0) +
@@ -270,7 +289,9 @@ Coordinates getSegment(Coordinates A, Coordinates B, float proportion) {
   return result;
 }
 
-FilledPolygon getRadarZone(FilledPolygon frontZone, float length) {
+FilledPolygon getRadarZone(
+    FilledPolygon frontZone,
+    float length) {  // find zrk zone from front zone for places radars
   vector<Coordinates> points = frontZone.getPoints();
   float distance1 = findDistance(points[1], points[2]);
   float distance2 = findDistance(points[0], points[3]);
@@ -289,11 +310,14 @@ FilledPolygon getRadarZone(FilledPolygon frontZone, float length) {
   result.addCoordinate(points[1]);
   result.addCoordinate(radarBorder1);
   result.addCoordinate(radarBorder2);
+  result.addProperty("type", "radarzone");
 
   return result;
 }
 
-FilledPolygon getTargetZone(FilledPolygon frontZone, FilledPolygon radarZone) {
+FilledPolygon getTargetZone(
+    FilledPolygon frontZone,
+    FilledPolygon radarZone) {  // find target zone for coverage
   vector<Coordinates> frontPoints = frontZone.getPoints();
   vector<Coordinates> radarPoints = radarZone.getPoints();
 
@@ -303,8 +327,46 @@ FilledPolygon getTargetZone(FilledPolygon frontZone, FilledPolygon radarZone) {
   result.addCoordinate(radarPoints[2]);
   result.addCoordinate(frontPoints[2]);
   result.addCoordinate(frontPoints[3]);
+  result.addProperty("type", "targetzone");
 
   return result;
 }
+
+Coordinates getCoordinateFromStr(string crdWithSpace) {
+  Coordinates result;
+  istringstream ss(crdWithSpace);
+
+  if (ss) {
+    string word;
+    ss >> word;
+    result.setX(getSize_t(word));
+  }
+
+  if (ss) {
+    string word;
+    ss >> word;
+    result.setY(getSize_t(word));
+  }
+
+  return result;
+}
+
+MultiPoint getTZHeights(vector<vector<Point>> DEM, FilledPolygon tz) {
+  MultiPoint result;
+  Point temp;
+  for (size_t i = 0; i < DEM.size(); i++) {
+    for (size_t j = 0; j < DEM[0].size(); j++) {
+      if (tz.isInPolygon(DEM[i][j])) {
+        temp = DEM[i][j];
+        temp.addProperty("DEMXY", size_t2Str(j) + " " + size_t2Str(i));
+        result.addPoint(temp);
+      }
+    }
+  }
+
+  return result;
+}
+
+vector<Triangle> getTriangles() {}
 
 #endif  // SSALGORITHMS_H

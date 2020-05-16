@@ -23,19 +23,6 @@ class MultiFilledPolygon : public BaseFigure, public Scale {
   void scalingByArea(float _area, bool _isShift);
   void scalingByFactor(float _scale, bool _isShift);
 
-  FilledPolygon *getFirstByPropetry(std::string propName, std::string propVal) {
-    FilledPolygon *result = new FilledPolygon;
-
-    for (size_t i = 0; i < polygons.size(); i++) {
-      std::string prop = polygons[i].getProperty(propName);
-      if (prop.compare(propVal) == 0) {
-        *result = polygons[i];
-        return result;
-      }
-    }
-    return nullptr;
-  }
-
  protected:
   std::vector<FilledPolygon> polygons;
 };

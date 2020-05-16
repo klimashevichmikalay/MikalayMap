@@ -136,7 +136,7 @@ TEST_F(MultiFilledPolygonFixture, TestSerializeAndDesirealize2) {
   EXPECT_EQ(mlBefore == mlAfter, true);
 }
 
-TEST_F(MultiFilledPolygonFixture, TestGetFirstByProp) {
+/*TEST_F(MultiFilledPolygonFixture, TestGetFirstByProp) {
   line1.addProperty("prop1", "val1");
   line1.addProperty("prop2", "val2");
   line1.addProperty("prop3", "val3");
@@ -185,7 +185,7 @@ TEST_F(MultiFilledPolygonFixture, TestGetFirstByProp) {
       mlBefore.getFirstByPropetry("propergtrg10", "val1rgrtgr0") == nullptr,
       true);
 }
-
+*/
 /*
 
 */

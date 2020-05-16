@@ -8,6 +8,50 @@
 
 using namespace testing;
 
+struct DEM1Fixture : public testing::Test {
+  vector<vector<Point>> DEM;
+
+  void SetUp() override {
+    for (size_t i = 0; i <= 800; i += 100) {
+      vector<Point> vToAdd;
+      for (size_t j = 0; j <= 1200; j += 100) {
+        vToAdd.push_back(Point(Coordinates(j, i)));
+      }
+      DEM.push_back(vToAdd);
+    }
+  }
+
+  void TearDown() override {
+    for (size_t i = 0; i < DEM.size(); i++) {
+      DEM[i].clear();
+    }
+
+    DEM.clear();
+  }
+};
+
+struct DEM2Fixture : public testing::Test {
+  vector<vector<Point>> DEM;
+
+  void SetUp() override {
+    for (size_t i = 0; i <= 1200; i += 50) {
+      vector<Point> vToAdd;
+      for (size_t j = 0; j <= 1200; j += 50) {
+        vToAdd.push_back(Point(Coordinates(j, i)));
+      }
+      DEM.push_back(vToAdd);
+    }
+  }
+
+  void TearDown() override {
+    for (size_t i = 0; i < DEM.size(); i++) {
+      DEM[i].clear();
+    }
+
+    DEM.clear();
+  }
+};
+
 TEST(SSAlgorithmsTests, TestFindDistance) {
   EXPECT_EQ(fabs(findDistance(Coordinates(0, 0), Coordinates(2, 2)) -
                  sqrt(2) * 2) < 0.0001,
@@ -200,12 +244,122 @@ TEST(SSAlgorithmsTests, TestGetRadarZone2) {
   EXPECT_EQ(points[3] == Coordinates(12, 3), true);
 }
 
-/* FilledPolygon fp;
-  fp.addCoordinate(Coordinates(8.5, 7.5));
-  fp.addCoordinate(Coordinates(7, 8.5));
-  fp.addCoordinate(Coordinates(6, 7.5));
-  fp.addCoordinate(Coordinates(7.5, 6));
+TEST_F(DEM1Fixture, TestGetTZHeights) {
+  FilledPolygon tz1;
+  FilledPolygon tz2;
+  MultiPoint tzh1;
+  MultiPoint tzh2;
 
-FilledPolygon fz =  getRadarZone(FilledPolygon frontZone, float length);*/
+  tz1.addCoordinate(Coordinates(700, 150));
+  tz1.addCoordinate(Coordinates(500, 150));
+  tz1.addCoordinate(Coordinates(200, 450));
+  tz1.addCoordinate(Coordinates(400, 450));
+
+  tz2.addCoordinate(Coordinates(1050, 150));
+  tz2.addCoordinate(Coordinates(850, 150));
+  tz2.addCoordinate(Coordinates(1000, 450));
+  tz2.addCoordinate(Coordinates(1200, 450));
+
+  tzh1 = getTZHeights(DEM, tz1);
+  tzh2 = getTZHeights(DEM, tz2);
+
+  vector<Point> points1 = tzh1.getPoints();
+  vector<Point> points2 = tzh2.getPoints();
+
+  EXPECT_EQ(points1.size(), 6);
+  EXPECT_EQ(points2.size(), 6);
+
+  //  Coordinates demxy1 = tzh1.getFirstByPropetry("DEMXY", "");
+
+  EXPECT_NE(tzh1.getFirstByPropetry("DEMXY", "5 2"), nullptr);
+  EXPECT_NE(tzh1.getFirstByPropetry("DEMXY", "6 2"), nullptr);
+  EXPECT_NE(tzh1.getFirstByPropetry("DEMXY", "4 3"), nullptr);
+  EXPECT_NE(tzh1.getFirstByPropetry("DEMXY", "5 3"), nullptr);
+  EXPECT_NE(tzh1.getFirstByPropetry("DEMXY", "3 4"), nullptr);
+  EXPECT_NE(tzh1.getFirstByPropetry("DEMXY", "4 4"), nullptr);
+  EXPECT_EQ(tzh1.getFirstByPropetry("DEMXY", "3 3"), nullptr);
+  EXPECT_EQ(tzh1.getFirstByPropetry("DEMXY", "4 2"), nullptr);
+  ///
+  EXPECT_NE(tzh2.getFirstByPropetry("DEMXY", "9 2"), nullptr);
+  EXPECT_NE(tzh2.getFirstByPropetry("DEMXY", "10 2"), nullptr);
+  EXPECT_NE(tzh2.getFirstByPropetry("DEMXY", "10 3"), nullptr);
+  EXPECT_NE(tzh2.getFirstByPropetry("DEMXY", "11 3"), nullptr);
+  EXPECT_NE(tzh2.getFirstByPropetry("DEMXY", "10 4"), nullptr);
+  EXPECT_NE(tzh2.getFirstByPropetry("DEMXY", "11 4"), nullptr);
+  EXPECT_EQ(tzh2.getFirstByPropetry("DEMXY", "9 3"), nullptr);
+  EXPECT_EQ(tzh2.getFirstByPropetry("DEMXY", "10 5"), nullptr);
+
+  // check positions
+  EXPECT_EQ(tzh1.getFirstByPropetry("DEMXY", "5 2")->getCoordinates() ==
+                Coordinates(500, 200),
+            true);
+  EXPECT_EQ(tzh1.getFirstByPropetry("DEMXY", "6 2")->getCoordinates() ==
+                Coordinates(600, 200),
+            true);
+  EXPECT_EQ(tzh1.getFirstByPropetry("DEMXY", "4 3")->getCoordinates() ==
+                Coordinates(400, 300),
+            true);
+  EXPECT_EQ(tzh1.getFirstByPropetry("DEMXY", "5 3")->getCoordinates() ==
+                Coordinates(500, 300),
+            true);
+  EXPECT_EQ(tzh1.getFirstByPropetry("DEMXY", "3 4")->getCoordinates() ==
+                Coordinates(300, 400),
+            true);
+  EXPECT_EQ(tzh1.getFirstByPropetry("DEMXY", "4 4")->getCoordinates() ==
+                Coordinates(400, 400),
+            true);
+
+  ///
+  EXPECT_EQ(tzh2.getFirstByPropetry("DEMXY", "9 2")->getCoordinates() ==
+                Coordinates(900, 200),
+            true);
+  EXPECT_EQ(tzh2.getFirstByPropetry("DEMXY", "10 2")->getCoordinates() ==
+                Coordinates(1000, 200),
+            true);
+  EXPECT_EQ(tzh2.getFirstByPropetry("DEMXY", "10 3")->getCoordinates() ==
+                Coordinates(1000, 300),
+            true);
+  EXPECT_EQ(tzh2.getFirstByPropetry("DEMXY", "11 3")->getCoordinates() ==
+                Coordinates(1100, 300),
+            true);
+  EXPECT_EQ(tzh2.getFirstByPropetry("DEMXY", "10 4")->getCoordinates() ==
+                Coordinates(1000, 400),
+            true);
+  EXPECT_EQ(tzh2.getFirstByPropetry("DEMXY", "11 4")->getCoordinates() ==
+                Coordinates(1100, 400),
+            true);
+}
+
+TEST_F(DEM2Fixture, TestDem2Fixture) {
+  FilledPolygon tz1;
+  MultiPoint tzh1;
+
+  tz1.addCoordinate(Coordinates(1075, 125));
+  tz1.addCoordinate(Coordinates(475, 125));
+  tz1.addCoordinate(Coordinates(275, 825));
+  tz1.addCoordinate(Coordinates(875, 825));
+
+  tzh1 = getTZHeights(DEM, tz1);
+  vector<Point> points1 = tzh1.getPoints();
+
+  EXPECT_EQ(points1.size(), 168);
+}
+
+TEST_F(DEM2Fixture, TestFormTriagnles) {
+  FilledPolygon tz1;
+  MultiPoint tzh1;
+
+  tz1.addCoordinate(Coordinates(1075, 125));
+  tz1.addCoordinate(Coordinates(475, 125));
+  tz1.addCoordinate(Coordinates(275, 825));
+  tz1.addCoordinate(Coordinates(875, 825));
+
+  tzh1 = getTZHeights(DEM, tz1);
+  vector<Point> points1 = tzh1.getPoints();
+
+  EXPECT_EQ(points1.size(), 168);
+}
+
+/* MultiPoint getTZHeights(vector<vector<Point>> DEM, FilledPolygon tz) {*/
 
 #endif  // TST_TESTFINDDISTANCE_H

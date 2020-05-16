@@ -23,6 +23,19 @@ class MultiPoint : public BaseFigure, public Scale {
   void scalingByArea(float _area, bool _isShift);
   void scalingByFactor(float _scale, bool _isShift);
 
+  Point *getFirstByPropetry(std::string propName, std::string propVal) {
+    Point *result = new Point;
+
+    for (size_t i = 0; i < points.size(); i++) {
+      std::string prop = points[i].getProperty(propName);
+      if (prop.compare(propVal) == 0) {
+        *result = points[i];
+        return result;
+      }
+    }
+    return nullptr;
+  }
+
  private:
   std::vector<Point> points;
 };

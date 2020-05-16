@@ -175,13 +175,6 @@ TEST_F(DEMFixture, TestFindVisiblePoint) {
   EXPECT_EQ(DEM[6][2].getProperty("visible").compare("true") == 0, true);  //+
 }
 
-TEST_F(DEMFixture, TestAllCoverage) {
-  Point radarPos;
-  radarPos.addProperty("height", "80");
-  findCoveragePoints(radarPos, 20, 120, 80, 10, DEM, Coordinates(3, 7), 20,
-                     10000, 100);
-}
-
 /*
 void findCoveragePoints(Point radarPos, float antennaHeight, float maxAngle,
                         float minAngle, float shifAngle,
