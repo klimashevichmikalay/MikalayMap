@@ -367,6 +367,11 @@ MultiPoint getTZHeights(vector<vector<Point>> DEM, FilledPolygon tz) {
   return result;
 }
 
-vector<Triangle> getTriangles() {}
+////////////////gen triangles
+/*vector<Triangle> triangles;
 
+vector<Triangle> getTriangles(MultiPoint radarZoneDEM, float potentialRange) {
+  triangles.clear();
+}*/
+////////////
 #endif  // SSALGORITHMS_H

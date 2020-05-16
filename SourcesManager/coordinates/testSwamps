@@ -1,0 +1,23 @@
+{
+    "FilledPolygons": [
+        {
+            "type": "FILLED_POLYGON",
+            "properties": [],
+            "scale": 1.0,
+            "points": [
+                {
+                    "X": 1250.0,
+                    "Y": 600.0
+                },
+                {
+                    "X": 800.0,
+                    "Y": 600.0
+                },
+                {
+                    "X": 800.0,
+                    "Y": 300.0
+                }
+            ]
+        }
+    ]
+}

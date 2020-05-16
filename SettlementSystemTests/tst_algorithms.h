@@ -345,20 +345,7 @@ TEST_F(DEM2Fixture, TestDem2Fixture) {
   EXPECT_EQ(points1.size(), 168);
 }
 
-TEST_F(DEM2Fixture, TestFormTriagnles) {
-  FilledPolygon tz1;
-  MultiPoint tzh1;
-
-  tz1.addCoordinate(Coordinates(1075, 125));
-  tz1.addCoordinate(Coordinates(475, 125));
-  tz1.addCoordinate(Coordinates(275, 825));
-  tz1.addCoordinate(Coordinates(875, 825));
-
-  tzh1 = getTZHeights(DEM, tz1);
-  vector<Point> points1 = tzh1.getPoints();
-
-  EXPECT_EQ(points1.size(), 168);
-}
+TEST_F(DEM2Fixture, TestFormTriagnles) {}
 
 /* MultiPoint getTZHeights(vector<vector<Point>> DEM, FilledPolygon tz) {*/
 

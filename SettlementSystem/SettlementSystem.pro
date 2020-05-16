@@ -26,6 +26,7 @@ HEADERS += \
         $$ENTITIES/Algorithms.h \
         $$PARSERS/ParsersAll.h \
         $$PARSERS/ParsersCommand.h \
+        Core.h \
         SSAlgorithms.h \
         SSConstants.h
 
