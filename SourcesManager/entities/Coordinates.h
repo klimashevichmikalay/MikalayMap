@@ -14,6 +14,11 @@ class Coordinates {
   void setX(float _x);
   void setY(float _y);
 
+  Coordinates(const Coordinates &obj) {
+    X = obj.X;
+    Y = obj.Y;
+  }
+
   float getProportionXY() { return X / Y; }
 
   void operator+=(const Coordinates &obj) {

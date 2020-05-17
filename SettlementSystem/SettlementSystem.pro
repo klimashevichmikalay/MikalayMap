@@ -28,7 +28,8 @@ HEADERS += \
         $$PARSERS/ParsersCommand.h \
         Core.h \
         SSAlgorithms.h \
-        SSConstants.h
+        SSConstants.h \
+        SettlementCalculation.h
 
 
 

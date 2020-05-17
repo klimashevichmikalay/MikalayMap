@@ -10,6 +10,31 @@
 
 using namespace testing;
 
+struct Core0Fixture : public testing::Test {
+  void SetUp() override {
+    vector<Point> v;
+    for (int i = 0; i < 100; i++) v.push_back(Point(Coordinates(i, i)));
+
+    ParsersCommand pc;
+    pc.getParser(JSON)->savePoints(v, "testdem");
+  }
+
+  void TearDown() override {}
+};
+
+TEST_F(Core0Fixture, TestGetDEM) {
+  Core core;
+  core.setDEM("testdem", 20);
+  vector<vector<Point>> dem = core.getDEM();
+
+  EXPECT_EQ(dem.size(), 5);
+  EXPECT_EQ(dem[0].size(), 20);
+  EXPECT_EQ(dem[1].size(), 20);
+  EXPECT_EQ(dem[2].size(), 20);
+  EXPECT_EQ(dem[3].size(), 20);
+  EXPECT_EQ(dem[4].size(), 20);
+}
+
 struct Core1Fixture : public testing::Test {
   void SetUp() override {
     FilledPolygon lake1;

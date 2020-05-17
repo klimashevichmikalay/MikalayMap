@@ -59,4 +59,26 @@ TEST(TriagnleTests, TestConstructorSettersGetters) {
   EXPECT_EQ(t2.getType(), TRIANGLE);
 }
 
+TEST(TriagnleTests, TestCompare) {
+  Triangle t;
+  Triangle t1;
+  Triangle t2;
+
+  t.addCoordinate(Coordinates(1, 1));
+  t.addCoordinate(Coordinates(2, 3));
+  t.addCoordinate(Coordinates(5, 4));
+
+  t1.addCoordinate(Coordinates(2, 3));
+  t1.addCoordinate(Coordinates(5, 4));
+  t1.addCoordinate(Coordinates(1, 1));
+
+  t2.addCoordinate(Coordinates(6, 3));
+  t2.addCoordinate(Coordinates(5, 4));
+  t2.addCoordinate(Coordinates(1, 1));
+
+  EXPECT_EQ(t == t1, true);
+  EXPECT_EQ(t == t2, false);
+  EXPECT_EQ(t1 == t2, false);
+}
+
 #endif  // TST_TRIANGLE_

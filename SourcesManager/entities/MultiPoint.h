@@ -30,6 +30,10 @@ class MultiPoint : public BaseFigure, public Scale {
       std::string prop = points[i].getProperty(propName);
       if (prop.compare(propVal) == 0) {
         *result = points[i];
+
+        result->setProperties(points[i].getProperties());
+        result->setScale(points[i].getScale());
+
         return result;
       }
     }

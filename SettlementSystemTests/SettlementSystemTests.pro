@@ -32,6 +32,7 @@ HEADERS += \
         $$PARSERS/ParsersCommand.h \
         tst_algorithms.h \
         tst_core.h \
+        tst_settlement.h \
         tst_setvisiblepoints.h
 
 

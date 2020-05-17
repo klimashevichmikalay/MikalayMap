@@ -9,16 +9,12 @@
 using namespace std;
 
 int main() {
-  FilledPolygon fp;
-  fp.addCoordinate(Coordinates(6, 3));
-  fp.addCoordinate(Coordinates(4, 1));
-  fp.addCoordinate(Coordinates(1, 4));
-  fp.addCoordinate(Coordinates(3, 6));
+  Coordinates *c = new Coordinates(1, 1);
 
-  FilledPolygon rz = getRadarZone(fp, 1.414213);
-  vector<Coordinates> points = rz.getPoints();
-
-  cout << endl;
+  if (c == nullptr) {
+    cout << "IN TRUE";
+  } else
+    cout << "IN FALSE";
 }
 
 /* FilledPolygon pBefore;

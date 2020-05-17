@@ -6,24 +6,44 @@
 
 class Core {
  public:
-  Core(string swampsPath, string lakesPath,
-       string badSoilsPath) {  // string citiesPath) {
+  Core() {}
+  Core(string swampsPath, string lakesPath, string badSoilsPath) {
     swamps = pc.getParser(JSON)->getFilledPolygons(swampsPath);
     lakes = pc.getParser(JSON)->getFilledPolygons(lakesPath);
     badSoils = pc.getParser(JSON)->getFilledPolygons(badSoilsPath);
-    //  cities = pc.getParser(JSON)->getMultiPoints(citiesPath);
   }
 
   vector<FilledPolygon> getLakes() { return lakes; };
   vector<FilledPolygon> getSwamps() { return swamps; }
   vector<FilledPolygon> getBadSoils() { return badSoils; };
-  // vector<MultiPoint> getCities() { return cities; };
+  vector<vector<Point>> getDEM() { return DEM; }
+
+  void setDEM(string DEMpath, size_t lenght) {
+    vector<Point> points = pc.getParser(JSON)->getPoints(DEMpath);
+
+    size_t pointsSZ = points.size();
+
+    if (pointsSZ % lenght != 0) {
+      throw std::logic_error(
+          "setDEM exception: impossible to break array into matrix");
+      return;
+    }
+
+    size_t width = pointsSZ / lenght;
+
+    for (size_t i = 0; i < width; i++) {
+      vector<Point> v;
+      for (size_t j = lenght * i; j < lenght * (i + 1); j++) {
+        v.push_back(points[j]);
+      }
+      DEM.push_back(v);
+    }
+  }
 
   ~Core() {
     lakes.clear();
     swamps.clear();
     badSoils.clear();
-    //   cities.clear();
   }
 
   bool isBadPoint(Point _p) {
@@ -53,6 +73,7 @@ class Core {
   vector<FilledPolygon> swamps;
   vector<FilledPolygon> badSoils;
   vector<MultiPoint> cities;
+  vector<vector<Point>> DEM;
 };
 
 #endif  // CORE_H

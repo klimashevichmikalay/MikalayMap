@@ -37,6 +37,27 @@ class Triangle : public LineString {
     return (A == A1 + A2 + A3);
   }
 
+  bool isPointInVector(vector<Coordinates> v, Coordinates _p) {
+    for (size_t i = 0; i < v.size(); i++) {
+      if (v[i] == _p) return true;
+    }
+    return false;
+  }
+
+  bool operator==(Triangle t) {
+    if (type != t.type) return false;
+
+    if (points.size() != t.points.size()) return false;
+
+    if (getName().compare(t.getName()) != 0) return false;
+
+    for (size_t i = 0; i < points.size(); i++) {
+      if (!isPointInVector(t.points, points[i])) return false;
+    }
+
+    return true;
+  }
+
   Triangle() : LineString() { setType(TRIANGLE); }
   Triangle(const std::string &_name) : LineString(_name) { setType(TRIANGLE); }
   Triangle(const char *_name) : LineString(_name) { setType(TRIANGLE); }

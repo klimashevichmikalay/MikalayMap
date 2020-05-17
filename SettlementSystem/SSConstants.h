@@ -11,5 +11,6 @@ const std::string LAKES = "lakes";
 const std::string SWAMPS = "swamps";
 const std::string BAD_SOILS = "badSoils";
 const std::string CITIES = "cities";
+const std::string DEM = "dem";
 
 #endif  // SSCONSTANTS_H

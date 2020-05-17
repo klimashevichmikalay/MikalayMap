@@ -85,4 +85,18 @@ TEST_F(LineFixture, TestSerializeAndDesirealize2) {
   EXPECT_EQ(line == lsAfter, true);
 }
 
+TEST_F(LineFixture, TestIsContains) {
+  EXPECT_EQ(lsBefore.isContains(Coordinates(3, 1)), true);
+  EXPECT_EQ(lsBefore.isContains(Coordinates(2, 3)), true);
+  EXPECT_EQ(lsBefore.isContains(Coordinates(4, 4)), true);
+  EXPECT_EQ(lsBefore.isContains(Coordinates(6, 2)), true);
+  EXPECT_EQ(lsBefore.isContains(Coordinates(6, 0)), true);
+  EXPECT_EQ(lsBefore.isContains(Coordinates(4, 3)), true);
+  EXPECT_EQ(lsBefore.isContains(Coordinates(3, 2)), true);
+
+  EXPECT_EQ(lsBefore.isContains(Coordinates(5, 5)), false);
+  EXPECT_EQ(lsBefore.isContains(Coordinates(6, 3)), false);
+  EXPECT_EQ(lsBefore.isContains(Coordinates(10, 10)), false);
+}
+
 #endif  // TST_LINESTRING_H

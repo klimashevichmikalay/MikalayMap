@@ -31,6 +31,14 @@ class LineString : public BaseFigure, public Scale {
   }
   Coordinates getAvrXY();
 
+  bool isContains(Coordinates crd) {
+    for (size_t i = 0; i < points.size(); i++) {
+      if (points[i] == crd) return true;
+    }
+
+    return false;
+  }
+
  protected:
   std::vector<Coordinates> points;
 };
