@@ -34,6 +34,7 @@ TEST(SettlementTest, TestGenTriangles) {
 
   sc.genTriangles(mp, 2, Coordinates(4, 4));
   EXPECT_EQ(sc.getTriangles().size(), 16);
+  EXPECT_EQ(sc.getPointsFromTriangles(sc.getTriangles()).size(), 9);
 }
 
 #endif  // TST_SETTLEMENT_H

@@ -27,6 +27,7 @@ HEADERS += \
         $$PARSERS/ParsersAll.h \
         $$PARSERS/ParsersCommand.h \
         Core.h \
+        PermutationsGenerator.h \
         SSAlgorithms.h \
         SSConstants.h \
         SettlementCalculation.h

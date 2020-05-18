@@ -4,17 +4,28 @@
 #include <iostream>
 
 #include "ParsersCommand.h"
+#include "PermutationsGenerator.h"
 #include "SSAlgorithms.h"
 
 using namespace std;
 
-int main() {
-  Coordinates *c = new Coordinates(1, 1);
+void printV(vector<vector<int>> v) {
+  for (int i = 0; i < v.size(); i++) {
+    cout << i + 1 << ": ";
+    for (int j = 0; j < v[i].size(); j++) cout << v[i][j] << " ";
 
-  if (c == nullptr) {
-    cout << "IN TRUE";
-  } else
-    cout << "IN FALSE";
+    cout << endl;
+  }
+}
+
+int main() {
+  PermutationsGenerator pg;
+
+  vector<vector<int>> v = pg.getPermutations(5, 3);
+
+  printV(v);
+
+  return 0;
 }
 
 /* FilledPolygon pBefore;
