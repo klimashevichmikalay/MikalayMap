@@ -56,11 +56,29 @@ class SettlementCalculation {
          generator.getPermutations(triangles.size(), radarsNum / 3);
 
      vector<Point> maxCoverage;
+   }
+ */
 
+  vector<vector<Point>> getPermutationsPoints(vector<vector<int>> combinations,
+                                              vector<Triangle> trianglesCopy) {
+    vector<vector<Point>> result;
+    vector<vector<Triangle>> trs;
 
+    for (size_t i = 0; i < combinations.size(); i++) {
+      vector<Triangle> tv;
+      for (size_t j = 0; j < combinations[i].size(); j++) {
+        tv.push_back(trianglesCopy[j]);
+      }
 
+      trs.push_back(tv);
+    }
 
-   }*/
+    for (size_t i = 0; i < trs.size(); i++) {
+      result.push_back(getPointsFromTriangles(trs[i]));
+    }
+
+    return result;
+  }
 
   vector<Point> getPointsFromTriangles(vector<Triangle> tv) {
     vector<Point> result;
