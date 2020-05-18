@@ -152,4 +152,45 @@ TEST(PointTests, TestSerializeAndDesirealize) {
   EXPECT_EQ(p == pAfter, true);
 }
 
+vector<vector<Point>> f(vector<vector<Point>> v) {
+  Point p1("point1", Coordinates(11, 21));
+  p1.addProperty("prop01", "val0");
+  p1.addProperty("prop11", "val");
+  p1.addProperty("prop21", "val2");
+  p1.setScale(0.88);
+  vector<Point> v1;
+  v1.push_back(p1);
+  v.push_back(v1);
+  return v;
+}
+
+TEST(PointTests, TestCopyCnstrct) {
+  Point p("point", Coordinates(1, 2));
+  p.addProperty("prop0", "val0");
+  p.addProperty("prop1", "val1");
+  p.addProperty("prop2", "val2");
+  p.setScale(0.88);
+
+  vector<Point> v;
+  v.push_back(p);
+
+  vector<vector<Point>> vv;
+  vv.push_back(v);
+
+  vector<vector<Point>> v1 = f(vv);
+
+  vector<vector<Point>> v2;
+  v2.swap(v1);
+
+  EXPECT_EQ(v2[0][0].getProperty("name").compare("point") == 0, true);
+  EXPECT_EQ(v2[0][0].getProperty("prop0").compare("val0") == 0, true);
+  EXPECT_EQ(v2[0][0].getProperty("prop1").compare("val1") == 0, true);
+  EXPECT_EQ(v2[0][0].getProperty("prop2").compare("val2") == 0, true);
+
+  EXPECT_EQ(v2[1][0].getProperty("name").compare("point1") == 0, true);
+  EXPECT_EQ(v2[1][0].getProperty("prop01").compare("val0") == 0, true);
+  EXPECT_EQ(v2[1][0].getProperty("prop11").compare("val") == 0, true);
+  EXPECT_EQ(v2[1][0].getProperty("prop21").compare("val2") == 0, true);
+}
+
 #endif  // TST_POINT_H

@@ -23,6 +23,13 @@ class Point : public BaseFigure, public Scale {
   Point(const std::string &_name, Coordinates _location);
   Point(const char *_name, Coordinates _location);
 
+  Point(const Point &obj) {
+    type = obj.type;
+    scale = obj.scale;
+    setProperties(obj.getProperties());
+    location = obj.location;
+  }
+
   void operator=(BaseFigure obj) { BaseFigure(*this) = obj; }
   void operator=(Point obj) {
     BaseFigure(*this) = obj;

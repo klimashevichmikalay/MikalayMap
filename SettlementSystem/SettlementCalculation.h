@@ -19,45 +19,79 @@ class SettlementCalculation {
     core->setDEM(DEMpath, length);
   }
 
-  /* vector<Point> getBestSettlement(
-       FilledPolygon protectionObject, float antennaHeight, float maxAngle,
-       float minAngle, float shifAngle, const float flightAltitude,
-       const float potentialRange, const float AWRange, size_t radarsNum,
-       float ZRKRange, size_t frontWidth, float impactAngle) {
-     FilledPolygon AWZone = protectionObject.getAviationWeapons(AWRange);
-     vector<vector<Point>> DEM = core->getDEM();
+  vector<Point> getBestSettlement(
+      FilledPolygon protectionObject, float antennaHeight, float maxAngle,
+      float minAngle, float shifAngle, const float flightAltitude,
+      const float potentialRange, const float AWRange, size_t radarsNum,
+      float ZRKRange, size_t frontWidth, float impactAngle) {
+    FilledPolygon AWZone = protectionObject.getAviationWeapons(AWRange);
+    vector<vector<Point>> DEM = core->getDEM();
 
-     float distanse2Points = DEM[0][0].getX() - DEM[0][1].getX();
-     float width = distanse2Points * DEM.size() - 1;
-     float length = distanse2Points * DEM[0].size() - 1;
+    float distanse2Points = DEM[0][0].getX() - DEM[0][1].getX();
+    float width = distanse2Points * DEM.size() - 1;
+    float length = distanse2Points * DEM[0].size() - 1;
 
-     FilledPolygon frontZone =
-         getFrontZone(AWZone, frontWidth, impactAngle, length, width);
+    FilledPolygon frontZone =
+        getFrontZone(AWZone, frontWidth, impactAngle, length, width);
 
-     FilledPolygon radarZone = getRadarZone(frontZone, ZRKRange);
-     FilledPolygon targetCoverageZone = getTargetZone(frontZone, radarZone);
+    FilledPolygon radarZone = getRadarZone(frontZone, ZRKRange);
+    FilledPolygon targetCoverageZone = getTargetZone(frontZone, radarZone);
 
-     MultiPoint targetCoverageZoneHeigth = getTZHeights(DEM,
-   targetCoverageZone);
+    MultiPoint targetCoverageZoneHeigth = getTZHeights(DEM, targetCoverageZone);
+    MultiPoint radarZoneHeigth = getTZHeights(DEM, radarZone);
 
-     size_t shift = frontWidth / (radarsNum / 3);
-     shift /= distanse2Points;
-     if (shift <= 0) shift = 1;
+    size_t shift = frontWidth / (radarsNum / 3);
+    shift /= distanse2Points;
+    if (shift <= 0) shift = 1;
 
-     triangles.clear();
-     taggedPeaks.clear();
+    triangles.clear();
+    taggedPeaks.clear();
 
-     Coordinates startInDEM = getCoordinateFromStr(
-         targetCoverageZoneHeigth.getPoints()[0].getProperty("DEMXY"));
+    Coordinates startInDEM = getCoordinateFromStr(
+        targetCoverageZoneHeigth.getPoints()[0].getProperty("DEMXY"));
 
-     genTriangles(targetCoverageZoneHeigth, shift, Coordinates(startInDEM));
+    genTriangles(targetCoverageZoneHeigth, shift, Coordinates(startInDEM));
 
-     vector<vector<int>> combinations =
-         generator.getPermutations(triangles.size(), radarsNum / 3);
+    vector<vector<Point>> pointsComb = getPermutationsPoints(
+        generator.getPermutations(triangles.size(), radarsNum / 3), triangles);
 
-     vector<Point> maxCoverage;
-   }
- */
+    int maxCoverage = 0;
+    vector<Point> result;
+    for (size_t i = 0; i < pointsComb.size(); i++) {
+      vector<vector<Point>> DEMCopy;
+      DEMCopy.swap(DEM);
+      for (size_t j = 0; j < pointsComb[i].size(); j++) {
+        Coordinates startInDEM =
+            getCoordinateFromStr(pointsComb[i][j].getProperty("DEMXY"));
+
+        findCoveragePoints(pointsComb[i][j], antennaHeight, maxAngle, minAngle,
+                           shifAngle, DEMCopy, startInDEM, flightAltitude,
+                           potentialRange, distanse2Points);
+      }
+
+      int curCov = getVisiblePointsNum(DEMCopy, targetCoverageZone);
+
+      if (curCov > maxCoverage) {
+        maxCoverage = curCov;
+        result.swap(pointsComb[i]);
+      }
+    }
+    return result;
+  }
+
+  int getVisiblePointsNum(vector<vector<Point>> &DEM,
+                          FilledPolygon targetCoverageZone) {
+    int counter = 0;
+
+    for (size_t i = 0; i < DEM.size(); i++) {
+      for (size_t j = 0; j < DEM[0].size(); j++) {
+        if (DEM[i][j].getProperty("visible").compare("true") == 0 &&
+            targetCoverageZone.isInPolygon(DEM[i][j]))
+          counter++;
+      }
+    }
+    return counter;
+  }
 
   vector<vector<Point>> getPermutationsPoints(vector<vector<int>> combinations,
                                               vector<Triangle> trianglesCopy) {
