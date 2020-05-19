@@ -14,9 +14,10 @@ class SettlementCalculation {
  public:
   SettlementCalculation() { core = new Core(); }
   SettlementCalculation(string lakesPath, string swampsPath,
-                        string badSoilsPath, string DEMpath, size_t length) {
+                        string badSoilsPath, string DEMpath,
+                        size_t DEMLength) {  // lenght = heights points length
     core = new Core(swampsPath, lakesPath, badSoilsPath);
-    core->setDEM(DEMpath, length);
+    core->setDEM(DEMpath, DEMLength);
   }
 
   vector<Point> getBestSettlement(
@@ -27,7 +28,7 @@ class SettlementCalculation {
     FilledPolygon AWZone = protectionObject.getAviationWeapons(AWRange);
     vector<vector<Point>> DEM = core->getDEM();
 
-    float distanse2Points = DEM[0][0].getX() - DEM[0][1].getX();
+    float distanse2Points = fabs(DEM[0][0].getX() - DEM[0][1].getX());
     float width = distanse2Points * DEM.size() - 1;
     float length = distanse2Points * DEM[0].size() - 1;
 
@@ -40,7 +41,7 @@ class SettlementCalculation {
     MultiPoint targetCoverageZoneHeigth = getTZHeights(DEM, targetCoverageZone);
     MultiPoint radarZoneHeigth = getTZHeights(DEM, radarZone);
 
-    size_t shift = frontWidth / (radarsNum / 3);
+    size_t shift = frontWidth / (radarsNum / 3) / 4;
     shift /= distanse2Points;
     if (shift <= 0) shift = 1;
 
@@ -48,18 +49,21 @@ class SettlementCalculation {
     taggedPeaks.clear();
 
     Coordinates startInDEM = getCoordinateFromStr(
-        targetCoverageZoneHeigth.getPoints()[0].getProperty("DEMXY"));
+        radarZoneHeigth.getPoints()[0].getProperty("DEMXY"));
 
-    genTriangles(targetCoverageZoneHeigth, shift, Coordinates(startInDEM));
+    genTriangles(radarZoneHeigth, shift, startInDEM);
 
-    vector<vector<Point>> pointsComb = getPermutationsPoints(
-        generator.getPermutations(triangles.size(), radarsNum / 3), triangles);
+    vector<Triangle> tr(getTriangles());
+
+    vector<vector<int>> combs =
+        generator.getPermutations(triangles.size(), radarsNum / 3);
+
+    vector<vector<Point>> pointsComb = getPermutationsPoints(combs, triangles);
 
     int maxCoverage = 0;
     vector<Point> result;
     for (size_t i = 0; i < pointsComb.size(); i++) {
-      vector<vector<Point>> DEMCopy;
-      DEMCopy.swap(DEM);
+      vector<vector<Point>> DEMCopy(DEM);
       for (size_t j = 0; j < pointsComb[i].size(); j++) {
         Coordinates startInDEM =
             getCoordinateFromStr(pointsComb[i][j].getProperty("DEMXY"));
@@ -101,7 +105,7 @@ class SettlementCalculation {
     for (size_t i = 0; i < combinations.size(); i++) {
       vector<Triangle> tv;
       for (size_t j = 0; j < combinations[i].size(); j++) {
-        tv.push_back(trianglesCopy[j]);
+        tv.push_back(trianglesCopy[combinations[i][j]]);
       }
 
       trs.push_back(tv);
@@ -151,11 +155,11 @@ class SettlementCalculation {
     taggedPeaks.push_back(*center);
 
     if (center && up && right && !core->isBadPoint(*up) &&
-        !core->isBadPoint(*right)) {
+        !core->isBadPoint(*right) && !core->isBadPoint(*center)) {
       Triangle temp;
-      temp.addCoordinate(center->getCoordinates());
-      temp.addCoordinate(up->getCoordinates());
-      temp.addCoordinate(right->getCoordinates());
+      temp.addCoordinate(*center);
+      temp.addCoordinate(*up);
+      temp.addCoordinate(*right);
 
       if (!isHasThisTriangle(temp)) {
         triangles.push_back(temp);
@@ -163,11 +167,11 @@ class SettlementCalculation {
     }
 
     if (center && down && right && !core->isBadPoint(*right) &&
-        !core->isBadPoint(*down)) {
+        !core->isBadPoint(*down) && !core->isBadPoint(*center)) {
       Triangle temp;
-      temp.addCoordinate(center->getCoordinates());
-      temp.addCoordinate(down->getCoordinates());
-      temp.addCoordinate(right->getCoordinates());
+      temp.addCoordinate(*center);
+      temp.addCoordinate(*down);
+      temp.addCoordinate(*right);
 
       if (!isHasThisTriangle(temp)) {
         triangles.push_back(temp);
@@ -175,11 +179,11 @@ class SettlementCalculation {
     }
 
     if (center && up && left && !core->isBadPoint(*up) &&
-        !core->isBadPoint(*left)) {
+        !core->isBadPoint(*left) && !core->isBadPoint(*center)) {
       Triangle temp;
-      temp.addCoordinate(center->getCoordinates());
-      temp.addCoordinate(up->getCoordinates());
-      temp.addCoordinate(left->getCoordinates());
+      temp.addCoordinate(*center);
+      temp.addCoordinate(*up);
+      temp.addCoordinate(*left);
 
       if (!isHasThisTriangle(temp)) {
         triangles.push_back(temp);
@@ -187,11 +191,11 @@ class SettlementCalculation {
     }
 
     if (center && down && left && !core->isBadPoint(*down) &&
-        !core->isBadPoint(*left)) {
+        !core->isBadPoint(*left) && !core->isBadPoint(*center)) {
       Triangle temp;
-      temp.addCoordinate(center->getCoordinates());
-      temp.addCoordinate(down->getCoordinates());
-      temp.addCoordinate(left->getCoordinates());
+      temp.addCoordinate(*center);
+      temp.addCoordinate(*down);
+      temp.addCoordinate(*left);
 
       if (!isHasThisTriangle(temp)) {
         triangles.push_back(temp);

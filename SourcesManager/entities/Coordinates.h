@@ -15,8 +15,8 @@ class Coordinates {
   void setY(float _y);
 
   Coordinates(const Coordinates &obj) {
-    X = obj.X;
-    Y = obj.Y;
+    this->X = obj.X;
+    this->Y = obj.Y;
   }
 
   float getProportionXY() { return X / Y; }

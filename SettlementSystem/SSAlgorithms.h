@@ -358,6 +358,7 @@ MultiPoint getTZHeights(vector<vector<Point>> DEM, FilledPolygon tz) {
     for (size_t j = 0; j < DEM[0].size(); j++) {
       if (tz.isInPolygon(DEM[i][j])) {
         temp = DEM[i][j];
+        temp.setProperties(DEM[i][j].getProperties());
         temp.addProperty("DEMXY", size_t2Str(j) + " " + size_t2Str(i));
         result.addPoint(temp);
       }

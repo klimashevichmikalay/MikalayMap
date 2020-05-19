@@ -47,21 +47,16 @@ class Core {
   }
 
   bool isBadPoint(Point _p) {
-    FilledPolygon curPolygon;
-
     for (size_t i = 0; i < lakes.size(); i++) {
-      curPolygon = lakes[i];
-      if (curPolygon.isInPolygon(_p)) return true;
+      if (lakes[i].isInPolygon(_p)) return true;
     }
 
     for (size_t i = 0; i < swamps.size(); i++) {
-      curPolygon = swamps[i];
-      if (curPolygon.isInPolygon(_p)) return true;
+      if (swamps[i].isInPolygon(_p)) return true;
     }
 
     for (size_t i = 0; i < badSoils.size(); i++) {
-      curPolygon = badSoils[i];
-      if (curPolygon.isInPolygon(_p)) return true;
+      if (badSoils[i].isInPolygon(_p)) return true;
     }
 
     return false;

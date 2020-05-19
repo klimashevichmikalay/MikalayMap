@@ -1,0 +1,4612 @@
+{
+    "Points": [
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 0.0,
+                    "Y": 0.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 2.0,
+                    "Y": 0.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 4.0,
+                    "Y": 0.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 6.0,
+                    "Y": 0.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 8.0,
+                    "Y": 0.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 10.0,
+                    "Y": 0.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 12.0,
+                    "Y": 0.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 14.0,
+                    "Y": 0.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 16.0,
+                    "Y": 0.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 18.0,
+                    "Y": 0.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 20.0,
+                    "Y": 0.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 22.0,
+                    "Y": 0.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 24.0,
+                    "Y": 0.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 26.0,
+                    "Y": 0.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 28.0,
+                    "Y": 0.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 30.0,
+                    "Y": 0.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 0.0,
+                    "Y": 2.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 2.0,
+                    "Y": 2.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 4.0,
+                    "Y": 2.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 6.0,
+                    "Y": 2.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 8.0,
+                    "Y": 2.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 10.0,
+                    "Y": 2.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 12.0,
+                    "Y": 2.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 14.0,
+                    "Y": 2.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 16.0,
+                    "Y": 2.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 18.0,
+                    "Y": 2.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 20.0,
+                    "Y": 2.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 22.0,
+                    "Y": 2.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 24.0,
+                    "Y": 2.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 26.0,
+                    "Y": 2.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 28.0,
+                    "Y": 2.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 30.0,
+                    "Y": 2.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 0.0,
+                    "Y": 4.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 2.0,
+                    "Y": 4.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 4.0,
+                    "Y": 4.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 6.0,
+                    "Y": 4.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 8.0,
+                    "Y": 4.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 10.0,
+                    "Y": 4.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 12.0,
+                    "Y": 4.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 14.0,
+                    "Y": 4.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 16.0,
+                    "Y": 4.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 18.0,
+                    "Y": 4.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 20.0,
+                    "Y": 4.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 22.0,
+                    "Y": 4.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 24.0,
+                    "Y": 4.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 26.0,
+                    "Y": 4.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 28.0,
+                    "Y": 4.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 30.0,
+                    "Y": 4.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 0.0,
+                    "Y": 6.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 2.0,
+                    "Y": 6.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 4.0,
+                    "Y": 6.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 6.0,
+                    "Y": 6.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 8.0,
+                    "Y": 6.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 10.0,
+                    "Y": 6.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 12.0,
+                    "Y": 6.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 14.0,
+                    "Y": 6.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 16.0,
+                    "Y": 6.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 18.0,
+                    "Y": 6.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 20.0,
+                    "Y": 6.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 22.0,
+                    "Y": 6.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 24.0,
+                    "Y": 6.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 26.0,
+                    "Y": 6.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 28.0,
+                    "Y": 6.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 30.0,
+                    "Y": 6.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 0.0,
+                    "Y": 8.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 2.0,
+                    "Y": 8.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 4.0,
+                    "Y": 8.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 6.0,
+                    "Y": 8.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 8.0,
+                    "Y": 8.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 10.0,
+                    "Y": 8.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 12.0,
+                    "Y": 8.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 14.0,
+                    "Y": 8.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 16.0,
+                    "Y": 8.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 18.0,
+                    "Y": 8.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 20.0,
+                    "Y": 8.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 22.0,
+                    "Y": 8.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 24.0,
+                    "Y": 8.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "15000"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 26.0,
+                    "Y": 8.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "15000"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 28.0,
+                    "Y": 8.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "15000"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 30.0,
+                    "Y": 8.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "15000"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 0.0,
+                    "Y": 10.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "15000"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 2.0,
+                    "Y": 10.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "15000"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 4.0,
+                    "Y": 10.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "15000"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 6.0,
+                    "Y": 10.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "15000"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 8.0,
+                    "Y": 10.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 10.0,
+                    "Y": 10.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 12.0,
+                    "Y": 10.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 14.0,
+                    "Y": 10.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 16.0,
+                    "Y": 10.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 18.0,
+                    "Y": 10.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 20.0,
+                    "Y": 10.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 22.0,
+                    "Y": 10.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 24.0,
+                    "Y": 10.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 26.0,
+                    "Y": 10.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 28.0,
+                    "Y": 10.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 30.0,
+                    "Y": 10.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 0.0,
+                    "Y": 12.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 2.0,
+                    "Y": 12.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 4.0,
+                    "Y": 12.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 6.0,
+                    "Y": 12.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 8.0,
+                    "Y": 12.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 10.0,
+                    "Y": 12.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 12.0,
+                    "Y": 12.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 14.0,
+                    "Y": 12.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 16.0,
+                    "Y": 12.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 18.0,
+                    "Y": 12.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 20.0,
+                    "Y": 12.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 22.0,
+                    "Y": 12.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 24.0,
+                    "Y": 12.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 26.0,
+                    "Y": 12.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 28.0,
+                    "Y": 12.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 30.0,
+                    "Y": 12.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 0.0,
+                    "Y": 14.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 2.0,
+                    "Y": 14.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 4.0,
+                    "Y": 14.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 6.0,
+                    "Y": 14.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 8.0,
+                    "Y": 14.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 10.0,
+                    "Y": 14.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 12.0,
+                    "Y": 14.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 14.0,
+                    "Y": 14.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 16.0,
+                    "Y": 14.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 18.0,
+                    "Y": 14.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 20.0,
+                    "Y": 14.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 22.0,
+                    "Y": 14.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 24.0,
+                    "Y": 14.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 26.0,
+                    "Y": 14.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 28.0,
+                    "Y": 14.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 30.0,
+                    "Y": 14.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 0.0,
+                    "Y": 16.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 2.0,
+                    "Y": 16.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 4.0,
+                    "Y": 16.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 6.0,
+                    "Y": 16.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 8.0,
+                    "Y": 16.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 10.0,
+                    "Y": 16.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 12.0,
+                    "Y": 16.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 14.0,
+                    "Y": 16.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 16.0,
+                    "Y": 16.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 18.0,
+                    "Y": 16.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 20.0,
+                    "Y": 16.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 22.0,
+                    "Y": 16.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 24.0,
+                    "Y": 16.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 26.0,
+                    "Y": 16.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 28.0,
+                    "Y": 16.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 30.0,
+                    "Y": 16.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 0.0,
+                    "Y": 18.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 2.0,
+                    "Y": 18.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 4.0,
+                    "Y": 18.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 6.0,
+                    "Y": 18.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 8.0,
+                    "Y": 18.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 10.0,
+                    "Y": 18.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 12.0,
+                    "Y": 18.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 14.0,
+                    "Y": 18.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 16.0,
+                    "Y": 18.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 18.0,
+                    "Y": 18.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 20.0,
+                    "Y": 18.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 22.0,
+                    "Y": 18.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 24.0,
+                    "Y": 18.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 26.0,
+                    "Y": 18.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 28.0,
+                    "Y": 18.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 30.0,
+                    "Y": 18.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 0.0,
+                    "Y": 20.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 2.0,
+                    "Y": 20.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 4.0,
+                    "Y": 20.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 6.0,
+                    "Y": 20.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 8.0,
+                    "Y": 20.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 10.0,
+                    "Y": 20.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 12.0,
+                    "Y": 20.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 14.0,
+                    "Y": 20.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 16.0,
+                    "Y": 20.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 18.0,
+                    "Y": 20.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 20.0,
+                    "Y": 20.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 22.0,
+                    "Y": 20.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 24.0,
+                    "Y": 20.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 26.0,
+                    "Y": 20.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 28.0,
+                    "Y": 20.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 30.0,
+                    "Y": 20.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 0.0,
+                    "Y": 22.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 2.0,
+                    "Y": 22.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 4.0,
+                    "Y": 22.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 6.0,
+                    "Y": 22.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 8.0,
+                    "Y": 22.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 10.0,
+                    "Y": 22.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 12.0,
+                    "Y": 22.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 14.0,
+                    "Y": 22.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 16.0,
+                    "Y": 22.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 18.0,
+                    "Y": 22.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 20.0,
+                    "Y": 22.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 22.0,
+                    "Y": 22.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 24.0,
+                    "Y": 22.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 26.0,
+                    "Y": 22.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 28.0,
+                    "Y": 22.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 30.0,
+                    "Y": 22.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 0.0,
+                    "Y": 24.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 2.0,
+                    "Y": 24.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 4.0,
+                    "Y": 24.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 6.0,
+                    "Y": 24.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 8.0,
+                    "Y": 24.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 10.0,
+                    "Y": 24.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 12.0,
+                    "Y": 24.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 14.0,
+                    "Y": 24.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 16.0,
+                    "Y": 24.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 18.0,
+                    "Y": 24.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 20.0,
+                    "Y": 24.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 22.0,
+                    "Y": 24.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 24.0,
+                    "Y": 24.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 26.0,
+                    "Y": 24.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 28.0,
+                    "Y": 24.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 30.0,
+                    "Y": 24.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 0.0,
+                    "Y": 26.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 2.0,
+                    "Y": 26.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 4.0,
+                    "Y": 26.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 6.0,
+                    "Y": 26.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 8.0,
+                    "Y": 26.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 10.0,
+                    "Y": 26.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 12.0,
+                    "Y": 26.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 14.0,
+                    "Y": 26.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 16.0,
+                    "Y": 26.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 18.0,
+                    "Y": 26.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 20.0,
+                    "Y": 26.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 22.0,
+                    "Y": 26.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 24.0,
+                    "Y": 26.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 26.0,
+                    "Y": 26.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 28.0,
+                    "Y": 26.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 30.0,
+                    "Y": 26.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 0.0,
+                    "Y": 28.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 2.0,
+                    "Y": 28.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 4.0,
+                    "Y": 28.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 6.0,
+                    "Y": 28.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 8.0,
+                    "Y": 28.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 10.0,
+                    "Y": 28.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 12.0,
+                    "Y": 28.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 14.0,
+                    "Y": 28.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 16.0,
+                    "Y": 28.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 18.0,
+                    "Y": 28.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 20.0,
+                    "Y": 28.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 22.0,
+                    "Y": 28.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 24.0,
+                    "Y": 28.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 26.0,
+                    "Y": 28.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 28.0,
+                    "Y": 28.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 30.0,
+                    "Y": 28.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 0.0,
+                    "Y": 30.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 2.0,
+                    "Y": 30.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 4.0,
+                    "Y": 30.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 6.0,
+                    "Y": 30.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 8.0,
+                    "Y": 30.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 10.0,
+                    "Y": 30.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 12.0,
+                    "Y": 30.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 14.0,
+                    "Y": 30.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 16.0,
+                    "Y": 30.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 18.0,
+                    "Y": 30.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 20.0,
+                    "Y": 30.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 22.0,
+                    "Y": 30.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 24.0,
+                    "Y": 30.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 26.0,
+                    "Y": 30.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 28.0,
+                    "Y": 30.0
+                }
+            ]
+        },
+        {
+            "type": "POINT",
+            "properties": [
+                {
+                    "height": "100"
+                },
+                {
+                    "visible": "false"
+                }
+            ],
+            "scale": 1.0,
+            "location": [
+                {
+                    "X": 30.0,
+                    "Y": 30.0
+                }
+            ]
+        }
+    ]
+}

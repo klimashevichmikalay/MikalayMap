@@ -12,7 +12,7 @@
 using namespace testing;
 using namespace std;
 
-TEST(SettlementTest, TestGenTriangles) {
+/*TEST(SettlementTest, TestGenTriangles) {
   vector<vector<Point>> DEM;
   for (size_t i = 0; i <= 1000; i += 100) {
     vector<Point> vToAdd;
@@ -97,8 +97,6 @@ TEST(SettlementTest, TestGetPointsCombination) {
   combinations.push_back(c5);
   combinations.push_back(c6);
 
-  /* */
-
   SettlementCalculation sc;
 
   vector<vector<Point>> points =
@@ -107,6 +105,82 @@ TEST(SettlementTest, TestGetPointsCombination) {
   for (size_t i = 0; i < points.size(); i++) {
     EXPECT_EQ(points[i].size(), 4);
   }
+}*/
+
+Point getP(int _heigh, int x, int y) {
+  std::string height = std::to_string(_heigh);
+  Point p(Coordinates(x, y));
+  p.addProperty("height", height);
+  p.addProperty("visible", "false");
+
+  return p;
 }
 
+struct Settlement1Fixture : public testing::Test {
+  vector<FilledPolygon> lakes;
+
+  SettlementCalculation sc;
+
+  void SetUp() override {
+    vector<Point> dem;
+
+    for (int i = 0; i <= 255; i++) {
+      if (i >= 77 && i <= 84) {
+        dem.push_back(getP(15000, (i % 16) * 2, i / 16 * 2));
+        continue;
+      }
+
+      dem.push_back(getP(100, (i % 16) * 2, i / 16 * 2));
+    }
+
+    FilledPolygon lake;
+    lake.addCoordinate(Coordinates(13, 20));
+    lake.addCoordinate(Coordinates(7, 20));
+    lake.addCoordinate(Coordinates(7, 12));
+    lake.addCoordinate(Coordinates(13, 12));
+
+    lakes.push_back(lake);
+
+    ParsersCommand pc;
+    pc.getParser(JSON)->savePoints(dem, "demTest");
+    pc.getParser(JSON)->saveFilledPolygons(lakes, "lakesTest");
+    pc.getParser(JSON)->saveFilledPolygons(lakes, "swTest");
+    pc.getParser(JSON)->saveFilledPolygons(lakes, "badTest");
+  }
+
+  void TearDown() override { lakes.clear(); }
+};
+
+TEST_F(Settlement1Fixture, TestSettlement) {
+  SettlementCalculation sc("lakesTest", "swTest", "badTest", "demTest", 16);
+
+  FilledPolygon f;
+  f.addCoordinate(Coordinates(18, 22));
+  f.addCoordinate(Coordinates(19, 20));
+  f.addCoordinate(Coordinates(20, 21));
+
+  vector<Point> settlement =
+      sc.getBestSettlement(f, 0, 120, 70, 2.5, 0, 20, 2, 3, 11, 22, 135);
+
+  EXPECT_EQ(settlement[0] == Point(Coordinates(6, 14)), true);
+  EXPECT_EQ(settlement[1] == Point(Coordinates(6, 18)), true);
+  EXPECT_EQ(settlement[2] == Point(Coordinates(2, 14)), true);
+}
+
+TEST(FilledPolygonTest, TestGetAWZone) {
+  FilledPolygon f;
+  f.addCoordinate(Coordinates(18, 22));
+  f.addCoordinate(Coordinates(19, 20));
+  f.addCoordinate(Coordinates(20, 21));
+
+  FilledPolygon f1 = f.getAviationWeapons(2);
+
+  EXPECT_EQ(f1.getPoints().size(), 3);
+}
+
+/* vector<Point> getBestSettlement(
+      FilledPolygon protectionObject, float antennaHeight, float maxAngle,
+      float minAngle, float shifAngle, const float flightAltitude,
+      const float potentialRange, const float AWRange, size_t radarsNum,
+      float ZRKRange, size_t frontWidth, float impactAngle) */
 #endif  // TST_SETTLEMENT_H

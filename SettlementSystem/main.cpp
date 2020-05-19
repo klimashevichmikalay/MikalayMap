@@ -18,10 +18,34 @@ void printV(vector<vector<int>> v) {
   }
 }
 
-int main() {
-  PermutationsGenerator pg;
+void go(int offset, int k, vector<int> &p, vector<int> &c,
+        vector<vector<int>> &result) {
+  if (k == 0) {
+    result.push_back(c);
+    return;
+  }
+  for (int i = offset; i <= p.size() - k; ++i) {
+    c.push_back(p[i]);
+    go(i + 1, k - 1, p, c, result);
+    c.pop_back();
+  }
+}
 
-  vector<vector<int>> v = pg.getPermutations(5, 3);
+vector<vector<int>> getPermutations(int n, int k) {
+  vector<int> p;
+  vector<int> c;
+
+  vector<vector<int>> result;
+  for (int i = 0; i < n; ++i) {
+    p.push_back(i + 1);
+  }
+  go(0, k, p, c, result);
+
+  return result;
+}
+
+int main() {
+  vector<vector<int>> v = getPermutations(3, 2);
 
   printV(v);
 

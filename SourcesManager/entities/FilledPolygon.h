@@ -77,9 +77,9 @@ class FilledPolygon : public LineString {
   }
 
   FilledPolygon getAviationWeapons(size_t _distance) {
-    std::vector<Coordinates> oldPoints = points;
+    std::vector<Coordinates> oldPoints(points);
 
-    while (getDistance(oldPoints[3], points[3]) <= _distance)
+    while (getDistance(oldPoints[0], points[0]) <= _distance)
       scalingByFactor(1.05, true);
 
     FilledPolygon result;
