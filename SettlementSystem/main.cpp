@@ -6,48 +6,58 @@
 #include "ParsersCommand.h"
 #include "PermutationsGenerator.h"
 #include "SSAlgorithms.h"
+#include "SettlementCalculation.h"
 
 using namespace std;
 
-void printV(vector<vector<int>> v) {
-  for (int i = 0; i < v.size(); i++) {
-    cout << i + 1 << ": ";
-    for (int j = 0; j < v[i].size(); j++) cout << v[i][j] << " ";
+Point getP(int _heigh, int x, int y) {
+  std::string height = std::to_string(_heigh);
+  Point p(Coordinates(x, y));
+  p.addProperty("height", height);
+  p.addProperty("visible", "false");
 
-    cout << endl;
-  }
-}
-
-void go(int offset, int k, vector<int> &p, vector<int> &c,
-        vector<vector<int>> &result) {
-  if (k == 0) {
-    result.push_back(c);
-    return;
-  }
-  for (int i = offset; i <= p.size() - k; ++i) {
-    c.push_back(p[i]);
-    go(i + 1, k - 1, p, c, result);
-    c.pop_back();
-  }
-}
-
-vector<vector<int>> getPermutations(int n, int k) {
-  vector<int> p;
-  vector<int> c;
-
-  vector<vector<int>> result;
-  for (int i = 0; i < n; ++i) {
-    p.push_back(i + 1);
-  }
-  go(0, k, p, c, result);
-
-  return result;
+  return p;
 }
 
 int main() {
-  vector<vector<int>> v = getPermutations(3, 2);
+  vector<FilledPolygon> lakes;
 
-  printV(v);
+  vector<Point> dem;
+
+  for (int i = 0; i <= 255; i++) {
+    if (i >= 77 && i <= 84) {
+      dem.push_back(getP(15000, (i % 16) * 2, i / 16 * 2));
+      continue;
+    }
+
+    dem.push_back(getP(100, (i % 16) * 2, i / 16 * 2));
+  }
+
+  FilledPolygon lake;
+  lake.addCoordinate(Coordinates(13, 20));
+  lake.addCoordinate(Coordinates(7, 20));
+  lake.addCoordinate(Coordinates(7, 12));
+  lake.addCoordinate(Coordinates(13, 12));
+
+  lakes.push_back(lake);
+
+  ParsersCommand pc;
+  pc.getParser(JSON)->savePoints(dem, "demTest");
+  pc.getParser(JSON)->saveFilledPolygons(lakes, "lakesTest");
+  pc.getParser(JSON)->saveFilledPolygons(lakes, "swTest");
+  pc.getParser(JSON)->saveFilledPolygons(lakes, "badTest");
+
+  SettlementCalculation sc("lakesTest", "swTest", "badTest", "demTest", 16);
+
+  FilledPolygon f;
+  f.addCoordinate(Coordinates(18, 22));
+  f.addCoordinate(Coordinates(19, 20));
+  f.addCoordinate(Coordinates(20, 21));
+
+  vector<Point> settlement =
+      sc.getBestSettlement(f, 0, 120, 70, 2.5, 0, 20, 2, 3, 11, 22, 135);
+
+  vector<vector<Point>> DEM = sc.getCore()->getDEM();
 
   return 0;
 }

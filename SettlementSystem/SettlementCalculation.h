@@ -61,6 +61,7 @@ class SettlementCalculation {
     vector<vector<Point>> pointsComb = getPermutationsPoints(combs, triangles);
 
     int maxCoverage = 0;
+    int curCov = 0;
     vector<Point> result;
     for (size_t i = 0; i < pointsComb.size(); i++) {
       vector<vector<Point>> DEMCopy(DEM);
@@ -73,12 +74,29 @@ class SettlementCalculation {
                            potentialRange, distanse2Points);
       }
 
-      int curCov = getVisiblePointsNum(DEMCopy, targetCoverageZone);
+      curCov = getVisiblePointsNum(DEMCopy, targetCoverageZone);
 
       if (curCov > maxCoverage) {
         maxCoverage = curCov;
         result.swap(pointsComb[i]);
       }
+
+      ///
+      /*  if (curCov == 28) {
+          for (int i = 0; i < DEMCopy.size(); i++) {
+            for (int j = 0; j < DEMCopy[i].size(); j++) {
+              cout << "  ";
+              if (DEMCopy[i][j].getProperty("visible").compare("true") == 0) {
+                cout << "T";
+              } else {
+                cout << "_";
+              }
+            }
+            cout << endl << endl;
+          }
+        }*/
+
+      ///
     }
     return result;
   }
@@ -224,6 +242,8 @@ class SettlementCalculation {
   }
 
   vector<Triangle> getTriangles() { return triangles; }
+
+  Core *getCore() { return core; }
 
  private:
   bool isHasThisTriangle(Triangle t) {

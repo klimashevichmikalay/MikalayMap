@@ -4,6 +4,7 @@ TEMPLATE = subdirs
 
 
 SUBDIRS += \
+    Drawing \
     RapidJson \
     SettlementSystem \
     SettlementSystemTests \

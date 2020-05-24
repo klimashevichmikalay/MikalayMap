@@ -161,6 +161,11 @@ TEST_F(Settlement1Fixture, TestSettlement) {
 
   vector<Point> settlement =
       sc.getBestSettlement(f, 0, 120, 70, 2.5, 0, 20, 2, 3, 11, 22, 135);
+  /* vector<Point> getBestSettlement(
+      FilledPolygon protectionObject, float antennaHeight, float maxAngle,
+      float minAngle, float shifAngle, const float flightAltitude,
+      const float potentialRange, const float AWRange, size_t radarsNum,
+      float ZRKRange, size_t frontWidth, float impactAngle) */
 
   EXPECT_EQ(settlement[0] == Point(Coordinates(6, 14)), true);
   EXPECT_EQ(settlement[1] == Point(Coordinates(6, 18)), true);
