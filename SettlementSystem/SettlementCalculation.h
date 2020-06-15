@@ -12,6 +12,26 @@
 using namespace std;
 class SettlementCalculation {
  public:
+  /////////////////////
+  float width;
+  float length;
+  FilledPolygon frontZone;
+  FilledPolygon radarZone;
+  FilledPolygon targetCoverageZone;
+  FilledPolygon AWZone;
+  FilledPolygon object;
+  vector<vector<Point>> coverResult;
+
+  float getWidth() { return width; }
+  float getLength() { return length; }
+  FilledPolygon getFrontView() { return frontZone; }
+  FilledPolygon getRadarView() { return radarZone; }
+  FilledPolygon getTCZ() { return targetCoverageZone; }
+  FilledPolygon getAWZone() { return AWZone; }
+  FilledPolygon getProtectionObj() { return object; }
+  vector<vector<Point>> getCoverResult() { return coverResult; }
+  ////////////////////
+
   SettlementCalculation() { core = new Core(); }
   SettlementCalculation(string lakesPath, string swampsPath,
                         string badSoilsPath, string DEMpath,
@@ -25,18 +45,27 @@ class SettlementCalculation {
       float minAngle, float shifAngle, const float flightAltitude,
       const float potentialRange, const float AWRange, size_t radarsNum,
       float ZRKRange, size_t frontWidth, float impactAngle) {
-    FilledPolygon AWZone = protectionObject.getAviationWeapons(AWRange);
+    object = protectionObject;
+
+    object.setProperties(protectionObject.getProperties());
+    object.addProperty("view", "obj");
+    object.setPoints(protectionObject.getPoints());
+    AWZone = protectionObject.getAviationWeapons(AWRange);
+    AWZone.addProperty("view", "AWZone");
     vector<vector<Point>> DEM = core->getDEM();
 
     float distanse2Points = fabs(DEM[0][0].getX() - DEM[0][1].getX());
-    float width = distanse2Points * DEM.size() - 1;
-    float length = distanse2Points * DEM[0].size() - 1;
+    width = distanse2Points * DEM.size() - 1;
+    length = distanse2Points * DEM[0].size() - 1;
 
-    FilledPolygon frontZone =
-        getFrontZone(AWZone, frontWidth, impactAngle, length, width);
+    frontZone = getFrontZone(AWZone, frontWidth, impactAngle, length, width);
 
-    FilledPolygon radarZone = getRadarZone(frontZone, ZRKRange);
-    FilledPolygon targetCoverageZone = getTargetZone(frontZone, radarZone);
+    frontZone.addProperty("view", "frontZone");
+
+    radarZone = getRadarZone(frontZone, ZRKRange);
+    radarZone.addProperty("view", "radarZone");
+    targetCoverageZone = getTargetZone(frontZone, radarZone);
+    targetCoverageZone.addProperty("view", "TCZ");
 
     MultiPoint targetCoverageZoneHeigth = getTZHeights(DEM, targetCoverageZone);
     MultiPoint radarZoneHeigth = getTZHeights(DEM, radarZone);
@@ -79,24 +108,8 @@ class SettlementCalculation {
       if (curCov > maxCoverage) {
         maxCoverage = curCov;
         result.swap(pointsComb[i]);
+        coverResult.swap(DEMCopy);
       }
-
-      ///
-      /*  if (curCov == 28) {
-          for (int i = 0; i < DEMCopy.size(); i++) {
-            for (int j = 0; j < DEMCopy[i].size(); j++) {
-              cout << "  ";
-              if (DEMCopy[i][j].getProperty("visible").compare("true") == 0) {
-                cout << "T";
-              } else {
-                cout << "_";
-              }
-            }
-            cout << endl << endl;
-          }
-        }*/
-
-      ///
     }
     return result;
   }

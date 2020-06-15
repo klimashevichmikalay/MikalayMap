@@ -18,6 +18,27 @@ class MainWindow : public QMainWindow {
   MainWindow(QWidget *parent = nullptr);
   ~MainWindow();
 
+ private slots:
+  void on_pushButton_7_clicked();
+
+  void on_checkBox_stateChanged(int arg1);
+
+  void on_checkBox_2_stateChanged(int arg1);
+
+  void on_checkBox_3_stateChanged(int arg1);
+
+  void on_checkBox_4_stateChanged(int arg1);
+
+  void on_checkBox_5_stateChanged(int arg1);
+
+  void on_checkBox_6_stateChanged(int arg1);
+
+  void on_checkBox_7_stateChanged(int arg1);
+
+  void on_checkBox_8_stateChanged(int arg1);
+
+  void on_checkBox_9_stateChanged(int arg1);
+
  private:
   Ui::MainWindow *ui;
 };

@@ -363,7 +363,7 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
     <property name="text">
-     <string>lakes, swamps</string>
+     <string>one   two  three  </string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">

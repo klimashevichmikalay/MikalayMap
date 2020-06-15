@@ -1,162 +1,34 @@
 #include "mainwindow.h"
 
+#include <map>
 #include <vector>
 
+#include "Coordinates.h"
+#include "FilledPolygon.h"
+#include "MultiPoint.h"
+#include "Point.h"
+#include "SettlementCalculation.h"
 #include "ui_mainwindow.h"
-
 using namespace std;
 
-void drawRadar(QPainter &painter, int x, int y);
-
-void drawHeights(QPainter &painter) {
-  painter.setFont(QFont("Helvetica", 7, QFont::Bold));
-
-  for (int j = 0; j < 800; j += 50) {
-    for (int i = 0; i < 800; i += 50) {
-      if (j >= 200 && j < 300 && i >= 250 && i <= 650) {
-        painter.drawText(QPoint(i + 5, j + 5), " " + QString::number(9999));
-        continue;
-      }
-
-      painter.drawText(QPoint(i + 5, j + 5), " " + QString::number(100));
-    }
-  }
-}
-
-void drawHeightsPoints(QPainter &painter) {
-  QPen linepen(Qt::black);
-  linepen.setCapStyle(Qt::RoundCap);
-  linepen.setWidth(6);
-  painter.setRenderHint(QPainter::Antialiasing, true);
-  painter.setPen(linepen);
-
-  for (int i = 0; i < 800; i += 50) {
-    for (int j = 0; j < 800; j += 50) {
-      painter.drawPoint(i, j);
-    }
-  }
-}
-
-void drawH(QPainter &painter) {
-  QPen linepen(Qt::black);
-  linepen.setCapStyle(Qt::RoundCap);
-  linepen.setWidth(6);
-  painter.setRenderHint(QPainter::Antialiasing, true);
-  painter.setPen(linepen);
-  drawHeights(painter);
-  drawHeightsPoints(painter);
-}
-
-void drawLakes(QPainter &painter) {
-  QPen linepen(Qt::blue);
-  linepen.setCapStyle(Qt::RoundCap);
-  linepen.setWidth(6);
-  painter.setRenderHint(QPainter::Antialiasing, true);
-  painter.setPen(linepen);
-  painter.drawRect(175, 300, 75, 200);
-}
-
-void drawSwamps(QPainter &painter) {
-  QPen linepen(Qt::green);
-  linepen.setCapStyle(Qt::RoundCap);
-  linepen.setWidth(6);
-  painter.setRenderHint(QPainter::Antialiasing, true);
-  painter.setPen(linepen);
-
-  painter.drawLine(700, 0, 650, 50);
-  painter.drawLine(650, 50, 600, 100);
-  painter.drawLine(600, 100, 650, 200);
-  painter.drawLine(650, 200, 700, 0);
-}
-
-void drawFront(QPainter &painter) {
-  // fromt zone
-  QPen linepen1(Qt::yellow);
-  linepen1.setCapStyle(Qt::RoundCap);
-  linepen1.setWidth(8);
-  painter.setRenderHint(QPainter::Antialiasing, true);
-  painter.setPen(linepen1);
-
-  painter.drawLine(750, 525, 260, 0);
-  painter.drawLine(200, 525, 0, 313);
-
-  painter.drawLine(750, 525, 200, 525);
-  // painter.drawLine(0, 313, 260, 0);
-}
-
-void drawRadarZone(QPainter &painter) {  // radar zone
-  QPen linepen2(Qt::red);
-  linepen2.setCapStyle(Qt::RoundCap);
-  linepen2.setWidth(3);
-  painter.setRenderHint(QPainter::Antialiasing, true);
-  painter.setPen(linepen2);
-
-  painter.drawLine(750, 525, 563, 324);
-  painter.drawLine(200, 525, 12, 325);
-
-  painter.drawLine(750, 525, 200, 525);
-}
-
-void drawCoverage(QPainter &painter) {
-  // coverage zone
-  QPen linepen3(Qt::black);
-  linepen3.setCapStyle(Qt::RoundCap);
-  linepen3.setWidth(3);
-  painter.setRenderHint(QPainter::Antialiasing, true);
-  painter.setPen(linepen3);
-
-  painter.drawLine(563, 324, 260, 0);
-  painter.drawLine(12, 324, 0, 313);
-
-  painter.drawLine(563, 324, 12, 324);
-  // painter.drawLine(0, 313, 260, 0);
-
-  QPen linepen(Qt::red);
-  linepen.setCapStyle(Qt::RoundCap);
-  linepen.setWidth(6);
-  painter.setRenderHint(QPainter::Antialiasing, true);
-  painter.setPen(linepen);
-}
-
-void drawAW(QPainter &painter) {
-  // AW
-  painter.drawEllipse(QPoint(475, 525), 50, 50);
-
-  QPen linepen0(Qt::red);
-  linepen0.setCapStyle(Qt::RoundCap);
-  linepen0.setWidth(15);
-  painter.setRenderHint(QPainter::Antialiasing, true);
-  painter.setPen(linepen0);
-  painter.drawPoint(475, 525);
-}
-
-void drawRadarsPlaces(QPainter &painter) {
-  // RADARS
-  drawRadar(painter, 50, 350);
-  drawRadar(painter, 150, 350);
-  drawRadar(painter, 150, 450);
-}
-
-void drawVisible(QPainter &painter) {
-  QPen linepen4(Qt::red);
-  linepen4.setCapStyle(Qt::RoundCap);
-  linepen4.setWidth(10);
-  painter.setRenderHint(QPainter::Antialiasing, true);
-  painter.setPen(linepen4);
-
-  for (int j = 0; j < 16; j++)
-    for (int i = 0; i < 16; i++) {
-      if (i <= 5 && j == 0) painter.drawPoint(i * 50, j * 50);
-      if (i <= 5 && j == 1) painter.drawPoint(i * 50, j * 50);
-      if (i <= 6 && j == 2) painter.drawPoint(i * 50, j * 50);
-      if (i <= 7 && j == 3) painter.drawPoint(i * 50, j * 50);
-      if (i <= 4 && j == 4) painter.drawPoint(i * 50, j * 50);
-      if (i <= 4 && j == 5) painter.drawPoint(i * 50, j * 50);
-      if (i <= 10 && j == 6) painter.drawPoint(i * 50, j * 50);
-    }
-}
-
-void drawRadar(QPainter &painter, int x, int y) {
+// MAP DATA
+MultiPoint *recommendation;
+MultiPoint *heights;
+MultiFilledPolygon *lakes;
+MultiFilledPolygon *badSoils;
+MultiFilledPolygon *swamps;
+FilledPolygon *protectionObj;
+FilledPolygon *front;
+FilledPolygon *zrkZone;
+FilledPolygon *targetZone;
+SettlementCalculation *sc;
+bool flag = false;
+/////////
+/////////
+/// API for DRAWING
+void drawRadar(QPainter &painter, Coordinates crd) {
+  float x = crd.getX();
+  float y = crd.getY();
   QPen linepen4(Qt::black);
   linepen4.setCapStyle(Qt::RoundCap);
   linepen4.setWidth(2);
@@ -167,23 +39,79 @@ void drawRadar(QPainter &painter, int x, int y) {
   painter.drawLine(x, y, x, y - 25);
   painter.drawLine(x - 12, y, x, y - 25);
   painter.drawLine(x + 12, y, x, y - 25);
-
   linepen4.setWidth(8);
   painter.setPen(linepen4);
   painter.drawPoint(x, y - 25);
 }
 
+void drawRadar(QPainter &painter, Point p) {
+  float x = p.getX();
+  float y = p.getY();
+  QPen linepen4(Qt::black);
+  linepen4.setCapStyle(Qt::RoundCap);
+  linepen4.setWidth(2);
+  painter.setRenderHint(QPainter::Antialiasing, true);
+  painter.setPen(linepen4);
+  painter.drawLine(x, y, x + 12, y);
+  painter.drawLine(x, y, x - 12, y);
+  painter.drawLine(x, y, x, y - 25);
+  painter.drawLine(x - 12, y, x, y - 25);
+  painter.drawLine(x + 12, y, x, y - 25);
+  linepen4.setWidth(8);
+  painter.setPen(linepen4);
+  painter.drawPoint(x, y - 25);
+}
+
+void drawPolygon(QPainter &painter, FilledPolygon p, QColor color, int width) {
+  QPen linepen4(color);
+  linepen4.setCapStyle(Qt::RoundCap);
+  linepen4.setWidth(width);
+  painter.setRenderHint(QPainter::Antialiasing, true);
+  painter.setPen(linepen4);
+
+  float prevX = p.getPoints()[0].getX();
+  float prevY = p.getPoints()[0].getY();
+
+  for (size_t i = 1; i < p.getPoints().size(); i++) {
+    float curX = p.getPoints()[i].getX();
+    float curY = p.getPoints()[i].getY();
+
+    painter.drawLine(prevX, prevY, curX, curY);
+
+    prevX = curX;
+    prevY = curY;
+  }
+
+  painter.drawLine(p.getStart().getX(), p.getStart().getY(), p.getEnd().getX(),
+                   p.getEnd().getY());
+}
+
+void drawHeight(QPainter &painter, Point p, QColor color, int width) {
+  QPen linepen4(color);
+  linepen4.setCapStyle(Qt::RoundCap);
+  linepen4.setWidth(width);
+  painter.setRenderHint(QPainter::Antialiasing, true);
+  painter.setPen(linepen4);
+  painter.setFont(QFont("Helvetica", 7, QFont::Bold));
+
+  painter.drawText(QPoint(p.getX() + 5, p.getY() + 5),
+                   "  " + QString::fromUtf8(p.getProperty("height").c_str()));
+  painter.drawPoint(QPoint(p.getX(), p.getY()));
+}
+
+void drawMultiPoint(QPainter &painter, MultiPoint p, QColor color, int width) {
+  for (size_t i = 0; i < p.getPoints().size(); i++) {
+    drawHeight(painter, p.getPoints()[i], color, width);
+  }
+}
+
+////////END
+////////
+
 void MainWindow::paintEvent(QPaintEvent *event) {
-  QPainter mytext(this);
-  drawLakes(mytext);
-  drawSwamps(mytext);
-  drawFront(mytext);
-  drawCoverage(mytext);
-  drawRadarZone(mytext);
-  drawAW(mytext);
-  drawRadarsPlaces(mytext);
-  drawH(mytext);
-  drawVisible(mytext);
+  if (!flag) return;
+  QPainter painter(this);
+  painter.eraseRect(0, 0, 2000, 2000);
 }
 
 MainWindow::MainWindow(QWidget *parent)
@@ -192,3 +120,96 @@ MainWindow::MainWindow(QWidget *parent)
 }
 
 MainWindow::~MainWindow() { delete ui; }
+
+MultiFilledPolygon *pointsToMP(vector<FilledPolygon> v) {
+  MultiFilledPolygon *rez = new MultiFilledPolygon();
+
+  for (size_t i = 0; i < v.size(); i++) {
+    rez->addPolygon(v[i]);
+  }
+  return rez;
+}
+
+MultiPoint *pointsToMP(vector<Point> v) {
+  MultiPoint *rez = new MultiPoint();
+
+  for (size_t i = 0; i < v.size(); i++) {
+    rez->addPoint(v[i]);
+  }
+
+  return rez;
+}
+
+MultiPoint *pointsToMP(vector<vector<Point>> v) {
+  MultiPoint *rez = new MultiPoint();
+
+  for (size_t j = 0; j < v.size(); j++)
+    for (size_t i = 0; i < v[0].size(); i++) {
+      rez->addPoint(v[j][i]);
+    }
+
+  return rez;
+}
+
+void MainWindow::on_pushButton_7_clicked() {
+  flag = true;
+
+  QString badSoilsQ = ui->lineEdit_12->text();
+  std::string badSoils = badSoilsQ.toStdString();
+
+  std::istringstream iss(badSoils);
+  std::vector<std::string> results((std::istream_iterator<std::string>(iss)),
+                                   std::istream_iterator<std::string>());
+
+  QString qDem = ui->lineEdit_6->text();
+  std::string demPath = badSoilsQ.toStdString();
+
+  QString qlenthg = ui->lineEdit_13->text();
+  std::string stdlenthg = qlenthg.toStdString();
+  size_t demLength = std::stoi(stdlenthg);
+
+  sc = new SettlementCalculation(results[0], results[1], results[2], demPath,
+                                 demLength);
+
+  vector<Point> recommendation = sc->getBestSettlement();
+
+  repaint();
+
+  /*// MAP DATA
+MultiPoint *recommendation;
+MultiPoint *heights;
+MultiFilledPolygon *lakes;
+MultiFilledPolygon *badSoils;
+MultiFilledPolygon *swamps;
+FilledPolygon *protectionObj;
+FilledPolygon *front;
+FilledPolygon *zrkZone;
+FilledPolygon *targetZone;
+SettlementCalculation *sc;
+bool flag = false;
+   */
+
+  /* vector<Point> getBestSettlement(
+       FilledPolygon protectionObject, float antennaHeight, float maxAngle,
+       float minAngle, float shifAngle, const float flightAltitude,
+       const float potentialRange, const float AWRange, size_t radarsNum,
+       float ZRKRange, size_t frontWidth, float impactAngle)*/
+}
+
+void MainWindow::on_checkBox_stateChanged(int arg1) {}
+
+void MainWindow::on_checkBox_2_stateChanged(int arg1) {}
+
+void MainWindow::on_checkBox_3_stateChanged(int arg1) {}
+
+void MainWindow::on_checkBox_4_stateChanged(int arg1) {}
+
+void MainWindow::on_checkBox_5_stateChanged(int arg1) {}
+
+void MainWindow::on_checkBox_6_stateChanged(int arg1) {}
+
+void MainWindow::on_checkBox_7_stateChanged(int arg1) {}
+
+void MainWindow::on_checkBox_8_stateChanged(int arg1) {}
+
+void MainWindow::on_checkBox_9_stateChanged(int arg1) {}
