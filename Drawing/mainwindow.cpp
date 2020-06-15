@@ -246,7 +246,7 @@ void MainWindow::on_pushButton_7_clicked() {
                                    std::istream_iterator<std::string>());
 
   QString qDem = ui->lineEdit_6->text();
-  std::string demPath = badSoilsQ.toStdString();
+  std::string demPath = qDem.toStdString();
 
   QString qlenthg = ui->lineEdit_13->text();
   std::string stdlenthg = qlenthg.toStdString();
@@ -326,19 +326,6 @@ void MainWindow::on_checkBox_8_stateChanged(int arg1) { repaint(); }
 
 void MainWindow::on_checkBox_9_stateChanged(int arg1) { repaint(); }
 
-/*MultiPoint *viewPoints = 0;
-MultiPoint *recommendation = 0;
-MultiFilledPolygon *lakes = 0;
-MultiFilledPolygon *bads = 0;
-MultiFilledPolygon *swamps = 0;
-MultiPoint *dem = 0;
-FilledPolygon *protectionObj = 0;
-FilledPolygon *awZone = 0;
-FilledPolygon *front = 0;
-FilledPolygon *zrkZone = 0;
-FilledPolygon *targetZone = 0;
- */
-
 void scaleAll(float factor, bool isShift) {
   viewPoints->scalingByFactor(factor, isShift);
   recommendation->scalingByFactor(factor, isShift);
@@ -368,12 +355,12 @@ void shiftAll(Coordinates delta) {
 }
 
 void MainWindow::on_pushButton_6_clicked() {
-  shiftAll(Coordinates(0, 10));
+  shiftAll(Coordinates(0, -10));
   repaint();
 }
 
 void MainWindow::on_pushButton_5_clicked() {
-  shiftAll(Coordinates(0, -10));
+  shiftAll(Coordinates(0, 10));
   repaint();
 }
 
