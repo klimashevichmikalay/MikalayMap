@@ -1,9 +1,13 @@
 #ifndef FILLEDPOLYGON_H
 #define FILLEDPOLYGON_H
 
+#include <vector>
+
 #include "FiguresTypes.h"
 #include "LineString.h"
 #include "Point.h"
+
+using namespace std;
 
 class FilledPolygon : public LineString {
  public:
@@ -19,6 +23,19 @@ class FilledPolygon : public LineString {
   }
   void scalingByFactor(float _scale, bool _isShift) {
     LineString::scalingByFactor(_scale, _isShift);
+  }
+
+  void minusCoordinates(Coordinates _delta) {
+    Coordinates point;
+    vector<Coordinates> newPoints;
+    for (size_t j = 0; j < getPoints().size(); j++) {
+      {
+        point = getPoints()[j];
+        point -= _delta;
+        newPoints.push_back(point);
+      }
+    }
+    setPoints(newPoints);
   }
 
   Coordinates *intersPointLineByOX(Coordinates point, Coordinates lineStart,
