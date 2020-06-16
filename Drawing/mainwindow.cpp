@@ -115,59 +115,58 @@ void drawMultiPoint(QPainter &painter, MultiPoint p, QColor color, int width) {
   }
 }
 
+void drawVisiblePoints(QPainter &painter, MultiPoint p, QColor color,
+                       int width) {
+  for (size_t i = 0; i < p.getPoints().size(); i++) {
+    if (p.getPoints()[i].getProperty("visible").compare("true") == 0) {
+      drawHeight(painter, p.getPoints()[i], color, width);
+    }
+  }
+}
+
 ////////END
 ////////EVENTS
 
 void MainWindow::paintEvent(QPaintEvent *event) {
-  /*MultiPoint *viewPoints = 0;
-MultiPoint *recommendation = 0;
-MultiFilledPolygon *lakes = 0;
-MultiFilledPolygon *bads = 0;
-MultiFilledPolygon *swamps = 0;
-MultiPoint *dem = 0;
-FilledPolygon *protectionObj = 0;
-FilledPolygon *front = 0;
-FilledPolygon *zrkZone = 0;
-FilledPolygon *targetZone = 0;*/
   if (!flag) return;
   QPainter painter(this);
   painter.eraseRect(0, 0, 2000, 2000);
 
-  if (ui->checkBox->checkState() == Qt::Unchecked) {
-    drawMultiPoint(painter, *dem, Qt::black, 5);
+  if (ui->checkBox->checkState() == Qt::Checked) {
+    drawMultiPoint(painter, *dem, Qt::black, 4);
   }
 
-  if (ui->checkBox_2->checkState() == Qt::Unchecked) {
-    drawMultiPolygon(painter, *lakes, Qt::blue, 15);
+  if (ui->checkBox_2->checkState() == Qt::Checked) {
+    drawMultiPolygon(painter, *lakes, Qt::blue, 8);
   }
 
-  if (ui->checkBox_3->checkState() == Qt::Unchecked) {
-    drawMultiPolygon(painter, *swamps, Qt::green, 15);
+  if (ui->checkBox_3->checkState() == Qt::Checked) {
+    drawMultiPolygon(painter, *swamps, Qt::green, 8);
   }
 
-  if (ui->checkBox_4->checkState() == Qt::Unchecked) {
-    drawMultiPolygon(painter, *bads, Qt::black, 15);
+  if (ui->checkBox_4->checkState() == Qt::Checked) {
+    drawMultiPolygon(painter, *bads, Qt::black, 8);
   }
 
-  if (ui->checkBox_5->checkState() == Qt::Unchecked) {
-    drawPolygon(painter, *front, Qt::yellow, 15);
+  if (ui->checkBox_5->checkState() == Qt::Checked) {
+    drawPolygon(painter, *front, Qt::yellow, 10);
   }
 
-  if (ui->checkBox_6->checkState() == Qt::Unchecked) {
+  if (ui->checkBox_6->checkState() == Qt::Checked) {
     drawPolygon(painter, *zrkZone, Qt::red, 5);
   }
 
-  if (ui->checkBox_7->checkState() == Qt::Unchecked) {
+  if (ui->checkBox_7->checkState() == Qt::Checked) {
     drawPolygon(painter, *targetZone, Qt::black, 5);
   }
 
-  if (ui->checkBox_8->checkState() == Qt::Unchecked) {
-    drawPolygon(painter, *protectionObj, Qt::red, 15);
-    drawPolygon(painter, *awZone, Qt::red, 10);
+  if (ui->checkBox_8->checkState() == Qt::Checked) {
+    drawPolygon(painter, *protectionObj, Qt::red, 4);
+    drawPolygon(painter, *awZone, Qt::red, 4);
   }
 
-  if (ui->checkBox_4->checkState() == Qt::Unchecked) {
-    drawMultiPoint(painter, *viewPoints, Qt::black, 15);
+  if (ui->checkBox_9->checkState() == Qt::Checked) {
+    drawVisiblePoints(painter, *viewPoints, Qt::red, 10);
 
     for (size_t i = 0; i < recommendation->getPoints().size(); i++) {
       drawRadar(painter, recommendation->getPoints()[i]);
@@ -296,7 +295,7 @@ void MainWindow::on_pushButton_7_clicked() {
     std::string sX(x.str());
     std::ostringstream y;
     y << radars[i].getY();
-    std::string sY(x.str());
+    std::string sY(y.str());
     log += sX;
     log += ";";
     log += sY;

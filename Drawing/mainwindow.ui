@@ -662,8 +662,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QCheckBox" name="checkBox_10">
     <property name="geometry">
      <rect>
-      <x>770</x>
-      <y>530</y>
+      <x>960</x>
+      <y>500</y>
       <width>92</width>
       <height>23</height>
      </rect>
@@ -672,6 +672,56 @@ p, li { white-space: pre-wrap; }
      <string>isShift</string>
     </property>
    </widget>
+   <zorder>label_2</zorder>
+   <zorder>lineEdit_2</zorder>
+   <zorder>label_3</zorder>
+   <zorder>lineEdit_3</zorder>
+   <zorder>label_4</zorder>
+   <zorder>lineEdit_4</zorder>
+   <zorder>label_5</zorder>
+   <zorder>textEdit</zorder>
+   <zorder>label_6</zorder>
+   <zorder>lineEdit_5</zorder>
+   <zorder>label_7</zorder>
+   <zorder>label_8</zorder>
+   <zorder>lineEdit_7</zorder>
+   <zorder>label_9</zorder>
+   <zorder>lineEdit_8</zorder>
+   <zorder>label_10</zorder>
+   <zorder>lineEdit_9</zorder>
+   <zorder>label_11</zorder>
+   <zorder>lineEdit_10</zorder>
+   <zorder>label_12</zorder>
+   <zorder>lineEdit_11</zorder>
+   <zorder>label_13</zorder>
+   <zorder>doubleSpinBox</zorder>
+   <zorder>label_14</zorder>
+   <zorder>lineEdit_6</zorder>
+   <zorder>label_15</zorder>
+   <zorder>lineEdit_12</zorder>
+   <zorder>pushButton</zorder>
+   <zorder>pushButton_2</zorder>
+   <zorder>pushButton_3</zorder>
+   <zorder>pushButton_4</zorder>
+   <zorder>pushButton_5</zorder>
+   <zorder>pushButton_6</zorder>
+   <zorder>label_16</zorder>
+   <zorder>checkBox</zorder>
+   <zorder>label_17</zorder>
+   <zorder>checkBox_2</zorder>
+   <zorder>checkBox_3</zorder>
+   <zorder>checkBox_4</zorder>
+   <zorder>checkBox_5</zorder>
+   <zorder>checkBox_6</zorder>
+   <zorder>checkBox_7</zorder>
+   <zorder>checkBox_8</zorder>
+   <zorder>checkBox_9</zorder>
+   <zorder>pushButton_7</zorder>
+   <zorder>label_18</zorder>
+   <zorder>lineEdit_13</zorder>
+   <zorder>lineEdit_14</zorder>
+   <zorder>checkBox_10</zorder>
+   <zorder>textEdit_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
