@@ -168,6 +168,13 @@ void MainWindow::paintEvent(QPaintEvent *event) {
   if (ui->checkBox_9->checkState() == Qt::Checked) {
     drawVisiblePoints(painter, *viewPoints, Qt::red, 10);
 
+    if (recommendation->getPoints().size() == 0) {
+      string answear = "|>The target zone is not visible.";
+      ui->textEdit_2->clear();
+      ui->textEdit_2->setText(QString::fromUtf8(answear.c_str()));
+      return;
+    }
+
     for (size_t i = 0; i < recommendation->getPoints().size(); i++) {
       drawRadar(painter, recommendation->getPoints()[i]);
     }
@@ -302,6 +309,18 @@ void MainWindow::on_pushButton_7_clicked() {
     log += ")";
   }
 
+  int delta = floatFromLineEdit(*ui->lineEdit_8) - radars.size();
+
+  if (delta) {
+    string answear = "\n|>";
+
+    std::ostringstream osDelta;
+    osDelta << delta;
+    std::string strDelta(osDelta.str());
+    answear += strDelta;
+    answear += " radar(s) are not needed.";
+    log += answear;
+  }
   ui->textEdit_2->clear();
   ui->textEdit_2->setText(QString::fromUtf8(log.c_str()));
   repaint();
