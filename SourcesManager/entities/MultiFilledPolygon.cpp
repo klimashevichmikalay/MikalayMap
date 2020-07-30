@@ -2,7 +2,7 @@
 
 #include <algorithm>
 #include <vector>
-
+/*
 using namespace figureTypes;
 using namespace std;
 
@@ -106,3 +106,4 @@ bool MultiFilledPolygon::operator==(MultiFilledPolygon obj) {
 
   return true;
 }
+*/

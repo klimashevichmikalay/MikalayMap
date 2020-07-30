@@ -1,5 +1,5 @@
 #include "FilledPolygon.h"
-
+/*
 using namespace figureTypes;
 
 Coordinates FilledPolygon::getStart() {
@@ -27,3 +27,4 @@ FilledPolygon::FilledPolygon(const std::string &_name) : LineString(_name) {
 FilledPolygon::FilledPolygon(const char *_name) : LineString(_name) {
   type = FILLED_POLYGON;
 }
+*/

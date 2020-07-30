@@ -1,9 +1,9 @@
 #ifndef FILLEDPOLYGON_H
 #define FILLEDPOLYGON_H
-
+/*
 #include <vector>
 
-#include "FiguresTypes.h"
+#include "FigureType.h"
 #include "LineString.h"
 #include "Point.h"
 
@@ -108,5 +108,5 @@ class FilledPolygon : public LineString {
     return result;
   }
 };
-
+*/
 #endif  // FILLEDPOLYGON_H

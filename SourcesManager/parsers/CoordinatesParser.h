@@ -1,11 +1,11 @@
-#ifndef COORDINATESPARSER_H
+/*#ifndef COORDINATESPARSER_H
 #define COORDINATESPARSER_H
 
 #include <string>
 
 #include "../RapidJson/rapidjson/prettywriter.h"
 #include "../entities/Coordinates.h"
-#include "../entities/FiguresTypes.h"
+#include "../entities/FigureType.h"
 using namespace std;
 
 void crdToJSON(Coordinates _c,
@@ -21,3 +21,4 @@ void crdToJSON(Coordinates _c,
 }
 
 #endif  // COORDINATESPARSER_H
+*/

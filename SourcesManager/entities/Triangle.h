@@ -2,10 +2,10 @@
 #define TRIANGLE_H
 
 #include "Coordinates.h"
-#include "FiguresTypes.h"
+#include "FigureType.h"
 #include "LineString.h"
 #include "Point.h"
-using namespace std;
+/*using namespace std;
 using namespace figureTypes;
 
 class Triangle : public BaseFigure {
@@ -77,5 +77,5 @@ class Triangle : public BaseFigure {
 
   vector<Point> points;
 };
-
+*/
 #endif  // TRIANGLE_H

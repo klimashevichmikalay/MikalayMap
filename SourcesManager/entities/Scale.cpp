@@ -1,4 +1,4 @@
-#include "Scale.h"
+/*#include "Scale.h"
 
 using namespace std;
 
@@ -16,3 +16,4 @@ void Scale::minusCoordinates(std::vector<Coordinates> &points,
     it->setY(it->getY() - _delta.getY());
   }
 }
+*/

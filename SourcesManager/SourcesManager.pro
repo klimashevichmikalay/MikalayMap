@@ -11,13 +11,13 @@ HEADERS += \
     entities/BaseFigure.h \
     entities/Coordinates.h \
     entities/EntitiesAll.h \
+    entities/FigureType.h \
     entities/FilledPolygon.h \
+    entities/GeometryConstants.h \
     entities/MultiFilledPolygon.h \
     entities/MultiLineString.h \
     entities/MultiPoint.h \
     entities/Scale.h \
-    entities/EntitiesConstants.h \
-    entities/FiguresTypes.h \
     entities/LineString.h \
     entities/Point.h \
     entities/Triangle.h \
@@ -48,5 +48,8 @@ SOURCES += \
     entities/LineString.cpp \
     entities/Point.cpp \
     main.cpp
+
+DISTFILES += \
+    belarus
 
 

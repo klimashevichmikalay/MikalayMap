@@ -1,4 +1,4 @@
-#ifndef MULTIFILLEDPOLYGONPARSER_H
+/*#ifndef MULTIFILLEDPOLYGONPARSER_H
 #define MULTIFILLEDPOLYGONPARSER_H
 
 #include <string>
@@ -60,3 +60,4 @@ MultiFilledPolygon jsonToMFP(string _json) {
 }
 
 #endif  // MULTIFILLEDPOLYGON_H
+*/

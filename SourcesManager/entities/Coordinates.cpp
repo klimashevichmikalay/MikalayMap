@@ -1,7 +1,7 @@
 #include "Coordinates.h"
 
 #include <math.h>
-
+/*
 Coordinates::Coordinates() {
   X = 0;
   Y = 0;
@@ -23,3 +23,4 @@ bool Coordinates::operator==(const Coordinates &obj) {
 
   return (diffX <= 0.0001f && diffY <= 0.0001f);
 }
+*/

@@ -1,4 +1,4 @@
-#include "Point.h"
+/*#include "Point.h"
 
 using namespace figureTypes;
 
@@ -47,3 +47,4 @@ bool Point::operator==(Point obj) {
 
   return true;
 }
+*/

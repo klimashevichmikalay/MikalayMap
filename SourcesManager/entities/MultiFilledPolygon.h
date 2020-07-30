@@ -1,6 +1,6 @@
 #ifndef MULTIFILLEDPOLYGON_H
 #define MULTIFILLEDPOLYGON_H
-
+/*
 #include "BaseFigure.h"
 #include "FilledPolygon.h"
 #include "Scale.h"
@@ -26,5 +26,5 @@ class MultiFilledPolygon : public BaseFigure, public Scale {
  protected:
   std::vector<FilledPolygon> polygons;
 };
-
+*/
 #endif  // MULTIFILLEDPOLYGON_H

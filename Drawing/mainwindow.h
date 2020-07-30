@@ -14,8 +14,8 @@ class MainWindow : public QMainWindow {
   Q_OBJECT
 
  public:
-  virtual void paintEvent(QPaintEvent *event);
-  MainWindow(QWidget *parent = nullptr);
+  virtual void paintEvent(QPaintEvent* event);
+  MainWindow(QWidget* parent = nullptr);
   ~MainWindow();
 
  private slots:
@@ -54,6 +54,6 @@ class MainWindow : public QMainWindow {
   void on_checkBox_10_stateChanged(int arg1);
 
  private:
-  Ui::MainWindow *ui;
+  Ui::MainWindow* ui;
 };
 #endif  // MAINWINDOW_H

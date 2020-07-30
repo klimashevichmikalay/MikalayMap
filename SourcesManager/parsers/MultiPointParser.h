@@ -1,4 +1,4 @@
-#ifndef MULTIPOINTPARSER_H
+/*#ifndef MULTIPOINTPARSER_H
 #define MULTIPOINTPARSER_H
 
 #include <string>
@@ -59,3 +59,4 @@ MultiPoint jsonToMP(string _json) {
 }
 
 #endif  // MULTIPOINTPARSER_H
+*/

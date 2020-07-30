@@ -1,0 +1,22 @@
+#ifndef FIGURETYPE_H
+#define FIGURETYPE_H
+
+namespace Geometry {
+
+enum FigureType {
+
+  UNKNOWN,
+  POINT,
+  LINE_STR,
+  FILLED_POLYGON,
+  MULTI_POINT,
+  MULTI_LINE_STR,
+  MULTI_FILLED_POLYGON,
+  TRIANGLE,
+  TYPES_SZ
+
+};
+
+}
+
+#endif  // FIGURESTYPES_H

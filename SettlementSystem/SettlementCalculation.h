@@ -33,18 +33,27 @@ class SettlementCalculation {
   ////////////////////
 
   SettlementCalculation() { core = new Core(); }
-  SettlementCalculation(string lakesPath, string swampsPath,
-                        string badSoilsPath, string DEMpath,
+  SettlementCalculation(string lakesPath,
+                        string swampsPath,
+                        string badSoilsPath,
+                        string DEMpath,
                         size_t DEMLength) {  // lenght = heights points length
     core = new Core(swampsPath, lakesPath, badSoilsPath);
     core->setDEM(DEMpath, DEMLength);
   }
 
-  vector<Point> getBestSettlement(
-      FilledPolygon protectionObject, float antennaHeight, float maxAngle,
-      float minAngle, float shifAngle, const float flightAltitude,
-      const float potentialRange, const float AWRange, size_t radarsNum,
-      float ZRKRange, size_t frontWidth, float impactAngle) {
+  vector<Point> getBestSettlement(FilledPolygon protectionObject,
+                                  float antennaHeight,
+                                  float maxAngle,
+                                  float minAngle,
+                                  float shifAngle,
+                                  const float flightAltitude,
+                                  const float potentialRange,
+                                  const float AWRange,
+                                  size_t radarsNum,
+                                  float ZRKRange,
+                                  size_t frontWidth,
+                                  float impactAngle) {
     object = protectionObject;
 
     object.setProperties(protectionObject.getProperties());
@@ -72,7 +81,8 @@ class SettlementCalculation {
 
     size_t shift = frontWidth / (radarsNum / 3) / 4;
     shift /= distanse2Points;
-    if (shift <= 0) shift = 1;
+    if (shift <= 0)
+      shift = 1;
 
     triangles.clear();
     taggedPeaks.clear();
@@ -114,7 +124,7 @@ class SettlementCalculation {
     return result;
   }
 
-  int getVisiblePointsNum(vector<vector<Point>> &DEM,
+  int getVisiblePointsNum(vector<vector<Point>>& DEM,
                           FilledPolygon targetCoverageZone) {
     int counter = 0;
 
@@ -165,21 +175,21 @@ class SettlementCalculation {
   // temp.addProperty("DEMXY", size_t2Str(j) + " " + size_t2Str(i));
 
   void genTriangles(MultiPoint TZHeights, size_t shift, Coordinates start) {
-    Point *center = TZHeights.getFirstByPropetry(
+    Point* center = TZHeights.getFirstByPropetry(
         "DEMXY", size_t2Str(start.getX()) + " " + size_t2Str(start.getY()));
 
-    Point *up = TZHeights.getFirstByPropetry(
+    Point* up = TZHeights.getFirstByPropetry(
         "DEMXY",
         size_t2Str(start.getX()) + " " + size_t2Str(start.getY() + shift));
 
-    Point *down = TZHeights.getFirstByPropetry(
+    Point* down = TZHeights.getFirstByPropetry(
         "DEMXY",
         size_t2Str(start.getX()) + " " + size_t2Str(start.getY() - shift));
 
-    Point *left = TZHeights.getFirstByPropetry(
+    Point* left = TZHeights.getFirstByPropetry(
         "DEMXY",
         size_t2Str(start.getX() - shift) + " " + size_t2Str(start.getY()));
-    Point *right = TZHeights.getFirstByPropetry(
+    Point* right = TZHeights.getFirstByPropetry(
         "DEMXY",
         size_t2Str(start.getX() + shift) + " " + size_t2Str(start.getY()));
 
@@ -256,24 +266,26 @@ class SettlementCalculation {
 
   vector<Triangle> getTriangles() { return triangles; }
 
-  Core *getCore() { return core; }
+  Core* getCore() { return core; }
 
  private:
   bool isHasThisTriangle(Triangle t) {
     for (size_t i = 0; i < triangles.size(); i++) {
-      if (triangles[i] == t) return true;
+      if (triangles[i] == t)
+        return true;
     }
     return false;
   }
 
   bool isPointInVector(vector<Point> v, Point _p) {
     for (size_t i = 0; i < v.size(); i++) {
-      if (v[i] == _p) return true;
+      if (v[i] == _p)
+        return true;
     }
     return false;
   }
 
-  Core *core;
+  Core* core;
   vector<Triangle> triangles;
   vector<Point> taggedPeaks;
   PermutationsGenerator generator;

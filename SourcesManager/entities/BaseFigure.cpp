@@ -6,97 +6,127 @@
 #include <cctype>
 
 using namespace std;
-using namespace figureTypes;
+using namespace Geometry;
 
-string BaseFigure::toLower(string _str) {
-  std::transform(_str.begin(), _str.end(), _str.begin(),
-                 [](unsigned char c) { return std::tolower(c); });
+const std::string BaseFigure::NAME_PROP = "name";
 
-  return _str;
+FigureType BaseFigure::getType() const {
+  return type;
 }
 
-string BaseFigure::toLower(const char *_chars) {
-  string result = "";
-
-  for (size_t i = 0; i < strlen(_chars); i++)
-    result.push_back((char)tolower(_chars[i]));
-
-  return result;
-}
-
-FigureType BaseFigure::getType() { return type; }
-
-void BaseFigure::setType(const FigureType &_type) {
-  if (_type < 0 || _type >= TYPES_SZ) {
+void BaseFigure::setType(const FigureType& newType) {
+  if (newType < 0 || newType >= TYPES_SZ) {
     throw invalid_argument(
         "invalid argument: out of range in FigureType value");
     return;
   }
-
-  type = _type;
+  type = newType;
 }
 
-string BaseFigure::getName() { return getProperty(NAME_PROP); }
+const string* BaseFigure::getName() const {
+  return getProperty(BaseFigure::NAME_PROP);
+}
 
-void BaseFigure::setName(const string &_name) { addProperty(NAME_PROP, _name); }
+void BaseFigure::setName(const string& newName) {
+  addProperty(BaseFigure::NAME_PROP, newName);
+}
 
-void BaseFigure::addInProperties(const std::string &_propName,
-                                 const std::string &_prop) {
-  propIterator = properties.find(_propName);
+void BaseFigure::addProperty(const string& propName, const string& prop) {
+  string addindProp = toLower(prop);
+  string addindPropName = toLower(propName);
+
+  auto propIterator = properties.find(addindPropName);
+
+  if (propIterator != properties.end()) {
+    delete propIterator->second;
+    propIterator->second = new string(addindProp);
+  } else
+    properties.insert({addindPropName, new string(addindProp)});
+}
+
+const string* BaseFigure::getProperty(const string& propName) const {
+  auto propIterator = properties.find(toLower(propName));
 
   if (propIterator != properties.end())
-    propIterator->second = _prop;
-  else
-    properties.insert(pair<string, string>(_propName, _prop));
+    return propIterator->second;
+
+  return nullptr;
 }
 
-void BaseFigure::addProperty(const string &_propName, const string &_prop) {
-  string addindProp = toLower(_prop);
-  string addindPropName = toLower(_propName);
-  addInProperties(addindPropName, addindProp);
+void BaseFigure::delProperty(const string& propName) {
+  auto ptr = properties.find(propName);
+  delete ptr->second;
+
+  properties.erase(ptr);
 }
 
-void BaseFigure::addProperty(const string &_propName, const char *_prop) {
-  string addindProp = toLower(_prop);
-  string addindPropName = toLower(_propName);
-  addInProperties(addindPropName, addindProp);
+bool BaseFigure::operator==(const BaseFigure& obj) const {
+  if (type != obj.type || properties.size() != obj.properties.size())
+    return false;
+
+  bool flag = false;
+  for (const auto& el1 : properties) {
+    for (const auto& el2 : obj.properties) {
+      if (el1.first.compare(el2.first) == 0 && *(el1.second) == *(el2.second))
+        flag = true;
+    }
+
+    if (!flag)
+      return false;
+  }
+  return true;
 }
 
-string BaseFigure::getProperty(const string &_propName) {
-  string findingProp = toLower(_propName);
-
-  propIterator = properties.find(findingProp);
-
-  if (propIterator != properties.end()) return propIterator->second;
-
-  return "";
+BaseFigure& BaseFigure::operator=(const BaseFigure& obj) {
+  assign(obj);
+  return *this;
 }
 
-void BaseFigure::delProperty(const string &_propName) {
-  string delProp = toLower(_propName);
-  properties.erase(delProp);
+BaseFigure::BaseFigure() {
+  setType(UNKNOWN);
 }
 
-BaseFigure::BaseFigure() { type = UNKNOWN; }
-
-BaseFigure::BaseFigure(const figureTypes::FigureType &_type) { type = _type; }
-
-BaseFigure::BaseFigure(const char *_name) {
-  type = UNKNOWN;
-  addProperty(NAME_PROP, _name);
+BaseFigure::BaseFigure(const FigureType& newType) {
+  setType(newType);
 }
 
-BaseFigure::BaseFigure(const string &_name) {
-  type = UNKNOWN;
-  addProperty(NAME_PROP, _name);
+BaseFigure::BaseFigure(const string& name) {
+  setType(UNKNOWN);
+  addProperty(BaseFigure::NAME_PROP, name);
 }
 
-BaseFigure::BaseFigure(const char *_name, const FigureType &_type) {
-  addProperty(NAME_PROP, _name);
-  setType(_type);
+BaseFigure::BaseFigure(const string& name, const FigureType& type) {
+  addProperty(BaseFigure::NAME_PROP, name);
+  setType(type);
 }
 
-BaseFigure::BaseFigure(const string &_name, const FigureType &_type) {
-  addProperty(NAME_PROP, _name);
-  setType(_type);
+BaseFigure::BaseFigure(const BaseFigure& obj) {
+  assign(obj);
+}
+
+BaseFigure::~BaseFigure() {
+  clearPropetries();
+}
+
+void BaseFigure::clearPropetries() {
+  for (auto it = properties.begin(); it != properties.end(); it++)
+    delete it->second;
+
+  properties.clear();
+}
+
+string BaseFigure::toLower(const string& str) const {
+  string result(str);
+  std::transform(result.begin(), result.end(), result.begin(),
+                 [](unsigned char c) { return std::tolower(c); });
+  return result;
+}
+
+void BaseFigure::assign(const BaseFigure& obj) {
+  setType(obj.type);
+
+  clearPropetries();
+  for (auto it = obj.properties.begin(); it != obj.properties.end(); it++) {
+    this->properties.insert({it->first, new string(*(it->second))});
+  }
 }

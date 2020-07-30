@@ -48,15 +48,18 @@ class Core {
 
   bool isBadPoint(Point _p) {
     for (size_t i = 0; i < lakes.size(); i++) {
-      if (lakes[i].isInPolygon(_p)) return true;
+      if (lakes[i].isInPolygon(_p))
+        return true;
     }
 
     for (size_t i = 0; i < swamps.size(); i++) {
-      if (swamps[i].isInPolygon(_p)) return true;
+      if (swamps[i].isInPolygon(_p))
+        return true;
     }
 
     for (size_t i = 0; i < badSoils.size(); i++) {
-      if (badSoils[i].isInPolygon(_p)) return true;
+      if (badSoils[i].isInPolygon(_p))
+        return true;
     }
 
     return false;

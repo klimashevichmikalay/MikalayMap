@@ -1,13 +1,13 @@
 #ifndef LINESTRING_H
 #define LINESTRING_H
-
+/*
 #include <math.h>
 
 #include <vector>
 
 #include "BaseFigure.h"
 #include "Coordinates.h"
-#include "FiguresTypes.h"
+#include "FigureType.h"
 #include "Scale.h"
 
 class LineString : public BaseFigure, public Scale {
@@ -42,5 +42,5 @@ class LineString : public BaseFigure, public Scale {
  protected:
   std::vector<Coordinates> points;
 };
-
+*/
 #endif  // LINESTRING_H

@@ -1,6 +1,6 @@
 #ifndef TST_MULTIPOINT_H
 #define TST_MULTIPOINT_H
-
+/*
 #include <gmock/gmock-matchers.h>
 #include <gtest/gtest.h>
 
@@ -118,22 +118,22 @@ TEST_F(MultiPointFixture, TestSerializeAndDesirealize) {
 
     EXPECT_EQ(mpBefore == mpAfter, true);*/
 
-  rapidjson::StringBuffer sb;
-  rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
-  mpToJSON(mpBefore, writer);
-  MultiPoint mPointAfter = jsonToMP(sb.GetString());
+/* rapidjson::StringBuffer sb;
+ rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
+ mpToJSON(mpBefore, writer);
+ MultiPoint mPointAfter = jsonToMP(sb.GetString());
 
-  EXPECT_EQ(mpBefore == mPointAfter, true);
+ EXPECT_EQ(mpBefore == mPointAfter, true);
 }
 
 TEST_F(MultiPointFixture, TestSerializeAndDesirealize2) {
-  mpBefore.scalingByArea(2, true);
+ mpBefore.scalingByArea(2, true);
 
-  rapidjson::StringBuffer sb;
-  rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
-  mpToJSON(mpBefore, writer);
-  MultiPoint mp2 = jsonToMP(sb.GetString());
-  EXPECT_EQ(mp2 == mpAfter, true);
-}
+ rapidjson::StringBuffer sb;
+ rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
+ mpToJSON(mpBefore, writer);
+ MultiPoint mp2 = jsonToMP(sb.GetString());
+ EXPECT_EQ(mp2 == mpAfter, true);
+}*/
 
 #endif  // TST_MULTIPOINT_H

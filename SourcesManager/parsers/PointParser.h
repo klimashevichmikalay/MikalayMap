@@ -1,4 +1,4 @@
-#ifndef POINTSPARSER_H
+/*#ifndef POINTSPARSER_H
 #define POINTSPARSER_H
 
 #include "../entities/Point.h"
@@ -45,3 +45,4 @@ Point jsonToPoint(string _json) {
 }
 
 #endif  // GEOJSONCOMMAND_H
+*/

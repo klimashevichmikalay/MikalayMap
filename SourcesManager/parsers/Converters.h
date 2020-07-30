@@ -1,10 +1,10 @@
-#ifndef CONVERTERS_H
+/*#ifndef CONVERTERS_H
 #define CONVERTERS_H
 
 #include <string>
 #include <unordered_map>
 
-#include "../entities/FiguresTypes.h"
+#include "../entities/FigureType.h"
 
 using namespace std;
 using namespace figureTypes;
@@ -81,3 +81,4 @@ FigureType strToEnum(string _type) {
 }
 
 #endif  // CONVERTERS_H
+*/

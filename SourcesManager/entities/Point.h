@@ -3,9 +3,9 @@
 
 #include "BaseFigure.h"
 #include "Coordinates.h"
-#include "FiguresTypes.h"
+#include "FigureType.h"
 #include "Scale.h"
-
+/*
 class Point : public BaseFigure, public Scale {
  public:
   float getX();
@@ -62,5 +62,5 @@ class Point : public BaseFigure, public Scale {
  private:
   Coordinates location;
 };
-
+*/
 #endif  // POINT_H

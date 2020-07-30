@@ -1,7 +1,7 @@
 #ifndef TST_ENTITIESALGORITHMS_H
 #define TST_ENTITIESALGORITHMS_H
 
-#include <gmock/gmock-matchers.h>
+/*#include <gmock/gmock-matchers.h>
 #include <gtest/gtest.h>
 
 #include "Algorithms.h"
@@ -110,7 +110,6 @@ TEST(TestEntitiesAlgorithms, TestEqualsVectors2) {
   EXPECT_EQ(isEqual(v0, v2), false);
   EXPECT_EQ(isEqual(v1, v2), false);
 }
-
-/*isEqual(std::vector<T> const &v1, std::vector<T> const &v2) */
+*/
 
 #endif  // TST_ENTITIESALGORITHMS_H

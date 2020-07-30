@@ -12,24 +12,24 @@
 using namespace std;
 
 // MAP DATA
-MultiPoint *viewPoints = 0;
-MultiPoint *recommendation = 0;
-MultiFilledPolygon *lakes = 0;
-MultiFilledPolygon *bads = 0;
-MultiFilledPolygon *swamps = 0;
-MultiPoint *dem = 0;
-FilledPolygon *protectionObj = 0;
-FilledPolygon *awZone = 0;
-FilledPolygon *front = 0;
-FilledPolygon *zrkZone = 0;
-FilledPolygon *targetZone = 0;
-SettlementCalculation *sc = 0;
+MultiPoint* viewPoints = 0;
+MultiPoint* recommendation = 0;
+MultiFilledPolygon* lakes = 0;
+MultiFilledPolygon* bads = 0;
+MultiFilledPolygon* swamps = 0;
+MultiPoint* dem = 0;
+FilledPolygon* protectionObj = 0;
+FilledPolygon* awZone = 0;
+FilledPolygon* front = 0;
+FilledPolygon* zrkZone = 0;
+FilledPolygon* targetZone = 0;
+SettlementCalculation* sc = 0;
 bool flag = false;
 bool isShift = false;
 /////////
 /////////
 /// API for DRAWING
-void drawRadar(QPainter &painter, Coordinates crd) {
+void drawRadar(QPainter& painter, Coordinates crd) {
   float x = crd.getX();
   float y = crd.getY();
   QPen linepen4(Qt::black);
@@ -47,7 +47,7 @@ void drawRadar(QPainter &painter, Coordinates crd) {
   painter.drawPoint(x, y - 25);
 }
 
-void drawRadar(QPainter &painter, Point p) {
+void drawRadar(QPainter& painter, Point p) {
   float x = p.getX();
   float y = p.getY();
   QPen linepen4(Qt::black);
@@ -65,7 +65,7 @@ void drawRadar(QPainter &painter, Point p) {
   painter.drawPoint(x, y - 25);
 }
 
-void drawPolygon(QPainter &painter, FilledPolygon p, QColor color, int width) {
+void drawPolygon(QPainter& painter, FilledPolygon p, QColor color, int width) {
   QPen linepen4(color);
   linepen4.setCapStyle(Qt::RoundCap);
   linepen4.setWidth(width);
@@ -89,14 +89,16 @@ void drawPolygon(QPainter &painter, FilledPolygon p, QColor color, int width) {
                    p.getEnd().getY());
 }
 
-void drawMultiPolygon(QPainter &painter, MultiFilledPolygon p, QColor color,
+void drawMultiPolygon(QPainter& painter,
+                      MultiFilledPolygon p,
+                      QColor color,
                       int width) {
   for (size_t i = 0; i < p.getPolygons().size(); i++) {
     drawPolygon(painter, p.getPolygons()[i], color, width);
   }
 }
 
-void drawHeight(QPainter &painter, Point p, QColor color, int width) {
+void drawHeight(QPainter& painter, Point p, QColor color, int width) {
   QPen linepen4(color);
   linepen4.setCapStyle(Qt::RoundCap);
   linepen4.setWidth(width);
@@ -109,13 +111,15 @@ void drawHeight(QPainter &painter, Point p, QColor color, int width) {
   painter.drawPoint(QPoint(p.getX(), p.getY()));
 }
 
-void drawMultiPoint(QPainter &painter, MultiPoint p, QColor color, int width) {
+void drawMultiPoint(QPainter& painter, MultiPoint p, QColor color, int width) {
   for (size_t i = 0; i < p.getPoints().size(); i++) {
     drawHeight(painter, p.getPoints()[i], color, width);
   }
 }
 
-void drawVisiblePoints(QPainter &painter, MultiPoint p, QColor color,
+void drawVisiblePoints(QPainter& painter,
+                       MultiPoint p,
+                       QColor color,
                        int width) {
   for (size_t i = 0; i < p.getPoints().size(); i++) {
     if (p.getPoints()[i].getProperty("visible").compare("true") == 0) {
@@ -127,8 +131,9 @@ void drawVisiblePoints(QPainter &painter, MultiPoint p, QColor color,
 ////////END
 ////////EVENTS
 
-void MainWindow::paintEvent(QPaintEvent *event) {
-  if (!flag) return;
+void MainWindow::paintEvent(QPaintEvent* event) {
+  if (!flag)
+    return;
   QPainter painter(this);
   painter.eraseRect(0, 0, 2000, 2000);
 
@@ -181,15 +186,17 @@ void MainWindow::paintEvent(QPaintEvent *event) {
   }
 }
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent), ui(new Ui::MainWindow) {
   ui->setupUi(this);
 }
 
-MainWindow::~MainWindow() { delete ui; }
+MainWindow::~MainWindow() {
+  delete ui;
+}
 
-MultiFilledPolygon *pointsToMFP(vector<FilledPolygon> v) {
-  MultiFilledPolygon *rez = new MultiFilledPolygon();
+MultiFilledPolygon* pointsToMFP(vector<FilledPolygon> v) {
+  MultiFilledPolygon* rez = new MultiFilledPolygon();
 
   for (size_t i = 0; i < v.size(); i++) {
     rez->addPolygon(v[i]);
@@ -197,8 +204,8 @@ MultiFilledPolygon *pointsToMFP(vector<FilledPolygon> v) {
   return rez;
 }
 
-MultiPoint *pointsToMP(vector<Point> v) {
-  MultiPoint *rez = new MultiPoint();
+MultiPoint* pointsToMP(vector<Point> v) {
+  MultiPoint* rez = new MultiPoint();
 
   for (size_t i = 0; i < v.size(); i++) {
     rez->addPoint(v[i]);
@@ -207,8 +214,8 @@ MultiPoint *pointsToMP(vector<Point> v) {
   return rez;
 }
 
-MultiPoint *pointsToMP(vector<vector<Point>> v) {
-  MultiPoint *rez = new MultiPoint();
+MultiPoint* pointsToMP(vector<vector<Point>> v) {
+  MultiPoint* rez = new MultiPoint();
 
   for (size_t j = 0; j < v.size(); j++)
     for (size_t i = 0; i < v[0].size(); i++) {
@@ -234,7 +241,7 @@ FilledPolygon getPolygonFromStr(string str) {
   return fp;
 }
 
-float floatFromLineEdit(const QLineEdit &line) {
+float floatFromLineEdit(const QLineEdit& line) {
   QString badSoilsQ = line.text();
   std::string badSoils = badSoilsQ.toStdString();
 
@@ -326,23 +333,41 @@ void MainWindow::on_pushButton_7_clicked() {
   repaint();
 }
 
-void MainWindow::on_checkBox_stateChanged(int arg1) { repaint(); }
+void MainWindow::on_checkBox_stateChanged(int arg1) {
+  repaint();
+}
 
-void MainWindow::on_checkBox_2_stateChanged(int arg1) { repaint(); }
+void MainWindow::on_checkBox_2_stateChanged(int arg1) {
+  repaint();
+}
 
-void MainWindow::on_checkBox_3_stateChanged(int arg1) { repaint(); }
+void MainWindow::on_checkBox_3_stateChanged(int arg1) {
+  repaint();
+}
 
-void MainWindow::on_checkBox_4_stateChanged(int arg1) { repaint(); }
+void MainWindow::on_checkBox_4_stateChanged(int arg1) {
+  repaint();
+}
 
-void MainWindow::on_checkBox_5_stateChanged(int arg1) { repaint(); }
+void MainWindow::on_checkBox_5_stateChanged(int arg1) {
+  repaint();
+}
 
-void MainWindow::on_checkBox_6_stateChanged(int arg1) { repaint(); }
+void MainWindow::on_checkBox_6_stateChanged(int arg1) {
+  repaint();
+}
 
-void MainWindow::on_checkBox_7_stateChanged(int arg1) { repaint(); }
+void MainWindow::on_checkBox_7_stateChanged(int arg1) {
+  repaint();
+}
 
-void MainWindow::on_checkBox_8_stateChanged(int arg1) { repaint(); }
+void MainWindow::on_checkBox_8_stateChanged(int arg1) {
+  repaint();
+}
 
-void MainWindow::on_checkBox_9_stateChanged(int arg1) { repaint(); }
+void MainWindow::on_checkBox_9_stateChanged(int arg1) {
+  repaint();
+}
 
 void scaleAll(float factor, bool isShift) {
   viewPoints->scalingByFactor(factor, isShift);
@@ -404,4 +429,6 @@ void MainWindow::on_pushButton_clicked() {
   repaint();
 }
 
-void MainWindow::on_checkBox_10_stateChanged(int arg1) { isShift = !isShift; }
+void MainWindow::on_checkBox_10_stateChanged(int arg1) {
+  isShift = !isShift;
+}

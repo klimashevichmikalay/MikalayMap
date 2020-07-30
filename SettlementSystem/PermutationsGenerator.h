@@ -7,8 +7,11 @@ using namespace std;
 
 class PermutationsGenerator {
  public:
-  void go(int offset, int k, vector<int> &p, vector<int> &c,
-          vector<vector<int>> &result) {
+  void go(int offset,
+          int k,
+          vector<int>& p,
+          vector<int>& c,
+          vector<vector<int>>& result) {
     if (k == 0) {
       result.push_back(c);
       return;

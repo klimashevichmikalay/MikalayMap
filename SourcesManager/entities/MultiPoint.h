@@ -2,10 +2,10 @@
 #define MULTIPOINT_H
 #include <vector>
 
-#include "FiguresTypes.h"
+#include "FigureType.h"
 #include "Point.h"
 #include "Scale.h"
-
+/*
 class MultiPoint : public BaseFigure, public Scale {
  public:
   std::vector<Point> getPoints();
@@ -43,5 +43,5 @@ class MultiPoint : public BaseFigure, public Scale {
  private:
   std::vector<Point> points;
 };
-
+*/
 #endif  // MULTIPOINT_H

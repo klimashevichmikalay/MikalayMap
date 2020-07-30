@@ -4,45 +4,44 @@
 #include <map>
 #include <string>
 
-#include "EntitiesConstants.h"
-#include "FiguresTypes.h"
+#include "FigureType.h"
+
+namespace Geometry {
 
 class BaseFigure {
  public:
-  figureTypes::FigureType getType();
+  FigureType getType() const;
+  void setType(const FigureType& newType);
 
-  void addProperty(const std::string &_propName, const std::string &_prop);
-  void addProperty(const std::string &_propName, const char *_prop);
-  void delProperty(const std::string &_propName);
-  std::string getProperty(const std::string &_propName);
+  const std::string* getName() const;
+  void setName(const std::string& newName);
 
-  std::string getName();
-  void setName(const std::string &_name);
+  void addProperty(const std::string& propName, const std::string& prop);
+  void delProperty(const std::string& propName);
+  const std::string* getProperty(const std::string& propName) const;
+
+  bool operator==(const BaseFigure& obj) const;
+  BaseFigure& operator=(const BaseFigure& obj);
 
   BaseFigure();
-  BaseFigure(const figureTypes::FigureType &_type);
-  BaseFigure(const char *_name);
-  BaseFigure(const std::string &_name);
-  BaseFigure(const char *_name, const figureTypes::FigureType &_type);
-  BaseFigure(const std::string &_name, const figureTypes::FigureType &_type);
+  BaseFigure(const FigureType& type);
+  BaseFigure(const std::string& name);
+  BaseFigure(const std::string& name, const FigureType& type);
 
-  std::map<std::string, std::string> getProperties() const {
-    return properties;
-  }
-  void setType(const figureTypes::FigureType &_type);
-  void setProperties(std::map<std::string, std::string> _props) {
-    properties = _props;
-  }
+  BaseFigure(const BaseFigure& obj);
+
+  ~BaseFigure();
 
  protected:
-  figureTypes::FigureType type;
-  std::map<std::string, std::string> properties;
+  FigureType type;
+  std::map<std::string, std::string*> properties;
 
  private:
-  std::map<std::string, std::string>::iterator propIterator;
-  std::string toLower(std::string _str);
-  std::string toLower(const char *_chars);
-  void addInProperties(const std::string &_propName, const std::string &_prop);
+  std::string toLower(const std::string& str) const;
+  void clearPropetries();
+  void assign(const BaseFigure& obj);
+  static const std::string NAME_PROP;
 };
 
+}  // namespace Geometry
 #endif  // BASEFIGURE_H

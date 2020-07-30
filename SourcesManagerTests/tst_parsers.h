@@ -1,6 +1,6 @@
 #ifndef TST_PARSERS_H
 #define TST_PARSERS_H
-
+/*
 #include <gmock/gmock-matchers.h>
 #include <gtest/gtest.h>
 
@@ -310,5 +310,5 @@ TEST_F(MultiFilledPolygon2Fixture, TestSerializeAndDesirealizeFromFile) {
   EXPECT_EQ(deser.size(), 3);
   EXPECT_EQ(isEqual(elements, deser), true);
 }
-
+*/
 #endif  // TST_PARSERS_H

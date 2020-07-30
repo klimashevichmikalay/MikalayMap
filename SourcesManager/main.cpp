@@ -7,10 +7,10 @@
 #include "parsers/JsonCommand.h"
 
 using namespace std;
-using namespace figureTypes;
 
 int main() {
-  cout << endl;
+  const string str = "gerg";
+  str.compare("grg");
 
   return 0;
 }

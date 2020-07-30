@@ -2,7 +2,7 @@
 #define SCALE_H
 
 #include <vector>
-
+/*
 #include "Coordinates.h"
 
 class Scale {
@@ -20,5 +20,5 @@ class Scale {
   virtual void scalingByFactor(float _scale, bool _isShift) = 0;
   float scale;
 };
-
+*/
 #endif  // SCALE_H

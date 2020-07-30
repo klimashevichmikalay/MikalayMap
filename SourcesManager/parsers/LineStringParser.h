@@ -1,4 +1,4 @@
-#ifndef LINESTRINGPARSER_H
+/*#ifndef LINESTRINGPARSER_H
 #define LINESTRINGPARSER_H
 
 #include <string>
@@ -59,3 +59,4 @@ LineString jsonToLine(string _json) {
 }
 
 #endif  // LINESTRINGPARSER_H
+*/

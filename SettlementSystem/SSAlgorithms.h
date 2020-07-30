@@ -39,9 +39,13 @@ Point getP(int _heigh) {
   return p;
 }
 
-float getFloat(string str) { return ::atof(str.c_str()); }
+float getFloat(string str) {
+  return ::atof(str.c_str());
+}
 
-size_t getSize_t(string str) { return ::atoi(str.c_str()); }
+size_t getSize_t(string str) {
+  return ::atoi(str.c_str());
+}
 
 float findDistance(Coordinates p1, Coordinates p2) {
   return sqrt(pow((p1.getX() - p2.getX()), 2.0) +
@@ -59,7 +63,8 @@ float findAgle(Coordinates p1, Coordinates p2, Coordinates p3) {
 
 bool isVectorHasProportion(vector<Coordinates> v, float proportion) {
   for (size_t i = 0; i < v.size(); i++) {
-    if (v[i].getProportionXY() == proportion) return true;
+    if (v[i].getProportionXY() == proportion)
+      return true;
   }
   return false;
 }
@@ -106,10 +111,16 @@ vector<Coordinates> genShifts(size_t num) {
   return result;
 }
 
-void setVisibilityPoints(float distance2Points, size_t startX, size_t startY,
-                         const float radarHeight, const float antennaHeight,
-                         const float maxAngle, float minAngle, const int shiftX,
-                         const int shiftY, vector<vector<Point>> &DEM,
+void setVisibilityPoints(float distance2Points,
+                         size_t startX,
+                         size_t startY,
+                         const float radarHeight,
+                         const float antennaHeight,
+                         const float maxAngle,
+                         float minAngle,
+                         const int shiftX,
+                         const int shiftY,
+                         vector<vector<Point>>& DEM,
                          const float flightAltitude,
                          const float potentialRange) {
   const float antennaZ = radarHeight + antennaHeight;
@@ -124,7 +135,8 @@ void setVisibilityPoints(float distance2Points, size_t startX, size_t startY,
 
   while (startX < DEM.at(0).size() && startX >= 0 && startY < DEM.size() &&
          startY >= 0) {
-    if (minAngle >= maxAngle || distance >= potentialRange) return;
+    if (minAngle >= maxAngle || distance >= potentialRange)
+      return;
 
     float pointHeight =
         ::atof(DEM[startY][startX].getProperty("height").c_str());
@@ -140,7 +152,8 @@ void setVisibilityPoints(float distance2Points, size_t startX, size_t startY,
         findAgle(Coordinates(0, antennaZ), Coordinates(distance, pointHeight),
                  Coordinates(0, -10000.0));
 
-    if (newMinAngl > minAngle) minAngle = newMinAngl;
+    if (newMinAngl > minAngle)
+      minAngle = newMinAngl;
 
     startX += shiftX;
     startY += shiftY;
@@ -148,10 +161,15 @@ void setVisibilityPoints(float distance2Points, size_t startX, size_t startY,
   }
 }
 
-void findCoveragePoints(Point radarPos, float antennaHeight, float maxAngle,
-                        float minAngle, float shifAngle,
-                        vector<vector<Point>> &DEM, Coordinates startInMatrix,
-                        const float flightAltitude, const float potentialRange,
+void findCoveragePoints(Point radarPos,
+                        float antennaHeight,
+                        float maxAngle,
+                        float minAngle,
+                        float shifAngle,
+                        vector<vector<Point>>& DEM,
+                        Coordinates startInMatrix,
+                        const float flightAltitude,
+                        const float potentialRange,
                         float distance2Points) {
   size_t rayNum = CIRCLE_DEGREE / shifAngle;
   vector<Coordinates> shifts = genShifts(rayNum);
@@ -165,8 +183,10 @@ void findCoveragePoints(Point radarPos, float antennaHeight, float maxAngle,
   }
 }
 
-FilledPolygon getFrontZone(FilledPolygon AWZone, size_t frontWidth,
-                           float impactAngle, float lengthField,
+FilledPolygon getFrontZone(FilledPolygon AWZone,
+                           size_t frontWidth,
+                           float impactAngle,
+                           float lengthField,
                            float widthField) {
   Coordinates center = AWZone.getAvrXY();
 

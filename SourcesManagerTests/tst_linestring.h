@@ -1,6 +1,6 @@
 #ifndef TST_LINESTRING_H
 #define TST_LINESTRING_H
-
+/*
 #include <gmock/gmock-matchers.h>
 #include <gtest/gtest.h>
 
@@ -98,5 +98,5 @@ TEST_F(LineFixture, TestIsContains) {
   EXPECT_EQ(lsBefore.isContains(Coordinates(6, 3)), false);
   EXPECT_EQ(lsBefore.isContains(Coordinates(10, 10)), false);
 }
-
+*/
 #endif  // TST_LINESTRING_H

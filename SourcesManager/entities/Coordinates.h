@@ -2,7 +2,7 @@
 #define COORDINATES_H
 
 #include <math.h>
-
+/*
 class Coordinates {
  public:
   Coordinates();
@@ -46,5 +46,5 @@ class Coordinates {
   float X;
   float Y;
 };
-
+*/
 #endif  // COORDINATES_H

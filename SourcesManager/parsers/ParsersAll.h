@@ -1,4 +1,4 @@
-#ifndef PARSERSALL_H
+/*#ifndef PARSERSALL_H
 #define PARSERSALL_H
 
 #include "BaseFigureParser.h"
@@ -14,3 +14,4 @@
 #include "PointParser.h"
 
 #endif  // PARSERSALL_H
+*/

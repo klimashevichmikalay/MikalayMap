@@ -1,6 +1,6 @@
 #ifndef MULTILINESTRING_H
 #define MULTILINESTRING_H
-
+/*
 #include "LineString.h"
 
 class MultiLineString : public BaseFigure, public Scale {
@@ -24,5 +24,5 @@ class MultiLineString : public BaseFigure, public Scale {
  protected:
   std::vector<LineString> lines;
 };
-
+*/
 #endif  // MULTILINESTRING_H

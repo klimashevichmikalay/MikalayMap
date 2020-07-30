@@ -1,4 +1,4 @@
-#ifndef BASEFIGUREPARSER_H
+/*#ifndef BASEFIGUREPARSER_H
 #define BASEFIGUREPARSER_H
 
 #include <string>
@@ -54,3 +54,4 @@ BaseFigure jsonToBF(string _json) {
 }
 
 #endif  // BASEFIGUREPARSER_H
+*/
