@@ -1,50 +1,33 @@
 #ifndef COORDINATES_H
 #define COORDINATES_H
 
-#include <math.h>
-/*
+namespace Geometry {
+
 class Coordinates {
  public:
+  double getX() const;
+  double getY() const;
+  double& refX();
+  double& refY();
+
+  void setX(double x);
+  void setY(double y);
+
+  double getProportionXY() const;
+
   Coordinates();
-  Coordinates(float _x, float _y);
-  bool operator==(const Coordinates &obj);
+  Coordinates(double x, double y);
 
-  float getX();
-  float getY();
-  void setX(float _x);
-  void setY(float _y);
-
-  Coordinates(const Coordinates &obj) {
-    this->X = obj.X;
-    this->Y = obj.Y;
-  }
-
-  float getProportionXY() { return X / Y; }
-
-  void operator+=(const Coordinates &obj) {
-    X += obj.X;
-    Y += obj.Y;
-  }
-
-  void operator-=(const Coordinates &obj) {
-    X -= obj.X;
-    Y -= obj.Y;
-  }
-
-  void operator/=(float _f) {
-    X /= _f;
-    Y /= _f;
-  }
-
-  void operator*=(float _f) {
-    X *= _f;
-    Y *= _f;
-  }
+  bool operator==(const Coordinates& obj) const;
+  Coordinates& operator+=(const Coordinates& obj);
+  Coordinates& operator-=(const Coordinates& obj);
+  Coordinates& operator/=(double f);
+  Coordinates& operator*=(double f);
 
  private:
-  float round(float _num);
-  float X;
-  float Y;
+  double X;
+  double Y;
+  static const double epsilon;
 };
-*/
+}  // namespace Geometry
 #endif  // COORDINATES_H

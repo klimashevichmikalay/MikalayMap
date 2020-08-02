@@ -11,7 +11,7 @@ namespace Geometry {
 class BaseFigure {
  public:
   FigureType getType() const;
-  void setType(const FigureType& newType);
+  void setType(FigureType newType);
 
   const std::string* getName() const;
   void setName(const std::string& newName);
@@ -19,17 +19,17 @@ class BaseFigure {
   void addProperty(const std::string& propName, const std::string& prop);
   void delProperty(const std::string& propName);
   const std::string* getProperty(const std::string& propName) const;
+  bool isHasProperty(const std::string& propName);
+  bool isHasProperty(const std::string& propName, const std::string& propValue);
 
   bool operator==(const BaseFigure& obj) const;
   BaseFigure& operator=(const BaseFigure& obj);
 
   BaseFigure();
-  BaseFigure(const FigureType& type);
+  BaseFigure(FigureType type);
   BaseFigure(const std::string& name);
-  BaseFigure(const std::string& name, const FigureType& type);
-
+  BaseFigure(const std::string& name, FigureType type);
   BaseFigure(const BaseFigure& obj);
-
   ~BaseFigure();
 
  protected:

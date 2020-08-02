@@ -192,10 +192,17 @@ TEST(BaseFigureTests, BaseFigureCopyConstr2) {
   EXPECT_EQ(bf1 == bf2, false);
 }
 
-/*
-  BaseFigure(const BaseFigure& obj);
-  bool operator==(const BaseFigure& obj);
-  BaseFigure& operator=(const BaseFigure& obj);
- */
+TEST(BaseFigureTests, BaseFigureiIsHasPropetry) {
+  BaseFigure bf(LINE_STR);
+  bf.addProperty("prop1", "val1");
+  bf.addProperty("prop2", "val2");
+  bf.addProperty("prop3", "val3ee");
+
+  EXPECT_EQ(bf.isHasProperty("prop1"), true);
+  EXPECT_EQ(bf.isHasProperty("prop1", "val1"), true);
+  EXPECT_EQ(bf.isHasProperty("prop3", "val3ee"), true);
+  EXPECT_EQ(bf.isHasProperty("prop1", "vagfgfl1"), false);
+  EXPECT_EQ(bf.isHasProperty("propgr1"), false);
+}
 
 #endif  // TST_BASEFIGURE_H

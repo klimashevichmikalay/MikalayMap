@@ -12,7 +12,7 @@
 #include "MultiLineString.h"
 #include "MultiPoint.h"
 #include "Point.h"
-#include "Scale.h"
+#include "IScale.h"
 #include "Triangle.h"
 
 #endif  // ENTITIESALL_H

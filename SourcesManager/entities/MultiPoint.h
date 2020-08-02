@@ -4,7 +4,7 @@
 
 #include "FigureType.h"
 #include "Point.h"
-#include "Scale.h"
+#include "IScale.h"
 /*
 class MultiPoint : public BaseFigure, public Scale {
  public:

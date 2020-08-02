@@ -14,10 +14,9 @@ FigureType BaseFigure::getType() const {
   return type;
 }
 
-void BaseFigure::setType(const FigureType& newType) {
+void BaseFigure::setType(FigureType newType) {
   if (newType < 0 || newType >= TYPES_SZ) {
-    throw invalid_argument(
-        "invalid argument: out of range in FigureType value");
+    type = UNKNOWN;
     return;
   }
   type = newType;
@@ -61,20 +60,32 @@ void BaseFigure::delProperty(const string& propName) {
 }
 
 bool BaseFigure::operator==(const BaseFigure& obj) const {
+  if (this == &obj)
+    return true;
+
   if (type != obj.type || properties.size() != obj.properties.size())
     return false;
 
-  bool flag = false;
-  for (const auto& el1 : properties) {
-    for (const auto& el2 : obj.properties) {
-      if (el1.first.compare(el2.first) == 0 && *(el1.second) == *(el2.second))
-        flag = true;
-    }
-
-    if (!flag)
+  for (auto iter = properties.cbegin(); iter != properties.cend(); ++iter) {
+    auto objIter = obj.properties.find(iter->first);
+    if (objIter == obj.properties.end())
+      return false;
+    else if ((iter->second != nullptr &&
+              iter->second->compare(*objIter->second)) ||
+             (iter->second == nullptr && objIter->second != nullptr))
       return false;
   }
   return true;
+}
+
+bool BaseFigure::isHasProperty(const std::string& propName) {
+  return getProperty(propName);
+}
+
+bool BaseFigure::isHasProperty(const std::string& propName,
+                               const std::string& propValue) {
+  const string* ptr = getProperty(propName);
+  return ptr ? !(ptr->compare(propValue)) : false;
 }
 
 BaseFigure& BaseFigure::operator=(const BaseFigure& obj) {
@@ -86,7 +97,7 @@ BaseFigure::BaseFigure() {
   setType(UNKNOWN);
 }
 
-BaseFigure::BaseFigure(const FigureType& newType) {
+BaseFigure::BaseFigure(FigureType newType) {
   setType(newType);
 }
 
@@ -95,7 +106,7 @@ BaseFigure::BaseFigure(const string& name) {
   addProperty(BaseFigure::NAME_PROP, name);
 }
 
-BaseFigure::BaseFigure(const string& name, const FigureType& type) {
+BaseFigure::BaseFigure(const string& name, FigureType type) {
   addProperty(BaseFigure::NAME_PROP, name);
   setType(type);
 }
@@ -109,7 +120,7 @@ BaseFigure::~BaseFigure() {
 }
 
 void BaseFigure::clearPropetries() {
-  for (auto it = properties.begin(); it != properties.end(); it++)
+  for (auto it = properties.begin(); it != properties.end(); ++it)
     delete it->second;
 
   properties.clear();
@@ -123,10 +134,12 @@ string BaseFigure::toLower(const string& str) const {
 }
 
 void BaseFigure::assign(const BaseFigure& obj) {
-  setType(obj.type);
+  if (this == &obj)
+    return;
 
+  setType(obj.type);
   clearPropetries();
-  for (auto it = obj.properties.begin(); it != obj.properties.end(); it++) {
+  for (auto it = obj.properties.begin(); it != obj.properties.end(); ++it) {
     this->properties.insert({it->first, new string(*(it->second))});
   }
 }

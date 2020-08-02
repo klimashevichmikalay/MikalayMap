@@ -14,10 +14,10 @@ HEADERS += \
     entities/FigureType.h \
     entities/FilledPolygon.h \
     entities/GeometryConstants.h \
+    entities/IScale.h \
     entities/MultiFilledPolygon.h \
     entities/MultiLineString.h \
     entities/MultiPoint.h \
-    entities/Scale.h \
     entities/LineString.h \
     entities/Point.h \
     entities/Triangle.h \
@@ -41,10 +41,10 @@ SOURCES += \
     entities/BaseFigure.cpp \
     entities/Coordinates.cpp \
     entities/FilledPolygon.cpp \
+    entities/IScale.cpp \
     entities/MultiFilledPolygon.cpp \
     entities/MultiLineString.cpp \
     entities/MultiPoint.cpp \
-    entities/Scale.cpp \
     entities/LineString.cpp \
     entities/Point.cpp \
     main.cpp
