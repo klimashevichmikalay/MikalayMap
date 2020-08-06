@@ -1,9 +1,9 @@
-#ifndef FILLEDPOLYGONPARSER_H
+/*#ifndef FILLEDPOLYGONPARSER_H
 #define FILLEDPOLYGONPARSER_H
 
 #include <string>
 
-#include "../entities/FiguresTypes.h"
+#include "../entities/FigureType.h"
 #include "../entities/FilledPolygon.h"
 #include "CoordinatesParser.h"
 #include "LineStringParser.h"
@@ -40,3 +40,4 @@ FilledPolygon jsonToFP(string _json) {
 }
 
 #endif  // FILLEDPOLYGONPARSER_H
+*/

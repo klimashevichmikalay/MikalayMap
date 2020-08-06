@@ -1,6 +1,6 @@
 #ifndef TST_MULTILINESTRING_H
 #define TST_MULTILINESTRING_H
-
+/*
 #include <gmock/gmock-matchers.h>
 #include <gtest/gtest.h>
 
@@ -122,7 +122,7 @@ TEST_F(MultiLineFixture, TestSerializeAndDesirealize) {
 
   // EXPECT_EQ(mpBefore == mpAfter, true);*/
 
-  rapidjson::StringBuffer sb;
+/*  rapidjson::StringBuffer sb;
   rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
   mlToJSON(mlBefore, writer);
   MultiLineString multLine = jsonToML(sb.GetString());
@@ -140,5 +140,5 @@ TEST_F(MultiLineFixture, TestSerializeAndDesirealize2) {
 
   EXPECT_EQ(mlBefore == mlAfter, true);
 }
-
+*/
 #endif  // TST_MULTILINESTRING_H

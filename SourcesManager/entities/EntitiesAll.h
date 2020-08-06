@@ -4,15 +4,15 @@
 #include "Algorithms.h"
 #include "BaseFigure.h"
 #include "Coordinates.h"
-#include "EntitiesConstants.h"
-#include "FiguresTypes.h"
+#include "GeometryConstants.h"
+#include "FigureType.h"
 #include "FilledPolygon.h"
 #include "LineString.h"
 #include "MultiFilledPolygon.h"
 #include "MultiLineString.h"
 #include "MultiPoint.h"
 #include "Point.h"
-#include "Scale.h"
+#include "IScale.h"
 #include "Triangle.h"
 
 #endif  // ENTITIESALL_H

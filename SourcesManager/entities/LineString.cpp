@@ -1,7 +1,7 @@
 #include "LineString.h"
 
 #include <cmath>
-
+/*
 using namespace figureTypes;
 using namespace std;
 
@@ -71,3 +71,4 @@ LineString::~LineString() {
   vector<Coordinates> empty;
   std::swap(points, empty);
 }
+*/

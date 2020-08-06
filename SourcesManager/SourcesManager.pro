@@ -11,15 +11,18 @@ HEADERS += \
     entities/BaseFigure.h \
     entities/Coordinates.h \
     entities/EntitiesAll.h \
+    entities/ExceptionsMsgs.h \
+    entities/FigureType.h \
     entities/FilledPolygon.h \
+    entities/GeometryConstants.h \
+    entities/IScale.h \
+    entities/MultiFigure.h \
     entities/MultiFilledPolygon.h \
     entities/MultiLineString.h \
     entities/MultiPoint.h \
-    entities/Scale.h \
-    entities/EntitiesConstants.h \
-    entities/FiguresTypes.h \
     entities/LineString.h \
     entities/Point.h \
+    entities/SumCounter.h \
     entities/Triangle.h \
     parsers/BaseFigureParser.h \
     parsers/Converters.h \
@@ -41,12 +44,17 @@ SOURCES += \
     entities/BaseFigure.cpp \
     entities/Coordinates.cpp \
     entities/FilledPolygon.cpp \
+    entities/IScale.cpp \
+    entities/MultiFigure.cpp \
     entities/MultiFilledPolygon.cpp \
     entities/MultiLineString.cpp \
     entities/MultiPoint.cpp \
-    entities/Scale.cpp \
     entities/LineString.cpp \
     entities/Point.cpp \
+    entities/SumCounter.cpp \
     main.cpp
+
+DISTFILES += \
+    belarus
 
 

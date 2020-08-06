@@ -1,4 +1,4 @@
-#ifndef MULTILINEPARSER_H
+/*#ifndef MULTILINEPARSER_H
 #define MULTILINEPARSER_H
 
 #include <string>
@@ -58,3 +58,4 @@ MultiLineString jsonToML(string _json) {
 }
 
 #endif  // MULTILINEPARSER_H
+*/

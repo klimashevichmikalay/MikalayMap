@@ -1,4 +1,4 @@
-#ifndef ICOMMAND_H
+/*#ifndef ICOMMAND_H
 #define ICOMMAND_H
 
 #include <fstream>
@@ -52,3 +52,4 @@ class ICommand {
 };
 
 #endif  // ABSTRACTFACTORY_H
+*/

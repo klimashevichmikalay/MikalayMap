@@ -32,7 +32,7 @@ HEADERS += \
         $$ENTITIES/LineString.h \
         $$ENTITIES/Coordinates.h \
         $$ENTITIES/MultiPoint.h \
-        $$ENTITIES/Scale.h \
+        $$ENTITIES/IScale.h \
         $$ENTITIES/MultiLineString.h \
         $$ENTITIES/MultiFilledPolygon.h \
         $$ENTITIES/Triangle.h \
@@ -49,7 +49,8 @@ SOURCES += \
         $$ENTITIES/BaseFigure.cpp \
         $$ENTITIES/Point.cpp \
         $$ENTITIES/LineString.cpp \
-        $$ENTITIES/Scale.cpp \
+        $$ENTITIES/IScale.cpp \
+        $$ENTITIES/SumCounter.cpp \
         $$ENTITIES/MultiPoint.cpp \
         $$ENTITIES/MultiLineString.cpp \
         $$ENTITIES/MultiFilledPolygon.cpp \

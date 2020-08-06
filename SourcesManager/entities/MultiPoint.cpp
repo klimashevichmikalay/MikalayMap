@@ -1,4 +1,4 @@
-#include "MultiPoint.h"
+/*#include "MultiPoint.h"
 
 #include <algorithm>
 
@@ -84,3 +84,4 @@ bool MultiPoint::operator==(MultiPoint obj) {
 
   return true;
 }
+*/

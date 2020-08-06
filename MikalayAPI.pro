@@ -4,9 +4,6 @@ TEMPLATE = subdirs
 
 
 SUBDIRS += \
-    Drawing \
     RapidJson \
-    SettlementSystem \
-    SettlementSystemTests \
     SourcesManager \
     SourcesManagerTests

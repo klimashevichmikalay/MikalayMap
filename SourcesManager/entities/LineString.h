@@ -3,44 +3,23 @@
 
 #include <math.h>
 
-#include <vector>
-
 #include "BaseFigure.h"
-#include "Coordinates.h"
-#include "FiguresTypes.h"
-#include "Scale.h"
+#include "MultiFigure.h"
 
-class LineString : public BaseFigure, public Scale {
+namespace Geometry {
+
+class LineString : public BaseFigure,
+                   public MultiFigure<Coordinates*, Coordinates> {
  public:
-  LineString();
-  LineString(const std::string &_name);
-  LineString(const char *_name);
-  virtual ~LineString();
+  LineString() : BaseFigure(LINE_STR) {}
+  LineString(const std::string& name) : BaseFigure(name, LINE_STR) {}
+  virtual ~LineString() {}
+  void clear() { MultiFigure::clear(); }
 
-  void clear();
-  virtual void addCoordinate(Coordinates _crd);
-  void scalingByArea(float _areaX, bool _isShift);
-  void scalingByFactor(float _scale, bool _isShift);
-  void move(Coordinates _delta);
-  size_t size() { return points.size(); }
-  bool operator==(LineString obj);
-  std::vector<Coordinates> getPoints() { return points; }
-  void setPoints(std::vector<Coordinates> _points) {
-    std::swap(points, _points);
-    ;
+  bool operator==(LineString obj) {
+    return MultiFigure::operator==(obj) && BaseFigure::operator==(obj);
   }
-  Coordinates getAvrXY();
-
-  bool isContains(Coordinates crd) {
-    for (size_t i = 0; i < points.size(); i++) {
-      if (points[i] == crd) return true;
-    }
-
-    return false;
-  }
-
- protected:
-  std::vector<Coordinates> points;
 };
 
+}  // namespace Geometry
 #endif  // LINESTRING_H

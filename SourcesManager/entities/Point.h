@@ -3,64 +3,48 @@
 
 #include "BaseFigure.h"
 #include "Coordinates.h"
-#include "FiguresTypes.h"
-#include "Scale.h"
+#include "ExceptionsMsgs.h"
+#include "FigureType.h"
+#include "IScale.h"
+#include "SumCounter.h"
 
-class Point : public BaseFigure, public Scale {
+namespace Geometry {
+
+class Point : public BaseFigure, public IScale {
  public:
-  float getX();
-  float getY();
-  void setX(float _X);
-  void setY(float _Y);
-  void setCoordinates(Coordinates _location);
-  Coordinates getCoordinates();
-  void minusDelta(Coordinates _delta);
+  double getX() const;
+  double getY() const;
+  void setX(double x);
+  void setY(double y);
+
+  void setLocation(const Coordinates& newLocation);
+  const Coordinates* getLocation() const;
+
+  void shift(const Coordinates& delta);
+  void scalingByFactor(const double& factor, bool shift);
+  void mult(double factor);
 
   Point();
-  Point(const std::string &_name);
-  Point(const char *_name);
-  Point(Coordinates _location);
-  Point(const std::string &_name, Coordinates _location);
-  Point(const char *_name, Coordinates _location);
+  Point(const std::string& name);
+  Point(const Coordinates& location);
+  Point(const std::string& name, const Coordinates& newLocation);
 
-  Point(const Point &obj) {
-    type = obj.type;
-    scale = obj.scale;
-    setProperties(obj.getProperties());
-    location = obj.location;
-  }
+  Point(const Point& obj);
 
-  void operator=(BaseFigure obj) { BaseFigure(*this) = obj; }
-  void operator=(Point obj) {
-    BaseFigure(*this) = obj;
-    location = obj.location;
-    scale = obj.scale;
-  }
+  ~Point();
 
-  Coordinates getAvrXY() { return location; };
-  void scalingByArea(float _area, bool _isShift) {
-    float factor = sqrt(_area);
-    scalingByFactor(factor, _isShift);
-  };
-  void scalingByFactor(float _scale, bool _isShift) {
-    float oldX = location.getX();
-    float oldY = location.getY();
+  Point& operator=(const Point& obj);
+  bool operator==(const Point& obj) const;
 
-    location.setX(oldX * _scale);
-    location.setY(oldY * _scale);
-
-    scale *= _scale;
-
-    if (_isShift) {
-      location.setX(oldX);
-      location.setY(oldY);
-    }
-  }
-
-  bool operator==(Point obj);
+ protected:
+  Coordinates countSumXY() const;
 
  private:
-  Coordinates location;
+  bool checkLocation() const;
+  void defInit();
+
+  Coordinates* location = nullptr;
 };
+}  // namespace Geometry
 
 #endif  // POINT_H

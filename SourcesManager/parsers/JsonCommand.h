@@ -1,4 +1,4 @@
-#ifndef JSONCOMMAND_H
+/*#ifndef JSONCOMMAND_H
 #define JSONCOMMAND_H
 
 #include "ICommand.h"
@@ -273,3 +273,4 @@ class JsonCommand : public ICommand {
 };
 
 #endif  // JSONCOMMAND_H
+*/

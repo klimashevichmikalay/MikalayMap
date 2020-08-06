@@ -1,4 +1,4 @@
-#ifndef PARSERSCOMMAND_H
+/*#ifndef PARSERSCOMMAND_H
 #define PARSERSCOMMAND_H
 
 #include "JsonCommand.h"
@@ -26,3 +26,4 @@ class ParsersCommand {
 };
 
 #endif  // PARSERSCOMMAND_H
+*/

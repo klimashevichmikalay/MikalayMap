@@ -1,6 +1,6 @@
 #ifndef TST_TRIANGLE_H
 #define TST_TRIANGLE_H
-
+/*
 #include <gmock/gmock-matchers.h>
 #include <gtest/gtest.h>
 
@@ -80,5 +80,5 @@ TEST(TriagnleTests, TestCompare) {
   EXPECT_EQ(t == t2, false);
   EXPECT_EQ(t1 == t2, false);
 }
-
+*/
 #endif  // TST_TRIANGLE_

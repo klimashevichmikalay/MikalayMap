@@ -1,50 +1,56 @@
 #ifndef COORDINATES_H
 #define COORDINATES_H
+#include "IScale.h"
+namespace Geometry {
 
-#include <math.h>
-
-class Coordinates {
+class Coordinates : public IScale {
  public:
+  double getX() const;
+  double getY() const;
+  double& refX();
+  double& refY();
+
+  void setX(double x);
+  void setY(double y);
+
+  double getProportionXY() const;
+
   Coordinates();
-  Coordinates(float _x, float _y);
-  bool operator==(const Coordinates &obj);
+  Coordinates(double x, double y);
+  ~Coordinates() {}
 
-  float getX();
-  float getY();
-  void setX(float _x);
-  void setY(float _y);
+  bool operator==(const Coordinates& obj) const;
+  Coordinates& operator+=(const Coordinates& obj);
 
-  Coordinates(const Coordinates &obj) {
-    this->X = obj.X;
-    this->Y = obj.Y;
+  Coordinates& operator-=(const Coordinates& obj);
+  Coordinates& operator/=(double f);
+  Coordinates& operator*=(double f);
+
+  Coordinates& operator=(const Coordinates& obj) {
+    X = obj.X;
+    Y = obj.Y;
+    return *this;
   }
 
-  float getProportionXY() { return X / Y; }
+  virtual void scalingByFactor(const double& factor, bool isShift) {
+    scale *= factor;
 
-  void operator+=(const Coordinates &obj) {
-    X += obj.X;
-    Y += obj.Y;
+    if (isShift)
+      return;
+    else
+      *this *= factor;
   }
 
-  void operator-=(const Coordinates &obj) {
-    X -= obj.X;
-    Y -= obj.Y;
-  }
+  void mult(double factor) { *this *= factor; }
 
-  void operator/=(float _f) {
-    X /= _f;
-    Y /= _f;
-  }
+  void shift(const Coordinates& delta) { *this += delta; }
 
-  void operator*=(float _f) {
-    X *= _f;
-    Y *= _f;
-  }
+  Coordinates countSumXY() const { return *this; }
 
  private:
-  float round(float _num);
-  float X;
-  float Y;
+  double X;
+  double Y;
+  static const double epsilon;
 };
-
+}  // namespace Geometry
 #endif  // COORDINATES_H

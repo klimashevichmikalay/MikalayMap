@@ -1,49 +1,111 @@
 #include "Point.h"
 
-using namespace figureTypes;
+using namespace Geometry;
 
-float Point::getX() { return location.getX(); }
-
-float Point::getY() { return location.getY(); }
-
-void Point::setX(float _X) { location.setX(_X); }
-
-void Point::setY(float _Y) { location.setY(_Y); }
-
-void Point::minusDelta(Coordinates _delta) {
-  location.setX(location.getX() - _delta.getX());
-  location.setY(location.getY() - _delta.getY());
+double Point::getX() const {
+  checkLocation();
+  return location->getX();
 }
 
-void Point::setCoordinates(Coordinates _location) { location = _location; }
-Coordinates Point::getCoordinates() { return location; }
-
-Point::Point() : BaseFigure(POINT), Scale() {}
-
-Point::Point(const std::string &_name) : BaseFigure(_name, POINT), Scale() {}
-
-Point::Point(const char *_name) : BaseFigure(_name, POINT), Scale() {}
-
-Point::Point(Coordinates _location) : BaseFigure(POINT), Scale() {
-  this->location = _location;
+double Point::getY() const {
+  checkLocation();
+  return location->getY();
 }
 
-Point::Point(const std::string &_name, Coordinates _location)
-    : BaseFigure(_name, POINT), Scale() {
-  this->location = _location;
+void Point::setX(double x) {
+  checkLocation();
+  location->refX() = x;
 }
 
-Point::Point(const char *_name, Coordinates _location)
-    : BaseFigure(_name, POINT), Scale() {
-  this->location = _location;
+void Point::setY(double y) {
+  checkLocation();
+  location->refY() = y;
 }
 
-bool Point::operator==(Point obj) {
-  if (getName().compare(obj.getName()) != 0) return false;
+void Point::setLocation(const Coordinates& newLocation) {
+  if (location)
+    delete location;
 
-  if (!(getCoordinates() == obj.getCoordinates())) return false;
+  location = new Coordinates;
+  *location = newLocation;
+}
 
-  if (getType() != obj.getType()) return false;
+void Point::shift(const Coordinates& delta) {
+  if (location)
+    *location += delta;
+}
 
-  return true;
+void Point::scalingByFactor(const double& factor, bool isShift) {
+  scale *= factor;
+
+  if (isShift && location)
+    return;
+  else
+    *location *= factor;
+}
+
+void Point::mult(double factor) {
+  if (location)
+    *location *= factor;
+}
+
+const Coordinates* Point::getLocation() const {
+  return location;
+}
+
+Point::Point() : BaseFigure(POINT), IScale() {
+  defInit();
+}
+
+Point::Point(const std::string& name) : BaseFigure(name, POINT), IScale() {
+  defInit();
+}
+
+Point::Point(const Coordinates& newLocation) : BaseFigure(POINT), IScale() {
+  setLocation(newLocation);
+}
+
+Point::Point(const std::string& name, const Coordinates& newlocation)
+    : BaseFigure(name, POINT), IScale() {
+  setLocation(newlocation);
+}
+
+Point::Point(const Point& obj) : BaseFigure(obj), IScale(obj) {
+  if (obj.location)
+    setLocation(*obj.location);
+  else
+    location = nullptr;
+}
+
+Point::~Point() {
+  if (location)
+    delete location;
+}
+
+Point& Point::operator=(const Point& obj) {
+  BaseFigure::operator=(obj);
+  IScale::operator=(obj);
+  setLocation(*obj.location);
+
+  return *this;
+}
+
+bool Point::operator==(const Point& obj) const {
+  return *location == *obj.location && IScale::operator==(obj) &&
+         BaseFigure::operator==(obj);
+}
+
+Coordinates Point::countSumXY() const {
+  return *location;
+}
+
+bool Point::checkLocation() const {
+  if (location)
+    return true;
+  else
+    throw std::logic_error(CANT_GET_VAL);
+}
+
+void Point::defInit() {
+  location = new Coordinates(0, 0);
 }

@@ -1,6 +1,6 @@
 #ifndef TST_FILLEDPOLYGON_H
 #define TST_FILLEDPOLYGON_H
-
+/*
 #include <gmock/gmock-matchers.h>
 #include <gtest/gtest.h>
 
@@ -168,5 +168,5 @@ TEST_F(PolygonFixture, TestIsInPolygon) {
   EXPECT_EQ(pBefore.isInPolygon(c5), false);
   EXPECT_EQ(pBefore.isInPolygon(c6), false);
   EXPECT_EQ(pBefore.isInPolygon(c7), false);
-}
+}*/
 #endif  // TST_FILLEDPOLYGON_H
