@@ -5,6 +5,10 @@
 #include <vector>
 using namespace std;
 
+class A {
+ public:
+};
+
 int main() {
   vector<int> v = {0, 2, 1, 3, 4, 5, 6, 7, 8, 9, 10};
   vector<int> v2 = v;

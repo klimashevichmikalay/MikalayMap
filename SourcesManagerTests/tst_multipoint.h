@@ -1,6 +1,6 @@
 #ifndef TST_MULTIPOINT_H
 #define TST_MULTIPOINT_H
-/*
+
 #include <gmock/gmock-matchers.h>
 #include <gtest/gtest.h>
 
@@ -8,7 +8,7 @@
 #include "ParsersAll.h"
 
 using namespace testing;
-using namespace figureTypes;
+using namespace Geometry;
 using namespace std;
 
 struct MultiPointFixture : public testing::Test {
@@ -16,21 +16,21 @@ struct MultiPointFixture : public testing::Test {
   MultiPoint mpAfter;
 
   void SetUp() override {
-    mpBefore.addPoint(Coordinates(3, 1));
-    mpBefore.addPoint(Coordinates(2, 3));
-    mpBefore.addPoint(Coordinates(4, 4));
-    mpBefore.addPoint(Coordinates(6, 2));
-    mpBefore.addPoint(Coordinates(6, 0));
-    mpBefore.addPoint(Coordinates(4, 3));
-    mpBefore.addPoint(Coordinates(3, 2));
+    mpBefore.addObject(Coordinates(3, 1));
+    mpBefore.addObject(Coordinates(2, 3));
+    mpBefore.addObject(Coordinates(4, 4));
+    mpBefore.addObject(Coordinates(6, 2));
+    mpBefore.addObject(Coordinates(6, 0));
+    mpBefore.addObject(Coordinates(4, 3));
+    mpBefore.addObject(Coordinates(3, 2));
 
-    mpAfter.addPoint(Coordinates(2.58579, 0.526613));
-    mpAfter.addPoint(Coordinates(1.17157, 3.35504));
-    mpAfter.addPoint(Coordinates(4, 4.76925));
-    mpAfter.addPoint(Coordinates(6.82843, 1.94083));
-    mpAfter.addPoint(Coordinates(6.82843, -0.887601));
-    mpAfter.addPoint(Coordinates(4, 3.355039));
-    mpAfter.addPoint(Coordinates(2.58579, 1.94083));
+    mpAfter.addObject(Coordinates(2.58579, 0.526613));
+    mpAfter.addObject(Coordinates(1.17157, 3.35504));
+    mpAfter.addObject(Coordinates(4, 4.76925));
+    mpAfter.addObject(Coordinates(6.82843, 1.94083));
+    mpAfter.addObject(Coordinates(6.82843, -0.887601));
+    mpAfter.addObject(Coordinates(4, 3.355039));
+    mpAfter.addObject(Coordinates(2.58579, 1.94083));
   }
 
   void TearDown() override {
@@ -39,14 +39,14 @@ struct MultiPointFixture : public testing::Test {
   }
 };
 
-TEST_F(MultiPointFixture, TestScalingWhenAreaWill2x) {
-  mpBefore.scalingByArea(2, true);
+TEST_F(MultiPointFixture, Scaling1) {
+  mpBefore.scalingByFactor(sqrt(2), true);
 
   EXPECT_EQ(mpBefore == mpAfter, true);
   EXPECT_EQ((mpBefore.getScale() - 1.4142) < 0.01, true);
 }
 
-TEST_F(MultiPointFixture, TestScalingWhithFactor) {
+TEST_F(MultiPointFixture, Scaling2) {
   mpAfter.scalingByFactor(0.707106, true);
 
   EXPECT_EQ(mpBefore == mpAfter, true);
@@ -57,19 +57,10 @@ TEST(MultiPointTests, TestConstructors) {
   MultiPoint mp1;
   MultiPoint mp2("name2");
 
-  char *name = new char[20];
-  strcpy(name, "name3");
-
-  MultiPoint mp3(name);
-  delete[] name;
-
-  EXPECT_EQ(mp1.getName(), "");
-  EXPECT_EQ(mp2.getName(), "name2");
-  EXPECT_EQ(mp3.getName(), "name3");
-  EXPECT_EQ(mp3.getType(), MULTI_POINT);
+  EXPECT_EQ(mp1.getName(), nullptr);
+  EXPECT_EQ(mp2.getName()->compare("name2"), 0);
   EXPECT_EQ(mp2.getType(), MULTI_POINT);
   EXPECT_EQ(mp1.getType(), MULTI_POINT);
-  EXPECT_EQ(mp3.getProperty("NAME"), "name3");
 }
 
 TEST(MultiPointTests, TestEquals) {
@@ -84,39 +75,39 @@ TEST(MultiPointTests, TestEquals) {
   Point p1("p");
   Point p2("p");
 
-  mp1.addPoint(p1);
-  mp1.addPoint(p2);
-  mp2.addPoint(p1);
-  mp2.addPoint(p2);
+  mp1.addObject(p1);
+  mp1.addObject(p2);
+  mp2.addObject(p1);
+  mp2.addObject(p2);
 
-  mp3.addPoint(p1);
-  mp4.addPoint(p2);
-  mp4.addPoint(p1);
-  mp3.addPoint(p2);
+  mp3.addObject(p1);
+  mp4.addObject(p2);
+  mp4.addObject(p1);
+  mp3.addObject(p2);
 
-  mp5.addPoint(p1);
+  mp5.addObject(p1);
   p2.setX(111);
-  mp5.addPoint(p2);
+  mp5.addObject(p2);
 
   EXPECT_EQ(mp1 == mp2, true);
   EXPECT_EQ(mp3 == mp4, true);
   EXPECT_EQ(mp1 == mp4, false);
   EXPECT_EQ(mp6 == mp7, false);
   EXPECT_EQ(mp4 == mp5, false);
-  EXPECT_EQ(mp4.getPoints().size(), 2);
+  EXPECT_EQ(mp4.end() - mp4.begin(), 2);
   EXPECT_EQ(mp5.isContains(p2), true);
   EXPECT_EQ(mp5.isContains(p1), true);
   EXPECT_EQ(mp4.isContains(p2), false);
 
   mp4.clear();
-  EXPECT_EQ(mp4.getPoints().size(), 0);
+  EXPECT_EQ(mp4.end() - mp4.begin(), 0);
 }
 
 //#include "ParsersAll.h"
-TEST_F(MultiPointFixture, TestSerializeAndDesirealize) {
-  /*mpBefore.scalingByArea(2, true);
+// TEST_F(MultiPointFixture, TestSerializeAndDesirealize) {
+/*mpBefore.scalingByArea(2, true);
 
-    EXPECT_EQ(mpBefore == mpAfter, true);*/
+  EXPECT_EQ(mpBefore == mpAfter, true);*/
 
 /* rapidjson::StringBuffer sb;
  rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);

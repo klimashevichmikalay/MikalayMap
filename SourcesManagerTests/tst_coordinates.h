@@ -65,4 +65,22 @@ TEST(CoordinatesTests, Ref) {
   EXPECT_EQ(c1.getY(), 13);
 }
 
+TEST(CoordinatesTests, Mult) {
+  Coordinates c1;
+  Coordinates c2;
+
+  c1.refX() = 1;
+  c1.refY() = 3;
+  c2.refY() = 4;
+  c2.refX() = 2;
+
+  c1.mult(2);
+  c2.mult(0.5);
+
+  EXPECT_EQ(c1.getX(), 2);
+  EXPECT_EQ(c1.getY(), 6);
+  EXPECT_EQ(c2.getX(), 1);
+  EXPECT_EQ(c2.getY(), 2);
+}
+
 #endif  // TST_COORDINATES_H

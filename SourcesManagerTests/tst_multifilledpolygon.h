@@ -1,6 +1,6 @@
 #ifndef TST_MULTIFILLEDPOLYGON_H
 #define TST_MULTIFILLEDPOLYGON_H
-/*
+
 #include <gmock/gmock-matchers.h>
 #include <gtest/gtest.h>
 
@@ -8,7 +8,7 @@
 #include "ParsersAll.h"
 
 using namespace testing;
-using namespace figureTypes;
+using namespace Geometry;
 using namespace std;
 
 struct MultiFilledPolygonFixture : public testing::Test {
@@ -22,28 +22,28 @@ struct MultiFilledPolygonFixture : public testing::Test {
   FilledPolygon line6;
 
   void SetUp() override {
-    line1.addCoordinate(Coordinates(3, 1));
-    line1.addCoordinate(Coordinates(2, 3));
-    line1.addCoordinate(Coordinates(4, 4));
-    line2.addCoordinate(Coordinates(6, 2));
-    line2.addCoordinate(Coordinates(6, 0));
-    line2.addCoordinate(Coordinates(4, 3));
-    line3.addCoordinate(Coordinates(3, 2));
+    line1.addObject(Coordinates(3, 1));
+    line1.addObject(Coordinates(2, 3));
+    line1.addObject(Coordinates(4, 4));
+    line2.addObject(Coordinates(6, 2));
+    line2.addObject(Coordinates(6, 0));
+    line2.addObject(Coordinates(4, 3));
+    line3.addObject(Coordinates(3, 2));
 
-    line4.addCoordinate(Coordinates(2.58579, 0.526613));
-    line4.addCoordinate(Coordinates(1.17157, 3.35504));
-    line4.addCoordinate(Coordinates(4, 4.76925));
-    line5.addCoordinate(Coordinates(6.82843, 1.94083));
-    line5.addCoordinate(Coordinates(6.82843, -0.887601));
-    line5.addCoordinate(Coordinates(4, 3.355039));
-    line6.addCoordinate(Coordinates(2.58579, 1.94083));
+    line4.addObject(Coordinates(2.58579, 0.526613));
+    line4.addObject(Coordinates(1.17157, 3.35504));
+    line4.addObject(Coordinates(4, 4.76925));
+    line5.addObject(Coordinates(6.82843, 1.94083));
+    line5.addObject(Coordinates(6.82843, -0.887601));
+    line5.addObject(Coordinates(4, 3.355039));
+    line6.addObject(Coordinates(2.58579, 1.94083));
 
-    mlBefore.addPolygon(line1);
-    mlBefore.addPolygon(line2);
-    mlBefore.addPolygon(line3);
-    mlAfter.addPolygon(line4);
-    mlAfter.addPolygon(line5);
-    mlAfter.addPolygon(line6);
+    mlBefore.addObject(line1);
+    mlBefore.addObject(line2);
+    mlBefore.addObject(line3);
+    mlAfter.addObject(line4);
+    mlAfter.addObject(line5);
+    mlAfter.addObject(line6);
   }
 
   void TearDown() override {
@@ -59,7 +59,7 @@ struct MultiFilledPolygonFixture : public testing::Test {
 };
 
 TEST_F(MultiFilledPolygonFixture, TestScalingWhenAreaWill2x) {
-  mlBefore.scalingByArea(2, true);
+  mlBefore.scalingByFactor(sqrt(2), true);
   EXPECT_EQ(mlBefore == mlAfter, true);
   EXPECT_EQ((mlBefore.getScale() - 1.4142) < 0.01, true);
 }
@@ -70,24 +70,19 @@ TEST_F(MultiFilledPolygonFixture, TestScalingWhithFactor) {
 }
 
 TEST_F(MultiFilledPolygonFixture, TestScalingWhenAreaWillMinus2x) {
-  mlAfter.scalingByArea(0.5, true);
+  mlAfter.scalingByFactor(sqrt(0.5), true);
   EXPECT_EQ(mlBefore == mlAfter, true);
 }
 
 TEST(MultiFilledPolygonStringTest, TestConstructorsAndTypes) {
   MultiFilledPolygon ml1;
   MultiFilledPolygon ml2("name");
-  char *name = new char[10];
-  strcpy(name, "NAME");
-  MultiFilledPolygon ml3(name);
-  delete[] name;
 
-  EXPECT_EQ(ml1.getName(), "");
-  EXPECT_EQ(ml2.getName(), "name");
-  EXPECT_EQ(ml3.getProperty("NAME"), "name");
+  EXPECT_EQ(ml1.getName(), nullptr);
+  EXPECT_EQ(ml2.getName()->compare("name"), 0);
+
   EXPECT_EQ(ml1.getType(), MULTI_FILLED_POLYGON);
   EXPECT_EQ(ml2.getType(), MULTI_FILLED_POLYGON);
-  EXPECT_EQ(ml3.getType(), MULTI_FILLED_POLYGON);
 }
 
 TEST(MultiFilledPolygonTest, TestEquals) {
@@ -98,24 +93,24 @@ TEST(MultiFilledPolygonTest, TestEquals) {
   FilledPolygon line3;
   FilledPolygon line4;
 
-  line1.addCoordinate(Coordinates(3, 1));
-  line2.addCoordinate(Coordinates(2, 3));
-  line1.addCoordinate(Coordinates(4, 4));
-  line2.addCoordinate(Coordinates(6, 2));
-  line2.addCoordinate(Coordinates(6, 0));
-  line3.addCoordinate(Coordinates(3, 1));
-  line4.addCoordinate(Coordinates(2, 3));
-  line3.addCoordinate(Coordinates(4, 4));
-  line4.addCoordinate(Coordinates(6, 2));
-  line4.addCoordinate(Coordinates(6, 0));
-  ml1.addPolygon(line1);
-  ml1.addPolygon(line2);
-  ml2.addPolygon(line3);
-  ml2.addPolygon(line4);
+  line1.addObject(Coordinates(3, 1));
+  line2.addObject(Coordinates(2, 3));
+  line1.addObject(Coordinates(4, 4));
+  line2.addObject(Coordinates(6, 2));
+  line2.addObject(Coordinates(6, 0));
+  line3.addObject(Coordinates(3, 1));
+  line4.addObject(Coordinates(2, 3));
+  line3.addObject(Coordinates(4, 4));
+  line4.addObject(Coordinates(6, 2));
+  line4.addObject(Coordinates(6, 0));
+  ml1.addObject(line1);
+  ml1.addObject(line2);
+  ml2.addObject(line3);
+  ml2.addObject(line4);
 
   EXPECT_EQ(ml1 == ml2, true);
 }
-
+/*
 //#include "ParsersAll.h"
 TEST_F(MultiFilledPolygonFixture, TestSerializeAndDesirealize) {
   rapidjson::StringBuffer sb;
@@ -136,7 +131,7 @@ TEST_F(MultiFilledPolygonFixture, TestSerializeAndDesirealize2) {
   EXPECT_EQ(mlBefore == mlAfter, true);
 }
 
-/*TEST_F(MultiFilledPolygonFixture, TestGetFirstByProp) {
+TEST_F(MultiFilledPolygonFixture, TestGetFirstByProp) {
   line1.addProperty("prop1", "val1");
   line1.addProperty("prop2", "val2");
   line1.addProperty("prop3", "val3");
@@ -185,9 +180,5 @@ TEST_F(MultiFilledPolygonFixture, TestSerializeAndDesirealize2) {
       mlBefore.getFirstByPropetry("propergtrg10", "val1rgrtgr0") == nullptr,
       true);
 }
-
-
-
 */
-
 #endif  // TST_MULTIFILLEDPOLYGON_H

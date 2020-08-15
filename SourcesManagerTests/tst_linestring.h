@@ -55,6 +55,34 @@ TEST_F(LineFixture, Scaling3) {
   EXPECT_EQ(lsBefore == lsAfter, false);
 }
 
+TEST_F(LineFixture, Scaling4) {
+  LineString l1, l2;
+
+  l1.addObject(Coordinates(1, 2));
+  l1.addObject(Coordinates(2, 1));
+  l2 = l1;
+  l1.scalingByFactor(2, true);
+  l1.scalingByFactor(0.5, true);
+
+  EXPECT_EQ(l1 == l2, true);
+}
+
+TEST_F(LineFixture, AssigmentAndCopyConstr) {
+  LineString l1;
+  l1.addProperty("prop0", "val0");
+  l1.addProperty("prop1", "val1");
+
+  LineString l2 = l1;
+  LineString l3, l4;
+  l4 = l3 = l2;
+  l4.setName("newName");
+
+  EXPECT_EQ(l3 == l1, true);
+  EXPECT_EQ(l2 == l1, true);
+  EXPECT_EQ(l4 == l3, false);
+  EXPECT_EQ(l4 == l2, false);
+}
+
 TEST(LineTests, LineSetGet) {
   LineString ls("HELLO");
   ls.addProperty("pROp", "val");
@@ -77,6 +105,11 @@ TEST_F(LineFixture, IsContains) {
   EXPECT_EQ(lsBefore.isContains(Coordinates(5, 5)), false);
   EXPECT_EQ(lsBefore.isContains(Coordinates(6, 3)), false);
   EXPECT_EQ(lsBefore.isContains(Coordinates(10, 10)), false);
+}
+
+TEST_F(LineFixture, CountObjs) {
+  EXPECT_EQ(lsBefore.countObjs(), 7);
+  EXPECT_EQ(lsAfter.countObjs(), 7);
 }
 
 //#include "ParsersAll.h"
