@@ -53,4 +53,5 @@ SOURCES += \
         $$ENTITIES/MultiPoint.cpp \
         $$ENTITIES/MultiLineString.cpp \
         $$ENTITIES/MultiFilledPolygon.cpp \
-        $$ENTITIES/FilledPolygon.cpp
+        $$ENTITIES/FilledPolygon.cpp \
+        $$ENTITIES/Triangle.cpp

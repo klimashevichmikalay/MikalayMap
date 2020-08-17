@@ -19,6 +19,7 @@ HEADERS += \
     entities/IScale.h \
     entities/ISumCounter.h \
     entities/MultiFigure.h \
+    entities/MultiFigureImpl.h \
     entities/MultiFilledPolygon.h \
     entities/MultiLineString.h \
     entities/MultiPoint.h \
@@ -51,6 +52,7 @@ SOURCES += \
     entities/MultiPoint.cpp \
     entities/LineString.cpp \
     entities/Point.cpp \
+    entities/Triangle.cpp \
     main.cpp
 
 DISTFILES += \
