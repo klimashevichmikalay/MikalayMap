@@ -1,28 +1,23 @@
 #ifndef MULTILINESTRING_H
 #define MULTILINESTRING_H
-/*
-#include "LineString.h"
 
-class MultiLineString : public BaseFigure, public Scale {
+#include "BaseFigure.h"
+#include "LineString.h"
+#include "MultiFigure.h"
+
+namespace Geometry {
+
+class MultiLineString : public BaseFigure,
+                        public MultiFigure<LineString*, LineString> {
  public:
-  std::vector<LineString> getLines();
-  bool isContains(LineString _line);
-  void addLine(LineString _line);
   void clear();
 
   MultiLineString();
-  MultiLineString(const char *_name);
-  MultiLineString(const std::string &_name);
-  bool operator==(MultiLineString obj);
+  MultiLineString(const std::string& name);
+  ~MultiLineString();
 
-  Coordinates getAvrXY();
-  void multCoordinates(float _factor);
-  void minusCoordinates(Coordinates _delta);
-  void scalingByArea(float _area, bool _isShift);
-  void scalingByFactor(float _scale, bool _isShift);
-
- protected:
-  std::vector<LineString> lines;
+  bool operator==(const MultiLineString& obj);
+  void operator=(const MultiLineString& obj);
 };
-*/
+}  // namespace Geometry
 #endif  // MULTILINESTRING_H

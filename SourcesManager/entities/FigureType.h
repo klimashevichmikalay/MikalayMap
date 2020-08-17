@@ -14,7 +14,6 @@ enum FigureType {
   MULTI_FILLED_POLYGON,
   TRIANGLE,
   TYPES_SZ
-
 };
 
 }

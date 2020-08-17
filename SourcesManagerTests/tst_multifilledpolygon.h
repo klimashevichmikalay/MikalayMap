@@ -60,17 +60,20 @@ struct MultiFilledPolygonFixture : public testing::Test {
 
 TEST_F(MultiFilledPolygonFixture, TestScalingWhenAreaWill2x) {
   mlBefore.scalingByFactor(sqrt(2), true);
+
   EXPECT_EQ(mlBefore == mlAfter, true);
   EXPECT_EQ((mlBefore.getScale() - 1.4142) < 0.01, true);
 }
 
 TEST_F(MultiFilledPolygonFixture, TestScalingWhithFactor) {
   mlAfter.scalingByFactor(0.707106, true);
+
   EXPECT_EQ(mlBefore == mlAfter, true);
 }
 
 TEST_F(MultiFilledPolygonFixture, TestScalingWhenAreaWillMinus2x) {
   mlAfter.scalingByFactor(sqrt(0.5), true);
+
   EXPECT_EQ(mlBefore == mlAfter, true);
 }
 
@@ -80,7 +83,6 @@ TEST(MultiFilledPolygonStringTest, TestConstructorsAndTypes) {
 
   EXPECT_EQ(ml1.getName(), nullptr);
   EXPECT_EQ(ml2.getName()->compare("name"), 0);
-
   EXPECT_EQ(ml1.getType(), MULTI_FILLED_POLYGON);
   EXPECT_EQ(ml2.getType(), MULTI_FILLED_POLYGON);
 }

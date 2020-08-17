@@ -16,6 +16,8 @@ IScale::IScale(const IScale& obj) {
   scale = obj.scale;
 }
 
+IScale::~IScale() {}
+
 bool IScale::operator==(const IScale& obj) const {
   return scale == obj.scale;
 }

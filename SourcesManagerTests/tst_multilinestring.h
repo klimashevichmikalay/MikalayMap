@@ -63,6 +63,7 @@ TEST_F(MultiLineFixture, Scaling1) {
 
 TEST_F(MultiLineFixture, Scaling2) {
   mlAfter.scalingByFactor(0.666666, true);
+
   EXPECT_EQ(mlBefore == mlAfter, true);
 }
 
@@ -96,6 +97,7 @@ TEST(MultiLineStringTest, TestConstructorsAndTypes) {
 TEST(MultiLineStringTest, TestEquals) {
   MultiLineString ml1;
   MultiLineString ml2;
+  MultiLineString ml3;
   LineString line1;
   LineString line2;
   LineString line3;
@@ -115,12 +117,11 @@ TEST(MultiLineStringTest, TestEquals) {
   ml1.addObject(line2);
   ml2.addObject(line3);
   ml2.addObject(line4);
-
-  EXPECT_EQ(ml1 == ml2, true);
-
+  ml3 = ml2;
   ml2.addObject(LineString());
 
-  EXPECT_EQ(ml1 == ml2, false);
+  EXPECT_TRUE(ml1 == ml3);
+  EXPECT_FALSE(ml1 == ml2);
 }
 
 /*#include "ParsersAll.h"

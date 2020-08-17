@@ -42,16 +42,19 @@ struct LineFixture : public testing::Test {
 
 TEST_F(LineFixture, Scaling1) {
   lsBefore.scalingByFactor(0.707106, false);
+
   EXPECT_EQ(lsBefore == lsAfter, false);
 }
 
 TEST_F(LineFixture, Scaling2) {
   lsAfter.scalingByFactor(1.160187, false);
+
   EXPECT_EQ(lsBefore == lsAfter, false);
 }
 
 TEST_F(LineFixture, Scaling3) {
   lsAfter.scalingByFactor(sqrt(2.0), true);
+
   EXPECT_EQ(lsBefore == lsAfter, false);
 }
 
@@ -69,9 +72,9 @@ TEST_F(LineFixture, Scaling4) {
 
 TEST_F(LineFixture, AssigmentAndCopyConstr) {
   LineString l1;
+
   l1.addProperty("prop0", "val0");
   l1.addProperty("prop1", "val1");
-
   LineString l2 = l1;
   LineString l3, l4;
   l4 = l3 = l2;
@@ -85,8 +88,11 @@ TEST_F(LineFixture, AssigmentAndCopyConstr) {
 
 TEST(LineTests, LineSetGet) {
   LineString ls("HELLO");
+
   ls.addProperty("pROp", "val");
+
   EXPECT_EQ(ls.getName()->compare("hello"), 0);
+  EXPECT_EQ(ls.getProperty("prOP")->compare("val"), 0);
   EXPECT_EQ(ls.getProperty("prop")->compare("val"), 0);
   EXPECT_EQ(ls.getProperty("name")->compare("hello"), 0);
   EXPECT_EQ(ls.getProperty("namegrt"), nullptr);
@@ -101,7 +107,6 @@ TEST_F(LineFixture, IsContains) {
   EXPECT_EQ(lsBefore.isContains(Coordinates(6, 0)), true);
   EXPECT_EQ(lsBefore.isContains(Coordinates(4, 3)), true);
   EXPECT_EQ(lsBefore.isContains(Coordinates(3, 2)), true);
-
   EXPECT_EQ(lsBefore.isContains(Coordinates(5, 5)), false);
   EXPECT_EQ(lsBefore.isContains(Coordinates(6, 3)), false);
   EXPECT_EQ(lsBefore.isContains(Coordinates(10, 10)), false);

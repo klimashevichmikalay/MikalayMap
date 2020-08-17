@@ -14,8 +14,8 @@ TEST(CoordinatesTests, Compare) {
   Coordinates c1(31.4999, -0.12955);
   Coordinates c2(31.4949, -0.12955);
 
-  EXPECT_EQ(c == c1, true);
-  EXPECT_EQ(c2 == c1, false);
+  EXPECT_TRUE(c == c1);
+  EXPECT_FALSE(c2 == c1);
 }
 
 TEST(CoordinatesTests, DefaultConstr) {
@@ -53,11 +53,12 @@ TEST(CoordinatesTests, Assigment) {
 
   EXPECT_EQ(c1.getX(), 22.45);
   EXPECT_EQ(c1.getY(), 11.446);
-  EXPECT_EQ(c1 == c, true);
+  EXPECT_TRUE(c1 == c);
 }
 
 TEST(CoordinatesTests, Ref) {
   Coordinates c1;
+
   c1.refX() = 14;
   c1.refY() = 13;
 

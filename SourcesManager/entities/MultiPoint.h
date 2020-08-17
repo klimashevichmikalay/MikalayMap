@@ -3,45 +3,21 @@
 #include <vector>
 
 #include "FigureType.h"
-#include "IScale.h"
+#include "MultiFigure.h"
 #include "Point.h"
-/*
-class MultiPoint : public BaseFigure, public Scale {
+
+namespace Geometry {
+
+class MultiPoint : public BaseFigure, public MultiFigure<Point*, Point> {
  public:
-  std::vector<Point> getPoints();
-  bool isContains(Point _point);
-  void addPoint(Point _point);
   void clear();
 
   MultiPoint();
-  MultiPoint(const char *_name);
-  MultiPoint(const std::string &_name);
-  bool operator==(MultiPoint obj);
-  Coordinates getAvrXY();
-  void multCoordinates(float _factor);
-  void minusCoordinates(Coordinates _delta);
-  void scalingByArea(float _area, bool _isShift);
-  void scalingByFactor(float _scale, bool _isShift);
+  MultiPoint(const std::string& name);
+  ~MultiPoint();
 
-  Point *getFirstByPropetry(std::string propName, std::string propVal) {
-    Point *result = new Point;
-
-    for (size_t i = 0; i < points.size(); i++) {
-      std::string prop = points[i].getProperty(propName);
-      if (prop.compare(propVal) == 0) {
-        *result = points[i];
-
-        result->setProperties(points[i].getProperties());
-        result->setScale(points[i].getScale());
-
-        return result;
-      }
-    }
-    return nullptr;
-  }
-
- private:
-  std::vector<Point> points;
+  void operator=(const MultiPoint& obj);
+  bool operator==(const MultiPoint& obj);
 };
-*/
+}  // namespace Geometry
 #endif  // MULTIPOINT_H

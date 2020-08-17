@@ -42,30 +42,41 @@ struct PolygonFixture : public testing::Test {
 TEST_F(PolygonFixture, Scaling1) {
   pBefore.scalingByFactor(1.5, true);
 
-  EXPECT_EQ(pBefore == pWithShift, true);
-  EXPECT_EQ(pBefore == pNotShift, false);
+  EXPECT_TRUE(pBefore == pWithShift);
+  EXPECT_FALSE(pBefore == pNotShift);
 }
 
 TEST_F(PolygonFixture, Scaling2) {
   pNotShift.scalingByFactor(0.66666, false);
-  EXPECT_EQ(pBefore == pNotShift, true);
-  EXPECT_EQ(fabs(pNotShift.getScale() - 0.666666) <= 0.01, true);
+
+  EXPECT_TRUE(pBefore == pNotShift);
+  EXPECT_TRUE(fabs(pNotShift.getScale() - 0.666666) <= 0.01);
 }
 
 TEST_F(PolygonFixture, Scaling3) {
   pBefore.scalingByFactor(1.5, false);
-  EXPECT_EQ(pBefore == pNotShift, true);
-  EXPECT_EQ(fabs(pBefore.getScale() - 1.5) <= 0.01, true);
+
+  EXPECT_TRUE(pBefore == pNotShift);
+  EXPECT_TRUE(fabs(pBefore.getScale() - 1.5) <= 0.01);
 }
 
 TEST_F(PolygonFixture, Scaling5) {
   pWithShift.scalingByFactor(0.66666, true);
-  EXPECT_EQ(pBefore == pWithShift, true);
+
+  EXPECT_TRUE(pBefore == pWithShift);
   EXPECT_EQ(pWithShift.getScale(), 0.66666);
+}
+
+TEST_F(PolygonFixture, NotEqual) {
+  pWithShift.scalingByFactor(0.66666, true);
+  pBefore.addObject(Coordinates(123, 999));
+
+  EXPECT_FALSE(pBefore == pWithShift);
 }
 
 TEST(FilledPolygonTests, TestTypeNameProp) {
   FilledPolygon fp("somename");
+
   fp.addProperty("prop", "val");
 
   EXPECT_EQ(fp.getName()->compare("somename"), 0);
@@ -75,20 +86,22 @@ TEST(FilledPolygonTests, TestTypeNameProp) {
 
 TEST(FilledPolygonTests, TestGetStartGetEnd) {
   FilledPolygon fp;
+
   fp.addObject(Coordinates(1, 2));
   fp.addObject(Coordinates(3, 4));
 
-  EXPECT_EQ(**fp.cbegin() == Coordinates(1, 2), true);
-  EXPECT_EQ(**(fp.cend() - 1) == Coordinates(3, 4), true);
+  EXPECT_TRUE(**fp.cbegin() == Coordinates(1, 2));
+  EXPECT_TRUE(**(fp.cend() - 1) == Coordinates(3, 4));
   EXPECT_EQ(fp.getType(), FILLED_POLYGON);
 }
 
 TEST(FilledPolygonTests, TestOneCoordinate) {
   FilledPolygon fp;
+
   fp.addObject(Coordinates(1, 2));
 
-  EXPECT_EQ(**fp.cbegin() == Coordinates(1, 2), true);
-  EXPECT_EQ(**(fp.cend() - 1) == Coordinates(1, 2), true);
+  EXPECT_TRUE(**fp.cbegin() == Coordinates(1, 2));
+  EXPECT_TRUE(**(fp.cend() - 1) == Coordinates(1, 2));
 }
 
 TEST(FilledPolygonTests, TestEquals) {
@@ -99,34 +112,35 @@ TEST(FilledPolygonTests, TestEquals) {
   FilledPolygon fp5("fp4");
   FilledPolygon fp6("fp6");
   FilledPolygon fp7("fp7");
+
   fp4.addObject(Coordinates(1, 4));
   fp4.addObject(Coordinates(2, 8));
   fp5.addObject(Coordinates(1, 4));
   fp5.addObject(Coordinates(2, 8));
 
-  EXPECT_EQ(fp1 == fp2, true);
-  EXPECT_EQ(fp4 == fp5, true);
-  EXPECT_EQ(fp1 == fp3, false);
-  EXPECT_EQ(fp1 == fp4, false);
-  EXPECT_EQ(fp7 == fp6, false);
+  EXPECT_TRUE(fp1 == fp2);
+  EXPECT_TRUE(fp4 == fp5);
+  EXPECT_FALSE(fp1 == fp3);
+  EXPECT_FALSE(fp1 == fp4);
+  EXPECT_FALSE(fp7 == fp6);
 }
 
 TEST_F(PolygonFixture, TestIsInPolygon) {
-  Coordinates c1(2, 2);    // t
-  Coordinates c2(4, 2);    // t
-  Coordinates c3(5, 3);    // t
-  Coordinates c4(3, 4);    // f
-  Coordinates c5(5, 0.5);  // f
-  Coordinates c6(1, 2);    // f
-  Coordinates c7(4, 1.5);  // f
+  Coordinates c1(2, 2);
+  Coordinates c2(4, 2);
+  Coordinates c3(5, 3);
+  Coordinates c4(3, 4);
+  Coordinates c5(5, 0.5);
+  Coordinates c6(1, 2);
+  Coordinates c7(4, 1.5);
 
-  EXPECT_EQ(pBefore.isContains(c1), true);
-  EXPECT_EQ(pBefore.isContains(c2), true);
-  EXPECT_EQ(pBefore.isContains(c3), true);
-  EXPECT_EQ(pBefore.isContains(c4), true);
-  EXPECT_EQ(pBefore.isContains(c5), false);
-  EXPECT_EQ(pBefore.isContains(c6), false);
-  EXPECT_EQ(pBefore.isContains(c7), false);
+  EXPECT_TRUE(pBefore.isContains(c1));
+  EXPECT_TRUE(pBefore.isContains(c2));
+  EXPECT_TRUE(pBefore.isContains(c3));
+  EXPECT_TRUE(pBefore.isContains(c4));
+  EXPECT_FALSE(pBefore.isContains(c5));
+  EXPECT_FALSE(pBefore.isContains(c6));
+  EXPECT_FALSE(pBefore.isContains(c7));
 }
 
 /*

@@ -49,7 +49,7 @@ SOURCES += \
         $$ENTITIES/BaseFigure.cpp \
         $$ENTITIES/Point.cpp \
         $$ENTITIES/LineString.cpp \
-        $$ENTITIES/IScale.cpp \        
+        $$ENTITIES/IScale.cpp \
         $$ENTITIES/MultiPoint.cpp \
         $$ENTITIES/MultiLineString.cpp \
         $$ENTITIES/MultiFilledPolygon.cpp \

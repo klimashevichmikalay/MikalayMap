@@ -70,6 +70,12 @@ Point::Point(const std::string& name, const Coordinates& newlocation)
   setLocation(newlocation);
 }
 
+void Point::clear() {
+  clearPropetries();
+  if (location)
+    delete location;
+}
+
 Point::Point(const Point& obj) : BaseFigure(obj), IScale(obj) {
   if (obj.location)
     setLocation(*obj.location);
@@ -80,6 +86,8 @@ Point::Point(const Point& obj) : BaseFigure(obj), IScale(obj) {
 Point::~Point() {
   if (location)
     delete location;
+
+  clearPropetries();
 }
 
 Point& Point::operator=(const Point& obj) {
@@ -95,10 +103,6 @@ bool Point::operator==(const Point& obj) const {
          BaseFigure::operator==(obj);
 }
 
-Coordinates Point::countSumXY() const {
-  return *location;
-}
-
 bool Point::checkLocation() const {
   if (location)
     return true;
@@ -108,4 +112,15 @@ bool Point::checkLocation() const {
 
 void Point::defInit() {
   location = new Coordinates(0, 0);
+}
+
+Coordinates Point::countSum() const {
+  if (location)
+    return *location;
+
+  return Coordinates(0, 0);
+}
+
+unsigned Point::countObjs() const {
+  return 1;
 }

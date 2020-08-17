@@ -12,6 +12,7 @@ using namespace std;
 
 TEST(BaseFigureTests, BaseFigureName) {
   BaseFigure bf("somename", POINT);
+
   bf.setName("somename2");
 
   EXPECT_EQ(bf.getName()->compare("somename2"), 0);
@@ -88,6 +89,7 @@ TEST(BaseFigureTests, BaseFigureDefaultConstructor) {
 
 TEST(BaseFigureTests, BaseFigureInitWithType) {
   BaseFigure bf(LINE_STR);
+
   EXPECT_EQ(bf.getType(), LINE_STR);
 }
 
@@ -159,6 +161,7 @@ TEST(BaseFigureTests, BaseFigureOperator) {
 
 TEST(BaseFigureTests, BaseFigureCopyConstr1) {
   BaseFigure bf2(LINE_STR);
+
   bf2.addProperty("prop1", "val1");
   bf2.addProperty("prop2", "val2");
   bf2.addProperty("prop3", "val3");
@@ -169,14 +172,15 @@ TEST(BaseFigureTests, BaseFigureCopyConstr1) {
   EXPECT_EQ(bf1.getProperty("prop2")->compare("val2"), 0);
   EXPECT_EQ(bf1.getProperty("prop3")->compare("val3"), 0);
   EXPECT_EQ(bf1.getType(), LINE_STR);
-  EXPECT_EQ(bf1 == bf2, true);
+  EXPECT_TRUE(bf1 == bf2);
   bf2.addProperty("prop1", "val12fvge3");
   EXPECT_EQ(bf1.getProperty("prop1")->compare("val123"), 0);
-  EXPECT_EQ(bf1 == bf2, false);
+  EXPECT_FALSE(bf1 == bf2);
 }
 
 TEST(BaseFigureTests, BaseFigureCopyConstr2) {
   BaseFigure bf2(LINE_STR);
+
   bf2.addProperty("prop1", "val1");
   bf2.addProperty("prop2", "val2");
   bf2.addProperty("prop3", "val3");
@@ -187,9 +191,9 @@ TEST(BaseFigureTests, BaseFigureCopyConstr2) {
   EXPECT_EQ(bf1.getProperty("prop2")->compare("val2"), 0);
   EXPECT_EQ(bf1.getProperty("prop3")->compare("val3"), 0);
   EXPECT_EQ(bf1.getType(), LINE_STR);
-  EXPECT_EQ(bf1 == bf2, true);
+  EXPECT_TRUE(bf1 == bf2);
   bf2.addProperty("prop3431", "val12fvge3");
-  EXPECT_EQ(bf1 == bf2, false);
+  EXPECT_FALSE(bf1 == bf2);
 }
 
 TEST(BaseFigureTests, BaseFigureiIsHasPropetry) {
@@ -198,11 +202,11 @@ TEST(BaseFigureTests, BaseFigureiIsHasPropetry) {
   bf.addProperty("prop2", "val2");
   bf.addProperty("prop3", "val3ee");
 
-  EXPECT_EQ(bf.isHasProperty("prop1"), true);
-  EXPECT_EQ(bf.isHasProperty("prop1", "val1"), true);
-  EXPECT_EQ(bf.isHasProperty("prop3", "val3ee"), true);
-  EXPECT_EQ(bf.isHasProperty("prop1", "vagfgfl1"), false);
-  EXPECT_EQ(bf.isHasProperty("propgr1"), false);
+  EXPECT_TRUE(bf.isHasProperty("prop1"));
+  EXPECT_TRUE(bf.isHasProperty("prop1", "val1"));
+  EXPECT_TRUE(bf.isHasProperty("prop3", "val3ee"));
+  EXPECT_FALSE(bf.isHasProperty("prop1", "vagfgfl1"));
+  EXPECT_FALSE(bf.isHasProperty("propgr1"));
 }
 
 #endif  // TST_BASEFIGURE_H

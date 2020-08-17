@@ -1,7 +1,7 @@
 #ifndef ENTITIESALL_H
 #define ENTITIESALL_H
 
-#include "Algorithms.h"
+#include "GeometryAlgorithms.h"
 #include "BaseFigure.h"
 #include "Coordinates.h"
 #include "GeometryConstants.h"

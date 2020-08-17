@@ -1,12 +1,15 @@
 #ifndef COORDINATES_H
 #define COORDINATES_H
 #include "IScale.h"
+#include "ISumCounter.h"
+
 namespace Geometry {
 
-class Coordinates : public IScale {
+class Coordinates : public IScale, public ISumCounter {
  public:
   double getX() const;
   double getY() const;
+
   double& refX();
   double& refY();
 
@@ -15,9 +18,15 @@ class Coordinates : public IScale {
 
   double getProportionXY() const;
 
+  virtual void shift(const Coordinates& delta) override;
+  virtual void scalingByFactor(const double& factor, bool isShift) override;
+  virtual void mult(double factor) override;
+  virtual Coordinates countSum() const override;
+  virtual unsigned countObjs() const override;
+
   Coordinates();
   Coordinates(double x, double y);
-  ~Coordinates() {}
+  ~Coordinates();
 
   bool operator==(const Coordinates& obj) const;
   Coordinates& operator+=(const Coordinates& obj);
@@ -25,27 +34,7 @@ class Coordinates : public IScale {
   Coordinates& operator-=(const Coordinates& obj);
   Coordinates& operator/=(double f);
   Coordinates& operator*=(double f);
-
-  Coordinates& operator=(const Coordinates& obj) {
-    X = obj.X;
-    Y = obj.Y;
-    return *this;
-  }
-
-  virtual void scalingByFactor(const double& factor, bool isShift) {
-    scale *= factor;
-
-    if (isShift)
-      return;
-    else
-      *this *= factor;
-  }
-
-  void mult(double factor) { *this *= factor; }
-
-  void shift(const Coordinates& delta) { *this += delta; }
-
-  Coordinates countSumXY() const { return *this; }
+  Coordinates& operator=(const Coordinates& obj);
 
  private:
   double X;

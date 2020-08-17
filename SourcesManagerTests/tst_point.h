@@ -14,6 +14,7 @@ using namespace Geometry;
 
 TEST(PointTests, GetSetLocation) {
   Point p;
+
   p.setLocation(Coordinates(12, 14));
 
   EXPECT_EQ(p.getX(), 12);
@@ -69,6 +70,7 @@ TEST(PointTests, Shift) {
 
 TEST(PointTests, Assign1) {
   Point p;
+
   p.setName("name");
   p.addProperty("prop0", "value0");
   p.addProperty("prop1", "value1");
@@ -102,6 +104,7 @@ TEST(PointTests, Assign1) {
 
 TEST(PointTests, PointTestSettersGettersProps) {
   Point p;
+
   p.setName("name");
   p.addProperty("prop0", "value0");
   p.addProperty("prop1", "value1");
@@ -123,9 +126,9 @@ TEST(PointTests, TestCompare) {
   Point p2("point", Coordinates(1, 2));
   Point p3("point3", Coordinates(1, 2));
   Point p4("point", Coordinates(2, 2));
-
   Point p5;
   Point p6;
+
   p6.setScale(0.8);
 
   EXPECT_EQ(p5 == p6, false);

@@ -3,12 +3,14 @@
 #include <algorithm>
 #include <vector>
 
+#include "Coordinates.h"
 #include "IScale.h"
-#include "SumCounter.h"
+#include "ISumCounter.h"
+
 namespace Geometry {
 
 template <typename PType, typename VType>
-class MultiFigure : public IScale, public SumCounter {
+class MultiFigure : public IScale, public ISumCounter {
  public:
   using iterator = typename std::vector<PType>::iterator;
   using citerator = typename std::vector<PType>::const_iterator;
@@ -31,9 +33,10 @@ class MultiFigure : public IScale, public SumCounter {
   }
 
   void addObject(const VType& obj) {
-    summXY += obj.countSumXY();
-    PType toAdd = new VType;
-    *toAdd = obj;
+    curSum += obj.countSum();
+    objsNum += obj.countObjs();
+
+    PType toAdd = new VType(obj);
     objects.push_back(toAdd);
   }
 
@@ -48,28 +51,37 @@ class MultiFigure : public IScale, public SumCounter {
         obj->mult(factor);
     });
 
+    curSum = countSum();
+
     if (isshift) {
-      Coordinates curAvr = getAvrXY();
-      curAvr -= oldAvr;
-      curAvr.refX() = -curAvr.refX();
-      curAvr.refY() = -curAvr.refY();
-      shift(curAvr);
+      Coordinates delta = getAvrXY() -= oldAvr;
+      delta.refX() = -delta.refX();
+      delta.refY() = -delta.refY();
+      shift(delta);
+      curSum = countSum();
     }
   }
 
   void shift(const Coordinates& delta) {
     std::for_each(objects.begin(), objects.end(), [&](PType& obj) {
       if (obj)
-        *obj += delta;
+        obj->shift(delta);
     });
   }
 
-  Coordinates countSumXY() const { return summXY; }
+  Coordinates countSum() const {
+    Coordinates result(0, 0);
+    for_each(objects.begin(), objects.end(), [&](PType obj) {
+      if (obj)
+        result += obj->countSum();
+    });
+    return result;
+  }
 
   Coordinates getAvrXY() {
     Coordinates avr;
-    avr.refX() = summXY.refX() / objects.size();
-    avr.refY() = summXY.refY() / objects.size();
+    avr.refX() = curSum.refX() / objsNum;
+    avr.refY() = curSum.refY() / objsNum;
     return avr;
   }
 
@@ -80,8 +92,20 @@ class MultiFigure : public IScale, public SumCounter {
     });
   }
 
+  unsigned countObjs() const {
+    /* int sz = accumulate(objects.begin(), objects.end(), 0,
+                      [](const PType& obj) { return obj->countSz(); });*/
+
+    int num = 0;
+
+    for (const auto& el : objects)
+      num += el->countObjs();
+
+    return num;
+  }
+
   bool operator==(const MultiFigure& obj) {
-    if (objects.size() != obj.objects.size() || !SumCounter::operator==(obj))
+    if (objects.size() != obj.objects.size())
       return false;
 
     auto objIter = obj.objects.cbegin();
@@ -105,7 +129,7 @@ class MultiFigure : public IScale, public SumCounter {
     return *this;
   }
 
-  MultiFigure() : SumCounter(), IScale() {}
+  MultiFigure() { scale = 1; }
 
   MultiFigure(const MultiFigure& obj) { assing(obj); }
 
@@ -113,13 +137,13 @@ class MultiFigure : public IScale, public SumCounter {
   void clear() {
     for_each(objects.begin(), objects.end(), [](PType& ptr) { delete ptr; });
     objects.clear();
-    resetSum();
+    curSum *= 0;
+    objsNum = 0;
   }
 
   void assing(const MultiFigure& obj) {
     clear();
     IScale::operator=(obj);
-    SumCounter::operator=(obj);
 
     for (const auto& el : obj.objects) {
       if (el)
@@ -131,6 +155,25 @@ class MultiFigure : public IScale, public SumCounter {
   }
 
   std::vector<PType> objects;
+  Coordinates curSum;
+  unsigned objsNum = 0;
 };
+
 }  // namespace Geometry
+
+//#include "MultiFigure.h"
+
+/*using namespace Geometry;
+
+template <typename PType, typename VType>
+using iterator = typename std::vector<PType>::iterator;
+template <typename PType, typename VType>
+using citerator = typename std::vector<PType>::const_iterator;
+
+template <typename PType, typename VType>
+iterator<PType, VType> MultiFigure<PType, VType>::begin() {
+  return objects.begin();
+}
+*/
+// namespace Geometry
 #endif  // MultiFigure_H

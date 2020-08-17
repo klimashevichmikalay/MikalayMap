@@ -33,13 +33,15 @@ class BaseFigure {
   virtual ~BaseFigure();
 
  protected:
+  void clearPropetries();
+
   FigureType type;
   std::map<std::string, std::string*> properties;
 
  private:
   std::string toLower(const std::string& str) const;
-  void clearPropetries();
   void assign(const BaseFigure& obj);
+
   static const std::string NAME_PROP;
 };
 
