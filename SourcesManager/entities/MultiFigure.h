@@ -18,13 +18,15 @@ class MultiFigure : public IScale, public ISumCounter, ICleaner {
 
   iterator begin() { return objects.begin(); }
   iterator end() { return objects.end(); }
-  citerator cbegin() { return objects.cbegin(); }
-  citerator cend() { return objects.cend(); }
+  citerator cbegin() const { return objects.cbegin(); }
+  citerator cend() const { return objects.cend(); }
 
   iterator rbegin() { return objects.rbegin(); }
   iterator rend() { return objects.rend(); }
-  citerator rcbegin() { return objects.rcbegin(); }
-  citerator rcend() { return objects.rcend(); }
+  citerator rcbegin() const { return objects.rcbegin(); }
+  citerator rcend() const { return objects.rcend(); }
+
+  size_t getSZ() const { return objects.cend() - objects.cbegin(); }
 
   void clear();
 

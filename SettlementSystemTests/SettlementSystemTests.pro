@@ -19,10 +19,12 @@ INCLUDEPATH += \
 HEADERS += \
         $$ENTITIES/BaseFigure.h \
         $$ENTITIES/Point.h \
+        $$ENTITIES/MultiFigure.h \
+        $$ENTITIES/MultiFigureImpl.h \
         $$ENTITIES/LineString.h \
         $$ENTITIES/Coordinates.h \
         $$ENTITIES/MultiPoint.h \
-        $$ENTITIES/Scale.h \
+        $$ENTITIES/IScale.h \
         $$ENTITIES/MultiLineString.h \
         $$ENTITIES/MultiFilledPolygon.h \
         $$ENTITIES/Triangle.h \
@@ -34,6 +36,7 @@ HEADERS += \
         tst_core.h \
         tst_permutations.h \
         tst_settlement.h \
+        tst_settlementsystemalgorithms.h \
         tst_setvisiblepoints.h
 
 
@@ -41,9 +44,9 @@ SOURCES += \
         main.cpp \
         $$ENTITIES/Coordinates.cpp \
         $$ENTITIES/BaseFigure.cpp \
-        $$ENTITIES/Point.cpp \
+        $$ENTITIES/Point.cpp \        
         $$ENTITIES/LineString.cpp \
-        $$ENTITIES/Scale.cpp \
+        $$ENTITIES/IScale.cpp \
         $$ENTITIES/MultiPoint.cpp \
         $$ENTITIES/MultiLineString.cpp \
         $$ENTITIES/MultiFilledPolygon.cpp \

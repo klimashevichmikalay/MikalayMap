@@ -88,6 +88,10 @@ bool BaseFigure::isHasProperty(const std::string& propName,
   return ptr ? !(ptr->compare(propValue)) : false;
 }
 
+std::map<std::string, std::string*>& BaseFigure::getProperties() {
+  return properties;
+}
+
 BaseFigure& BaseFigure::operator=(const BaseFigure& obj) {
   assign(obj);
   return *this;

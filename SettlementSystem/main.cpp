@@ -2,13 +2,26 @@
 
 #include <iostream>
 
-#include "ParsersCommand.h"
-#include "PermutationsGenerator.h"
-#include "SSAlgorithms.h"
-#include "SettlementCalculation.h"
+#include "MultiPoint.h"
 
 using namespace std;
+using namespace Geometry;
 
+int main() {
+  MultiPoint mp;
+  mp.addObject(Coordinates(1, 1));
+  mp.addObject(Coordinates(2, 2));
+  mp.addObject(Coordinates(3, 3));
+  mp.addObject(Coordinates(4, 4));
+  mp.addObject(Coordinates(5, 5));
+
+  for (auto it = mp.begin(); it != mp.end(); it++)
+    cout << endl << (*it)->getX() << " " << (*it)->getY();
+
+  cout << endl;
+}
+
+/*
 Point getP(int _heigh, int x, int y) {
   std::string height = std::to_string(_heigh);
   Point p(Coordinates(x, y));
@@ -16,50 +29,50 @@ Point getP(int _heigh, int x, int y) {
   p.addProperty("visible", "false");
 
   return p;
-}
+}*/
 
-int main() {
-  vector<FilledPolygon> lakes;
+// int main() {
+/* vector<FilledPolygon> lakes;
 
-  vector<Point> dem;
+ vector<Point> dem;
 
-  for (int i = 0; i <= 255; i++) {
-    if (i >= 77 && i <= 84) {
-      dem.push_back(getP(15000, (i % 16) * 2, i / 16 * 2));
-      continue;
-    }
+ for (int i = 0; i <= 255; i++) {
+   if (i >= 77 && i <= 84) {
+     dem.push_back(getP(15000, (i % 16) * 2, i / 16 * 2));
+     continue;
+   }
 
-    dem.push_back(getP(100, (i % 16) * 2, i / 16 * 2));
-  }
+   dem.push_back(getP(100, (i % 16) * 2, i / 16 * 2));
+ }
 
-  FilledPolygon lake;
-  lake.addCoordinate(Coordinates(13, 20));
-  lake.addCoordinate(Coordinates(7, 20));
-  lake.addCoordinate(Coordinates(7, 12));
-  lake.addCoordinate(Coordinates(13, 12));
+ FilledPolygon lake;
+ lake.addCoordinate(Coordinates(13, 20));
+ lake.addCoordinate(Coordinates(7, 20));
+ lake.addCoordinate(Coordinates(7, 12));
+ lake.addCoordinate(Coordinates(13, 12));
 
-  lakes.push_back(lake);
+ lakes.push_back(lake);
 
-  ParsersCommand pc;
-  pc.getParser(JSON)->savePoints(dem, "demTest");
-  pc.getParser(JSON)->saveFilledPolygons(lakes, "lakesTest");
-  pc.getParser(JSON)->saveFilledPolygons(lakes, "swTest");
-  pc.getParser(JSON)->saveFilledPolygons(lakes, "badTest");
+ ParsersCommand pc;
+ pc.getParser(JSON)->savePoints(dem, "demTest");
+ pc.getParser(JSON)->saveFilledPolygons(lakes, "lakesTest");
+ pc.getParser(JSON)->saveFilledPolygons(lakes, "swTest");
+ pc.getParser(JSON)->saveFilledPolygons(lakes, "badTest");
 
-  SettlementCalculation sc("lakesTest", "swTest", "badTest", "demTest", 16);
+ SettlementCalculation sc("lakesTest", "swTest", "badTest", "demTest", 16);
 
-  FilledPolygon f;
-  f.addCoordinate(Coordinates(18, 22));
-  f.addCoordinate(Coordinates(19, 20));
-  f.addCoordinate(Coordinates(20, 21));
+ FilledPolygon f;
+ f.addCoordinate(Coordinates(18, 22));
+ f.addCoordinate(Coordinates(19, 20));
+ f.addCoordinate(Coordinates(20, 21));
 
-  vector<Point> settlement =
-      sc.getBestSettlement(f, 0, 120, 70, 2.5, 0, 20, 2, 3, 11, 22, 135);
+ vector<Point> settlement =
+     sc.getBestSettlement(f, 0, 120, 70, 2.5, 0, 20, 2, 3, 11, 22, 135);
 
-  vector<vector<Point>> DEM = sc.getCore()->getDEM();
+ vector<vector<Point>> DEM = sc.getCore()->getDEM();*/
 
-  return 0;
-}
+//  return 0;
+//}
 
 /* FilledPolygon pBefore;
 

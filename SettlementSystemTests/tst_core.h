@@ -9,7 +9,7 @@
 #include "SSConstants.h"
 
 using namespace testing;
-
+/*
 struct Core0Fixture : public testing::Test {
   void SetUp() override {
     vector<Point> v;
@@ -109,5 +109,5 @@ TEST_F(Core1Fixture, TestCore) {
   EXPECT_EQ(core.isBadPoint(p9), true);
   EXPECT_EQ(core.isBadPoint(p10), true);
 }
-
+*/
 #endif  // TST_CORE_H

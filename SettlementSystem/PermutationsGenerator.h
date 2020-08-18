@@ -2,7 +2,7 @@
 #define PERMUTATIONGENERATOR_H
 
 #include <vector>
-
+/*
 using namespace std;
 
 class PermutationsGenerator {
@@ -36,5 +36,5 @@ class PermutationsGenerator {
     return result;
   }
 };
-
+*/
 #endif  // PERMUTATIONGENERATOR_H

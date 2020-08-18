@@ -15,7 +15,7 @@
 #include "Triangle.h"
 
 using namespace std;
-
+/*
 string float2Str(float _f) {
   std::ostringstream ss;
   ss << _f;
@@ -389,5 +389,5 @@ MultiPoint getTZHeights(vector<vector<Point>> DEM, FilledPolygon tz) {
 
   return result;
 }
-
+*/
 #endif  // SSALGORITHMS_H

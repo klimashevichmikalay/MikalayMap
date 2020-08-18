@@ -117,23 +117,4 @@ TEST_F(LineFixture, CountObjs) {
   EXPECT_EQ(lsAfter.countObjs(), 7);
 }
 
-//#include "ParsersAll.h"
-/*TEST_F(LineFixture, TestSerializeAndDesirealize) {
-  rapidjson::StringBuffer sb;
-  rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
-  lineToJSON(lsBefore, writer);
-  LineString line = jsonToLine(sb.GetString());
-
-EXPECT_EQ(lsBefore == line, true);
-}
-TEST_F(LineFixture, TestSerializeAndDesirealize2) {
-    lsBefore.scalingByArea(2, true);
-    rapidjson::StringBuffer sb;
-    rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
-    lineToJSON(lsBefore, writer);
-    LineString line = jsonToLine(sb.GetString());
-
-    EXPECT_EQ(line == lsAfter, true);
-}
-*/
 #endif  // TST_LINESTRING_H

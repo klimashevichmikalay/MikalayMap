@@ -3,7 +3,7 @@
 
 #include "ParsersCommand.h"
 #include "SSConstants.h"
-
+/*
 class Core {
  public:
   Core() {}
@@ -73,5 +73,5 @@ class Core {
   vector<MultiPoint> cities;
   vector<vector<Point>> DEM;
 };
-
+*/
 #endif  // CORE_H

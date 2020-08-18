@@ -3,14 +3,13 @@
 
 #include <iostream>
 
-#include "Algorithms.h"
 #include "Core.h"
 #include "PermutationsGenerator.h"
 #include "SSAlgorithms.h"
 #include "SSConstants.h"
 
 using namespace std;
-class SettlementCalculation {
+/*class SettlementCalculation {
  public:
   /////////////////////
   float width;
@@ -171,124 +170,124 @@ class SettlementCalculation {
 
     return result;
   }
+*/
+// temp.addProperty("DEMXY", size_t2Str(j) + " " + size_t2Str(i));
 
-  // temp.addProperty("DEMXY", size_t2Str(j) + " " + size_t2Str(i));
+/*void genTriangles(MultiPoint TZHeights, size_t shift, Coordinates start) {
+  Point* center = TZHeights.getFirstByPropetry(
+      "DEMXY", size_t2Str(start.getX()) + " " + size_t2Str(start.getY()));
 
-  void genTriangles(MultiPoint TZHeights, size_t shift, Coordinates start) {
-    Point* center = TZHeights.getFirstByPropetry(
-        "DEMXY", size_t2Str(start.getX()) + " " + size_t2Str(start.getY()));
+  Point* up = TZHeights.getFirstByPropetry(
+      "DEMXY",
+      size_t2Str(start.getX()) + " " + size_t2Str(start.getY() + shift));
 
-    Point* up = TZHeights.getFirstByPropetry(
-        "DEMXY",
-        size_t2Str(start.getX()) + " " + size_t2Str(start.getY() + shift));
+  Point* down = TZHeights.getFirstByPropetry(
+      "DEMXY",
+      size_t2Str(start.getX()) + " " + size_t2Str(start.getY() - shift));
 
-    Point* down = TZHeights.getFirstByPropetry(
-        "DEMXY",
-        size_t2Str(start.getX()) + " " + size_t2Str(start.getY() - shift));
+  Point* left = TZHeights.getFirstByPropetry(
+      "DEMXY",
+      size_t2Str(start.getX() - shift) + " " + size_t2Str(start.getY()));
+  Point* right = TZHeights.getFirstByPropetry(
+      "DEMXY",
+      size_t2Str(start.getX() + shift) + " " + size_t2Str(start.getY()));
 
-    Point* left = TZHeights.getFirstByPropetry(
-        "DEMXY",
-        size_t2Str(start.getX() - shift) + " " + size_t2Str(start.getY()));
-    Point* right = TZHeights.getFirstByPropetry(
-        "DEMXY",
-        size_t2Str(start.getX() + shift) + " " + size_t2Str(start.getY()));
+  taggedPeaks.push_back(*center);
 
-    taggedPeaks.push_back(*center);
+  if (center && up && right && !core->isBadPoint(*up) &&
+      !core->isBadPoint(*right) && !core->isBadPoint(*center)) {
+    Triangle temp;
+    temp.addCoordinate(*center);
+    temp.addCoordinate(*up);
+    temp.addCoordinate(*right);
 
-    if (center && up && right && !core->isBadPoint(*up) &&
-        !core->isBadPoint(*right) && !core->isBadPoint(*center)) {
-      Triangle temp;
-      temp.addCoordinate(*center);
-      temp.addCoordinate(*up);
-      temp.addCoordinate(*right);
-
-      if (!isHasThisTriangle(temp)) {
-        triangles.push_back(temp);
-      }
-    }
-
-    if (center && down && right && !core->isBadPoint(*right) &&
-        !core->isBadPoint(*down) && !core->isBadPoint(*center)) {
-      Triangle temp;
-      temp.addCoordinate(*center);
-      temp.addCoordinate(*down);
-      temp.addCoordinate(*right);
-
-      if (!isHasThisTriangle(temp)) {
-        triangles.push_back(temp);
-      }
-    }
-
-    if (center && up && left && !core->isBadPoint(*up) &&
-        !core->isBadPoint(*left) && !core->isBadPoint(*center)) {
-      Triangle temp;
-      temp.addCoordinate(*center);
-      temp.addCoordinate(*up);
-      temp.addCoordinate(*left);
-
-      if (!isHasThisTriangle(temp)) {
-        triangles.push_back(temp);
-      }
-    }
-
-    if (center && down && left && !core->isBadPoint(*down) &&
-        !core->isBadPoint(*left) && !core->isBadPoint(*center)) {
-      Triangle temp;
-      temp.addCoordinate(*center);
-      temp.addCoordinate(*down);
-      temp.addCoordinate(*left);
-
-      if (!isHasThisTriangle(temp)) {
-        triangles.push_back(temp);
-      }
-    }
-
-    if (up && !isPointInVector(taggedPeaks, *up)) {
-      genTriangles(TZHeights, shift,
-                   getCoordinateFromStr(up->getProperty("DEMXY")));
-    }
-
-    if (down && !isPointInVector(taggedPeaks, *down)) {
-      genTriangles(TZHeights, shift,
-                   getCoordinateFromStr(down->getProperty("DEMXY")));
-    }
-
-    if (right && !isPointInVector(taggedPeaks, *right)) {
-      genTriangles(TZHeights, shift,
-                   getCoordinateFromStr(right->getProperty("DEMXY")));
-    }
-
-    if (left && !isPointInVector(taggedPeaks, *left)) {
-      genTriangles(TZHeights, shift,
-                   getCoordinateFromStr(left->getProperty("DEMXY")));
+    if (!isHasThisTriangle(temp)) {
+      triangles.push_back(temp);
     }
   }
 
-  vector<Triangle> getTriangles() { return triangles; }
+  if (center && down && right && !core->isBadPoint(*right) &&
+      !core->isBadPoint(*down) && !core->isBadPoint(*center)) {
+    Triangle temp;
+    temp.addCoordinate(*center);
+    temp.addCoordinate(*down);
+    temp.addCoordinate(*right);
 
-  Core* getCore() { return core; }
-
- private:
-  bool isHasThisTriangle(Triangle t) {
-    for (size_t i = 0; i < triangles.size(); i++) {
-      if (triangles[i] == t)
-        return true;
+    if (!isHasThisTriangle(temp)) {
+      triangles.push_back(temp);
     }
-    return false;
   }
 
-  bool isPointInVector(vector<Point> v, Point _p) {
-    for (size_t i = 0; i < v.size(); i++) {
-      if (v[i] == _p)
-        return true;
+  if (center && up && left && !core->isBadPoint(*up) &&
+      !core->isBadPoint(*left) && !core->isBadPoint(*center)) {
+    Triangle temp;
+    temp.addCoordinate(*center);
+    temp.addCoordinate(*up);
+    temp.addCoordinate(*left);
+
+    if (!isHasThisTriangle(temp)) {
+      triangles.push_back(temp);
     }
-    return false;
   }
 
-  Core* core;
-  vector<Triangle> triangles;
-  vector<Point> taggedPeaks;
-  PermutationsGenerator generator;
-};
+  if (center && down && left && !core->isBadPoint(*down) &&
+      !core->isBadPoint(*left) && !core->isBadPoint(*center)) {
+    Triangle temp;
+    temp.addCoordinate(*center);
+    temp.addCoordinate(*down);
+    temp.addCoordinate(*left);
+
+    if (!isHasThisTriangle(temp)) {
+      triangles.push_back(temp);
+    }
+  }
+
+  if (up && !isPointInVector(taggedPeaks, *up)) {
+    genTriangles(TZHeights, shift,
+                 getCoordinateFromStr(up->getProperty("DEMXY")));
+  }
+
+  if (down && !isPointInVector(taggedPeaks, *down)) {
+    genTriangles(TZHeights, shift,
+                 getCoordinateFromStr(down->getProperty("DEMXY")));
+  }
+
+  if (right && !isPointInVector(taggedPeaks, *right)) {
+    genTriangles(TZHeights, shift,
+                 getCoordinateFromStr(right->getProperty("DEMXY")));
+  }
+
+  if (left && !isPointInVector(taggedPeaks, *left)) {
+    genTriangles(TZHeights, shift,
+                 getCoordinateFromStr(left->getProperty("DEMXY")));
+  }
+}
+*/
+/*vector<Triangle> getTriangles() { return triangles; }
+
+Core* getCore() { return core; }
+
+private:
+bool isHasThisTriangle(Triangle t) {
+  for (size_t i = 0; i < triangles.size(); i++) {
+    if (triangles[i] == t)
+      return true;
+  }
+  return false;
+}
+
+bool isPointInVector(vector<Point> v, Point _p) {
+  for (size_t i = 0; i < v.size(); i++) {
+    if (v[i] == _p)
+      return true;
+  }
+  return false;
+}
+
+Core* core;
+vector<Triangle> triangles;
+vector<Point> taggedPeaks;
+PermutationsGenerator generator;
+};*/
 
 #endif  // SETTLEMENTCALCULATION_H

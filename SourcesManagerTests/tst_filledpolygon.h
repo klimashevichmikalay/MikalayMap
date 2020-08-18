@@ -143,25 +143,4 @@ TEST_F(PolygonFixture, TestIsInPolygon) {
   EXPECT_FALSE(pBefore.isContains(c7));
 }
 
-/*
-TEST_F(PolygonFixture, TestSerializeAndDesirealize) {
-  rapidjson::StringBuffer sb;
-  rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
-  fpToJSON(pBefore, writer);
-  FilledPolygon polig = jsonToFP(sb.GetString());
-
-EXPECT_EQ(pBefore == polig, true);
-}
-
-TEST_F(PolygonFixture, TestSerializeAndDesirealize2) {
-    pBefore.scalingByArea(2, true);
-    rapidjson::StringBuffer sb;
-    rapidjson::PrettyWriter<rapidjson::StringBuffer> writer(sb);
-    fpToJSON(pBefore, writer);
-    FilledPolygon fpolig = jsonToFP(sb.GetString());
-
-    EXPECT_EQ(fpolig == pAfter, true);
-}
-*/
-
 #endif  // TST_FILLEDPOLYGON_H

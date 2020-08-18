@@ -7,7 +7,7 @@
 #include "PermutationsGenerator.h"
 
 using namespace testing;
-
+/*
 TEST(PermutationsTest, TestGenPermutations) {
   PermutationsGenerator sc;
   vector<vector<int>> v0 = sc.getPermutations(10, 2);
@@ -16,5 +16,5 @@ TEST(PermutationsTest, TestGenPermutations) {
   EXPECT_EQ(v0.size(), 45);
   EXPECT_EQ(v1.size(), 190);
 }
-
+*/
 #endif  // TST_PERMUTATIONS_H

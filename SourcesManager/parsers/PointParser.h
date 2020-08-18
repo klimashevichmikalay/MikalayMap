@@ -1,48 +1,46 @@
-/*#ifndef POINTSPARSER_H
+#ifndef POINTSPARSER_H
 #define POINTSPARSER_H
 
 #include "../entities/Point.h"
 #include "BaseFigureParser.h"
-
-void pointToJSON(Point _p,
-                 rapidjson::PrettyWriter<rapidjson::StringBuffer> &writer) {
+/*
+void pointToJSON(Geometry::Point p,
+                 rapidjson::PrettyWriter<rapidjson::StringBuffer>& writer) {
   writer.StartObject();
-  bfToJSON(_p, writer);
+  bfToJSON(p, writer);
 
-  writer.Key("scale");
-  writer.Double(_p.getScale());
+  writer.Key(SCALE_JSON);
+  writer.Double(p.getScale());
 
-  writer.Key("location");
+  writer.Key(LOCATION_JSON);
   writer.StartArray();
 
-  crdToJSON(_p.getCoordinates(), writer);
+  crdToJSON(*p.getLocation(), writer);
 
   writer.EndArray();
-
   writer.EndObject();
 }
 
-Point jsonToPoint(string _json) {
-  BaseFigure temp = jsonToBF(_json);
-  Point result;
-  result.setProperties(temp.getProperties());
+Geometry::Point jsonToPoint(string json) {
+  Geometry::BaseFigure temp = jsonToBF(json);
+  Geometry::Point result;
+  result = temp;
 
   rapidjson::Document document;
-  document.Parse(_json.c_str());
+  document.Parse(json.c_str());
 
   float scale = document["scale"].GetFloat();
   result.setScale(scale);
 
-  const rapidjson::Value &attributes = document["location"];
+  const rapidjson::Value& attributes = document["location"];
   assert(attributes.IsArray());
   for (rapidjson::Value::ConstValueIterator itr = attributes.Begin();
        itr != attributes.End(); ++itr) {
-    const rapidjson::Value &attribute = *itr;
+    const rapidjson::Value& attribute = *itr;
     result.setX(attribute["X"].GetFloat());
     result.setY(attribute["Y"].GetFloat());
   }
   return result;
 }
-
-#endif  // GEOJSONCOMMAND_H
 */
+#endif  // GEOJSONCOMMAND_H

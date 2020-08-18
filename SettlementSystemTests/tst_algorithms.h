@@ -7,7 +7,7 @@
 #include "SSAlgorithms.h"
 
 using namespace testing;
-
+/*
 struct DEM1Fixture : public testing::Test {
   vector<vector<Point>> DEM;
 
@@ -200,11 +200,11 @@ TEST(SSAlgorithmsTests, TestGetFrontZone6) {
   EXPECT_EQ(fabs(angl1 - 90.0) < 5, true);
   EXPECT_EQ(fabs(angl2 - 90.0) < 5, true);
 }
-
+*/
 /*FilledPolygon getFrontZone(FilledPolygon AWZone, size_t frontWidth,
                            float impactAngle, float lengthField,
                            float widthField)*/
-
+/*
 TEST(SSAlgorithmsTests, TestGetRadarZone) {
   FilledPolygon fp;
   fp.addCoordinate(Coordinates(6, 3));
@@ -329,7 +329,7 @@ TEST_F(DEM1Fixture, TestGetTZHeights) {
                 Coordinates(1100, 400),
             true);
 }
-
+*//*
 TEST_F(DEM2Fixture, TestDem2Fixture) {
   FilledPolygon tz1;
   MultiPoint tzh1;
@@ -346,7 +346,7 @@ TEST_F(DEM2Fixture, TestDem2Fixture) {
 }
 
 TEST_F(DEM2Fixture, TestFormTriagnles) {}
-
+*/
 /* MultiPoint getTZHeights(vector<vector<Point>> DEM, FilledPolygon tz) {*/
 
 #endif  // TST_TESTFINDDISTANCE_H

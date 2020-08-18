@@ -1,4 +1,4 @@
-/*#ifndef BASEFIGUREPARSER_H
+#ifndef BASEFIGUREPARSER_H
 #define BASEFIGUREPARSER_H
 
 #include <string>
@@ -8,43 +8,43 @@
 #include "../entities/BaseFigure.h"
 #include "Converters.h"
 #include "CoordinatesParser.h"
-
+#include "ParsersConstants.h"
 using namespace std;
 
-void bfToJSON(BaseFigure _bf,
-              rapidjson::PrettyWriter<rapidjson::StringBuffer> &writer) {
-  // writer.StartObject();
-  writer.Key("type");
-  writer.String(enumToString(_bf.getType()).c_str());
-  writer.Key(("properties"));
+void bfToJSON(Geometry::BaseFigure bf,
+              rapidjson::PrettyWriter<rapidjson::StringBuffer>& writer) {
+  writer.Key(TYPE_JSON);
+  writer.String(enumToString(bf.getType()).c_str());
+  writer.Key(PROPS_JSON);
   writer.StartArray();
-  std::map<std::string, std::string> props = _bf.getProperties();
-  for (map<std::string, std::string>::const_iterator it = props.begin();
-       it != props.end(); ++it) {
+  auto props = bf.getProperties();
+  for (auto it = props.begin(); it != props.end(); ++it) {
     writer.StartObject();
     writer.Key(it->first.c_str());
-    writer.String(it->second.c_str());
+    if (it->second)
+      writer.String(it->second->c_str());
+    else
+      writer.String("");
+
     writer.EndObject();
   }
   writer.EndArray();
-
-  //  writer.EndObject();
 }
 
-BaseFigure jsonToBF(string _json) {
-  BaseFigure result;
+Geometry::BaseFigure jsonToBF(string json) {
+  Geometry::BaseFigure result;
   rapidjson::Document document;
-  document.Parse(_json.c_str());
+  document.Parse(json.c_str());
 
-  string type = document["type"].GetString();
+  string type = document[TYPE_JSON].GetString();
   result.setType(strToEnum(type));
 
-  const rapidjson::Value &attributes = document["properties"];
+  const rapidjson::Value& attributes = document[PROPS_JSON];
   assert(attributes.IsArray());
   for (rapidjson::Value::ConstValueIterator itr = attributes.Begin();
        itr != attributes.End(); ++itr) {
-    const rapidjson::Value &attribute = *itr;
-    assert(attribute.IsObject());  // each attribute is an object
+    const rapidjson::Value& attribute = *itr;
+    assert(attribute.IsObject());
     for (rapidjson::Value::ConstMemberIterator itr2 = attribute.MemberBegin();
          itr2 != attribute.MemberEnd(); ++itr2) {
       result.addProperty(itr2->name.GetString(), itr2->value.GetString());
@@ -54,4 +54,3 @@ BaseFigure jsonToBF(string _json) {
 }
 
 #endif  // BASEFIGUREPARSER_H
-*/

@@ -7,7 +7,7 @@
 #include <string>
 
 #include "SSAlgorithms.h"
-
+/*
 using namespace testing;
 using namespace std;
 
@@ -174,7 +174,7 @@ TEST_F(DEMFixture, TestFindVisiblePoint) {
   EXPECT_EQ(DEM[5][1].getProperty("visible").compare("true") == 0, true);  //+
   EXPECT_EQ(DEM[6][2].getProperty("visible").compare("true") == 0, true);  //+
 }
-
+*/
 /*
 void findCoveragePoints(Point radarPos, float antennaHeight, float maxAngle,
                         float minAngle, float shifAngle,

@@ -1,4 +1,4 @@
-/*#ifndef COORDINATESPARSER_H
+#ifndef COORDINATESPARSER_H
 #define COORDINATESPARSER_H
 
 #include <string>
@@ -8,17 +8,14 @@
 #include "../entities/FigureType.h"
 using namespace std;
 
-void crdToJSON(Coordinates _c,
-               rapidjson::PrettyWriter<rapidjson::StringBuffer> &writer) {
-  // writer.StartArray();
+void crdToJSON(Geometry::Coordinates c,
+               rapidjson::PrettyWriter<rapidjson::StringBuffer>& writer) {
   writer.StartObject();
   writer.Key("X");
-  writer.Double(_c.getX());
+  writer.Double(c.getX());
   writer.Key("Y");
-  writer.Double(_c.getY());
+  writer.Double(c.getY());
   writer.EndObject();
-  //  writer.EndArray();
 }
 
 #endif  // COORDINATESPARSER_H
-*/

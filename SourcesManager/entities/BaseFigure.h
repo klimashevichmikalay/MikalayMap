@@ -22,6 +22,8 @@ class BaseFigure {
   bool isHasProperty(const std::string& propName);
   bool isHasProperty(const std::string& propName, const std::string& propValue);
 
+  std::map<std::string, std::string*>& getProperties();
+
   bool operator==(const BaseFigure& obj) const;
   BaseFigure& operator=(const BaseFigure& obj);
 

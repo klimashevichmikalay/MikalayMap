@@ -1,4 +1,4 @@
-/*#ifndef CONVERTERS_H
+#ifndef CONVERTERS_H
 #define CONVERTERS_H
 
 #include <string>
@@ -7,51 +7,50 @@
 #include "../entities/FigureType.h"
 
 using namespace std;
-using namespace figureTypes;
 
-string enumToString(FigureType _type) {
-  switch (_type) {
-    case UNKNOWN: {
+string enumToString(Geometry::FigureType type) {
+  switch (type) {
+    case Geometry::UNKNOWN: {
       return "UNKNOWN";
       break;
     }
 
-    case POINT: {
+    case Geometry::POINT: {
       return "POINT";
       break;
     }
 
-    case LINE_STR: {
+    case Geometry::LINE_STR: {
       return "LINE_STR";
       break;
     }
 
-    case FILLED_POLYGON: {
+    case Geometry::FILLED_POLYGON: {
       return "FILLED_POLYGON";
       break;
     }
 
-    case MULTI_POINT: {
+    case Geometry::MULTI_POINT: {
       return "MULTI_POINT";
       break;
     }
 
-    case MULTI_LINE_STR: {
+    case Geometry::MULTI_LINE_STR: {
       return "MULTI_LINE_STR";
       break;
     }
 
-    case MULTI_FILLED_POLYGON: {
+    case Geometry::MULTI_FILLED_POLYGON: {
       return "MULTI_FILLED_POLYGON";
       break;
     }
 
-    case TRIANGLE: {
+    case Geometry::TRIANGLE: {
       return "TRIANGLE";
       break;
     }
 
-    case TYPES_SZ: {
+    case Geometry::TYPES_SZ: {
       return "TYPES_SZ";
       break;
     }
@@ -60,25 +59,32 @@ string enumToString(FigureType _type) {
   return "UNKNOWN";
 }
 
-FigureType strToEnum(string _type) {
-  if (_type == "UNKNOWN") return UNKNOWN;
+Geometry::FigureType strToEnum(string type) {
+  if (type == "UNKNOWN")
+    return Geometry::UNKNOWN;
 
-  if (_type == "POINT") return POINT;
+  if (type == "POINT")
+    return Geometry::POINT;
 
-  if (_type == "LINE_STR") return LINE_STR;
+  if (type == "LINE_STR")
+    return Geometry::LINE_STR;
 
-  if (_type == "FILLED_POLYGON") return FILLED_POLYGON;
+  if (type == "FILLED_POLYGON")
+    return Geometry::FILLED_POLYGON;
 
-  if (_type == "MULTI_POINT") return MULTI_POINT;
+  if (type == "MULTI_POINT")
+    return Geometry::MULTI_POINT;
 
-  if (_type == "MULTI_LINE_STR") return MULTI_LINE_STR;
+  if (type == "MULTI_LINE_STR")
+    return Geometry::MULTI_LINE_STR;
 
-  if (_type == "MULTI_FILLED_POLYGON") return MULTI_FILLED_POLYGON;
+  if (type == "MULTI_FILLED_POLYGON")
+    return Geometry::MULTI_FILLED_POLYGON;
 
-  if (_type == "TRIANGLE") return TRIANGLE;
+  if (type == "TRIANGLE")
+    return Geometry::TRIANGLE;
 
-  return UNKNOWN;
+  return Geometry::UNKNOWN;
 }
 
 #endif  // CONVERTERS_H
-*/

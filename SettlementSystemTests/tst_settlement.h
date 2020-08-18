@@ -11,7 +11,7 @@
 
 using namespace testing;
 using namespace std;
-
+/*
 Point getP(int _heigh, int x, int y) {
   std::string height = std::to_string(_heigh);
   Point p(Coordinates(x, y));
@@ -55,7 +55,7 @@ struct Settlement1Fixture : public testing::Test {
 
   void TearDown() override { lakes.clear(); }
 };
-
+*/ /*
 TEST_F(Settlement1Fixture, TestSettlement) {
   SettlementCalculation sc("lakesTest", "swTest", "badTest", "demTest", 16);
 
@@ -71,7 +71,7 @@ TEST_F(Settlement1Fixture, TestSettlement) {
   EXPECT_EQ(settlement[1] == Point(Coordinates(6, 18)), true);
   EXPECT_EQ(settlement[2] == Point(Coordinates(2, 14)), true);
 }
-
+*//*
 TEST_F(Settlement1Fixture, TestSettlementGetFields) {
   SettlementCalculation sc("lakesTest", "swTest", "badTest", "demTest", 16);
 
@@ -83,14 +83,14 @@ TEST_F(Settlement1Fixture, TestSettlementGetFields) {
   vector<Point> settlement =
       sc.getBestSettlement(f, 0, 120, 70, 2.5, 0, 20, 2, 3, 11, 22, 135);
 
-  /*
+
 
 FilledPolygon getFrontView() { return frontZone; }
 
 
 vector<vector<Point>> getCoverResult() { return coverResult; }
 */
-
+/*
   EXPECT_EQ(sc.getWidth(), 31);
   EXPECT_EQ(sc.getLength(), 31);
 
@@ -107,7 +107,7 @@ vector<vector<Point>> getCoverResult() { return coverResult; }
   EXPECT_EQ(sc.getFrontView().getProperty("view").compare("frontzone") == 0,
             true);
 }
-
+*//*
 TEST(FilledPolygonTest, TestGetAWZone) {
   FilledPolygon f;
   f.addCoordinate(Coordinates(18, 22));
@@ -117,7 +117,7 @@ TEST(FilledPolygonTest, TestGetAWZone) {
   FilledPolygon f1 = f.getAviationWeapons(2);
 
   EXPECT_EQ(f1.getPoints().size(), 3);
-}
+}*/
 
 /* vector<Point> getBestSettlement(
       FilledPolygon protectionObject, float antennaHeight, float maxAngle,
