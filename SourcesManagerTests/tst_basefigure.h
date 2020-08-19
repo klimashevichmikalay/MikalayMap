@@ -47,6 +47,19 @@ TEST(BaseFigureTests, BaseFigureAddPropertries) {
   EXPECT_EQ(bf.getProperty("note3"), nullptr);
 }
 
+TEST(BaseFigureTests, SetNullPropetry) {
+  BaseFigure bf;
+
+  bf.addProperty("noTE1", "soMENote1");
+  bf.addProperty("NOTE2", "SOmenote2");
+
+  bf.setNullProperty("NoTE1");
+  bf.setNullProperty("note2");
+
+  EXPECT_EQ(bf.getProperty("noTE1"), nullptr);
+  EXPECT_EQ(bf.getProperty("NOTE2"), nullptr);
+}
+
 TEST(BaseFigureTests, BaseFigureAddEmptyPropertries) {
   BaseFigure bf;
 

@@ -11,10 +11,10 @@ namespace SettlementAlgorithms {
 
 /*возвращает точку с координатами, являющейся пересечением прямых,
   образуемых отрезами (A;B) & (A1; B1)*/
-Geometry::Point* linesIntersection(Geometry::Point* A,
-                                   Geometry::Point* B,
-                                   Geometry::Point* C,
-                                   Geometry::Point* D) {
+Geometry::Point* linesIntersection(const Geometry::Point* A,
+                                   const Geometry::Point* B,
+                                   const Geometry::Point* C,
+                                   const Geometry::Point* D) {
   if (!A || !B || !C || !D)
     return nullptr;
 
@@ -47,6 +47,8 @@ struct DEMCell {
   const Geometry::Point* lowerLeft;
   const Geometry::Point* topRight;
   const Geometry::Point* lowerRight;
+
+  bool isValidPtrs() { return topLeft && topRight && lowerLeft && lowerRight; }
 };
 
 double findDistance(const Geometry::Point* p1, const Geometry::Point* p2) {
@@ -70,7 +72,7 @@ DEMCell* getFramingCell(const Geometry::Point& p,
   if (DEM.getSZ() < CELL_POINTS_NUM)
     return nullptr;
 
-  static double distance = findDistance(*DEM.cbegin(), *(DEM.cbegin() + 1));
+  double distance = findDistance(*DEM.cbegin(), *(DEM.cbegin() + 1));
 
   DEMCell* result = new DEMCell();
 
@@ -80,15 +82,89 @@ DEMCell* getFramingCell(const Geometry::Point& p,
   if (!chekDEMIndex(col, row, DEM, colsNum) ||
       !chekDEMIndex(col + 1, row, DEM, colsNum) ||
       !chekDEMIndex(col + 1, row + 1, DEM, colsNum) ||
-      !chekDEMIndex(col, row + 1, DEM, colsNum))
+      !chekDEMIndex(col, row + 1, DEM, colsNum)) {
+    delete result;
     return nullptr;
+  }
 
   result->topLeft = *(DEM.cbegin() + col + row * colsNum);
   result->topRight = *(DEM.cbegin() + (col + 1) + row * colsNum);
   result->lowerRight = *(DEM.cbegin() + (col + 1) + (row + 1) * colsNum);
   result->lowerLeft = *(DEM.cbegin() + (col) + (row + 1) * colsNum);
 
+  if (!result->topLeft || !result->topRight || !result->lowerLeft ||
+      !result->lowerRight) {
+    delete result;
+    return nullptr;
+  }
+
   return result;
+}
+
+double area(const Geometry::Point& a,
+            const Geometry::Point& b,
+            const Geometry::Point& c) {
+  return fabs((a.getX() * (b.getY() - c.getY()) +
+               b.getX() * (c.getY() - a.getY()) +
+               c.getX() * (a.getY() - b.getY())) /
+              2.0);
+}
+
+bool isInside(const Geometry::Point& p,
+              const Geometry::Point& a,
+              const Geometry::Point& b,
+              const Geometry::Point& c) {
+  double A = area(a, b, c);
+  double A1 = area(p, b, c);
+  double A2 = area(a, p, c);
+  double A3 = area(a, b, p);
+
+  return (A == (A1 + A2 + A3));
+}
+
+void setHeight(const Geometry::Point* A,
+               const Geometry::Point* B,
+               Geometry::Point* target) {
+  if (A->getProperty(HEIGHT) == nullptr || B->getProperty(HEIGHT) == nullptr) {
+    target->setNullProperty(HEIGHT);
+    return;
+  }
+
+  double dAT = findDistance(A, target);
+  double dAB = findDistance(A, B);
+  // double factor = dAT / dAB;
+
+  double deltaH = ::atof(B->getProperty(HEIGHT)->c_str()) -
+                  ::atof(A->getProperty(HEIGHT)->c_str());
+
+  target->addProperty(HEIGHT,
+                      std::to_string(::atof(A->getProperty(HEIGHT)->c_str()) +
+                                     deltaH * dAT / dAB));
+}
+
+void setHeight(Geometry::Point& p,
+               const Geometry::MultiPoint& DEM,
+               size_t colsNum) {
+  DEMCell* cell = getFramingCell(p, DEM, colsNum);
+
+  if (!cell || !cell->isValidPtrs() || !cell->topLeft->isHasProperty(HEIGHT) ||
+      !cell->topRight->isHasProperty(HEIGHT) ||
+      !cell->lowerLeft->isHasProperty(HEIGHT) ||
+      !cell->lowerRight->isHasProperty(HEIGHT)) {
+    p.setNullProperty(HEIGHT);
+    return;
+  }
+
+  const Geometry::Point* vertex =
+      isInside(p, *(cell->topLeft), *(cell->lowerLeft), *(cell->lowerRight))
+          ? cell->lowerLeft
+          : cell->topRight;
+
+  Geometry::Point* intersection =
+      linesIntersection(vertex, &p, cell->topLeft, cell->lowerRight);
+
+  setHeight(cell->topLeft, cell->lowerRight, intersection);
+  setHeight(vertex, intersection, &p);
 }
 
 }  // namespace SettlementAlgorithms

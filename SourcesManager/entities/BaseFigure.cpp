@@ -53,10 +53,17 @@ const string* BaseFigure::getProperty(const string& propName) const {
 }
 
 void BaseFigure::delProperty(const string& propName) {
-  auto ptr = properties.find(propName);
-  delete ptr->second;
+  auto ptr = properties.find(toLower(propName));
+  if (ptr != properties.end() && ptr->second)
+    delete ptr->second;
 
-  properties.erase(ptr);
+  if (ptr != properties.end())
+    properties.erase(ptr);
+}
+
+void BaseFigure::setNullProperty(const std::string& propName) {
+  delProperty(propName);
+  properties.insert({toLower(propName), nullptr});
 }
 
 bool BaseFigure::operator==(const BaseFigure& obj) const {
@@ -78,12 +85,12 @@ bool BaseFigure::operator==(const BaseFigure& obj) const {
   return true;
 }
 
-bool BaseFigure::isHasProperty(const std::string& propName) {
+bool BaseFigure::isHasProperty(const std::string& propName) const {
   return getProperty(propName);
 }
 
 bool BaseFigure::isHasProperty(const std::string& propName,
-                               const std::string& propValue) {
+                               const std::string& propValue) const {
   const string* ptr = getProperty(propName);
   return ptr ? !(ptr->compare(propValue)) : false;
 }

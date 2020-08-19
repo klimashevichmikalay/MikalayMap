@@ -18,9 +18,11 @@ class BaseFigure {
 
   void addProperty(const std::string& propName, const std::string& prop);
   void delProperty(const std::string& propName);
+  void setNullProperty(const std::string& propName);
   const std::string* getProperty(const std::string& propName) const;
-  bool isHasProperty(const std::string& propName);
-  bool isHasProperty(const std::string& propName, const std::string& propValue);
+  bool isHasProperty(const std::string& propName) const;
+  bool isHasProperty(const std::string& propName,
+                     const std::string& propValue) const;
 
   std::map<std::string, std::string*>& getProperties();
 
